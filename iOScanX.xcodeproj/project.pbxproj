@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A11907417551AA100EE8DD1 /* Cancel Red Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */; };
+		7A11907617551AA100EE8DD1 /* Play.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907017551AA100EE8DD1 /* Play.icns */; };
+		7A11907717551AA100EE8DD1 /* Plugin Green Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */; };
+		7A11907817551AA100EE8DD1 /* Terminal.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907217551AA100EE8DD1 /* Terminal.icns */; };
+		7A11907917551AA100EE8DD1 /* Universal Binary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907317551AA100EE8DD1 /* Universal Binary.icns */; };
+		7A11907B175527EA00EE8DD1 /* Write Document.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907A175527EA00EE8DD1 /* Write Document.icns */; };
+		7A11907F1755304000EE8DD1 /* iSXAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */; };
+		7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */; };
+		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
+		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -16,6 +26,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Cancel Red Button.icns"; sourceTree = "<group>"; };
+		7A11907017551AA100EE8DD1 /* Play.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Play.icns; sourceTree = "<group>"; };
+		7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Plugin Green Button.icns"; sourceTree = "<group>"; };
+		7A11907217551AA100EE8DD1 /* Terminal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Terminal.icns; sourceTree = "<group>"; };
+		7A11907317551AA100EE8DD1 /* Universal Binary.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Universal Binary.icns"; sourceTree = "<group>"; };
+		7A11907A175527EA00EE8DD1 /* Write Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Write Document.icns"; sourceTree = "<group>"; };
+		7A11907C1755304000EE8DD1 /* iSXAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppsViewController.h; sourceTree = "<group>"; };
+		7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppsViewController.m; sourceTree = "<group>"; };
+		7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXAppsViewController.xib; sourceTree = "<group>"; };
+		7A11908C1755467800EE8DD1 /* iSXApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXApp.h; sourceTree = "<group>"; };
+		7A11908D1755467800EE8DD1 /* iSXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXApp.m; sourceTree = "<group>"; };
+		7A11908F1755563400EE8DD1 /* iSXAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppController.h; sourceTree = "<group>"; };
+		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -43,6 +66,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1190611754F37200EE8DD1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7A11907A175527EA00EE8DD1 /* Write Document.icns */,
+				7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */,
+				7A11907017551AA100EE8DD1 /* Play.icns */,
+				7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */,
+				7A11907217551AA100EE8DD1 /* Terminal.icns */,
+				7A11907317551AA100EE8DD1 /* Universal Binary.icns */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7A1190811755305500EE8DD1 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				7A11908C1755467800EE8DD1 /* iSXApp.h */,
+				7A11908D1755467800EE8DD1 /* iSXApp.m */,
+				7A11907C1755304000EE8DD1 /* iSXAppsViewController.h */,
+				7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */,
+				7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */,
+			);
+			name = Apps;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		7A9EE54B16E772E8004770AA = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +134,12 @@
 			children = (
 				7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */,
 				7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */,
+				7A11908F1755563400EE8DD1 /* iSXAppController.h */,
+				7A1190901755563400EE8DD1 /* iSXAppController.m */,
 				7A9EE56F16E772E9004770AA /* MainMenu.xib */,
+				7A1190811755305500EE8DD1 /* Apps */,
 				7A9EE56116E772E8004770AA /* Supporting Files */,
+				7A1190611754F37200EE8DD1 /* Images */,
 			);
 			path = iOScanX;
 			sourceTree = "<group>";
@@ -157,6 +211,13 @@
 				7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */,
 				7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */,
 				7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */,
+				7A11907417551AA100EE8DD1 /* Cancel Red Button.icns in Resources */,
+				7A11907617551AA100EE8DD1 /* Play.icns in Resources */,
+				7A11907717551AA100EE8DD1 /* Plugin Green Button.icns in Resources */,
+				7A11907817551AA100EE8DD1 /* Terminal.icns in Resources */,
+				7A11907917551AA100EE8DD1 /* Universal Binary.icns in Resources */,
+				7A11907B175527EA00EE8DD1 /* Write Document.icns in Resources */,
+				7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +230,9 @@
 			files = (
 				7A9EE56716E772E8004770AA /* main.m in Sources */,
 				7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */,
+				7A11907F1755304000EE8DD1 /* iSXAppsViewController.m in Sources */,
+				7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */,
+				7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +360,7 @@
 				7A9EE57616E772E9004770AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
