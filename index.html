@@ -2,9 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8">
-		<title></title>
+		<link rel="stylesheet" href="animate.min.css" type="text/css" media="screen" charset="utf-8">
+		<style type="text/css" media="screen">
+			#logo
+			{
+				display: block;
+				float: none;
+				position: absolute;
+			    left: 50%;
+			    top: 50%;
+				padding: 0;
+				margin: -100px 0px 0px -88px;
+				width: 175px;
+				height: 200px;
+				background-image: url(img/logo.png);
+				background-repeat: no-repeat;
+				opacity: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.addEventListener("load",function() {
+            	var logo = document.getElementById("logo");
+            	logo.className += " animated fadeInDown";
+            });
+		</script>
+		<title>iOScanX</title>
 	</head>
 	<body>
+		<div id="logo"</div>
 	</body>
 </html>
