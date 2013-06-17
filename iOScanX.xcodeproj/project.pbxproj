@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A11907417551AA100EE8DD1 /* Cancel Red Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */; };
+		7A11907617551AA100EE8DD1 /* Play.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907017551AA100EE8DD1 /* Play.icns */; };
+		7A11907717551AA100EE8DD1 /* Plugin Green Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */; };
+		7A11907817551AA100EE8DD1 /* Terminal.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907217551AA100EE8DD1 /* Terminal.icns */; };
+		7A11907917551AA100EE8DD1 /* Universal Binary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907317551AA100EE8DD1 /* Universal Binary.icns */; };
+		7A11907B175527EA00EE8DD1 /* Write Document.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907A175527EA00EE8DD1 /* Write Document.icns */; };
+		7A11907F1755304000EE8DD1 /* iSXAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */; };
+		7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */; };
+		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
+		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
+		7A6583D4176F2FEF005C45BD /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6583D3176F2FEF005C45BD /* ScanX.framework */; };
+		7A6583D5176F3003005C45BD /* ScanX.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7A6583D3176F2FEF005C45BD /* ScanX.framework */; };
+		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
+		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
+		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
+		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
+		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
+		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Cancel Red Button.icns"; sourceTree = "<group>"; };
+		7A11907017551AA100EE8DD1 /* Play.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Play.icns; sourceTree = "<group>"; };
+		7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Plugin Green Button.icns"; sourceTree = "<group>"; };
+		7A11907217551AA100EE8DD1 /* Terminal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Terminal.icns; sourceTree = "<group>"; };
+		7A11907317551AA100EE8DD1 /* Universal Binary.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Universal Binary.icns"; sourceTree = "<group>"; };
+		7A11907A175527EA00EE8DD1 /* Write Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Write Document.icns"; sourceTree = "<group>"; };
+		7A11907C1755304000EE8DD1 /* iSXAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppsViewController.h; sourceTree = "<group>"; };
+		7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppsViewController.m; sourceTree = "<group>"; };
+		7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXAppsViewController.xib; sourceTree = "<group>"; };
+		7A11908C1755467800EE8DD1 /* iSXApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXApp.h; sourceTree = "<group>"; };
+		7A11908D1755467800EE8DD1 /* iSXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXApp.m; sourceTree = "<group>"; };
+		7A11908F1755563400EE8DD1 /* iSXAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppController.h; sourceTree = "<group>"; };
+		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
+		7A6583D3176F2FEF005C45BD /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
+		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7A9EE55E16E772E8004770AA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7A9EE55F16E772E8004770AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A9EE56216E772E8004770AA /* iOScanX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOScanX-Info.plist"; sourceTree = "<group>"; };
+		7A9EE56416E772E8004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A9EE56616E772E8004770AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A9EE56816E772E8004770AA /* iOScanX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOScanX-Prefix.pch"; sourceTree = "<group>"; };
+		7A9EE56A16E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
+		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
+		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A9EE55316E772E8004770AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
+				7A6583D4176F2FEF005C45BD /* ScanX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A1190611754F37200EE8DD1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7A11907A175527EA00EE8DD1 /* Write Document.icns */,
+				7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */,
+				7A11907017551AA100EE8DD1 /* Play.icns */,
+				7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */,
+				7A11907217551AA100EE8DD1 /* Terminal.icns */,
+				7A11907317551AA100EE8DD1 /* Universal Binary.icns */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7A1190811755305500EE8DD1 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				7A11908C1755467800EE8DD1 /* iSXApp.h */,
+				7A11908D1755467800EE8DD1 /* iSXApp.m */,
+				7A11907C1755304000EE8DD1 /* iSXAppsViewController.h */,
+				7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */,
+				7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */,
+			);
+			name = Apps;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7A9EE54B16E772E8004770AA = {
+			isa = PBXGroup;
+			children = (
+				7A9EE56016E772E8004770AA /* iOScanX */,
+				7A9EE55916E772E8004770AA /* Frameworks */,
+				7A9EE55716E772E8004770AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A9EE55716E772E8004770AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A9EE55616E772E8004770AA /* iOScanX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A9EE55916E772E8004770AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A6583D3176F2FEF005C45BD /* ScanX.framework */,
+				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
+				7A9EE55C16E772E8004770AA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A9EE55C16E772E8004770AA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A9EE55D16E772E8004770AA /* AppKit.framework */,
+				7A9EE55E16E772E8004770AA /* CoreData.framework */,
+				7A9EE55F16E772E8004770AA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		7A9EE56016E772E8004770AA /* iOScanX */ = {
+			isa = PBXGroup;
+			children = (
+				7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */,
+				7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */,
+				7A11908F1755563400EE8DD1 /* iSXAppController.h */,
+				7A1190901755563400EE8DD1 /* iSXAppController.m */,
+				7A9EE56F16E772E9004770AA /* MainMenu.xib */,
+				7A1190811755305500EE8DD1 /* Apps */,
+				7A9EE56116E772E8004770AA /* Supporting Files */,
+				7A1190611754F37200EE8DD1 /* Images */,
+			);
+			path = iOScanX;
+			sourceTree = "<group>";
+		};
+		7A9EE56116E772E8004770AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A9EE56216E772E8004770AA /* iOScanX-Info.plist */,
+				7A9EE56316E772E8004770AA /* InfoPlist.strings */,
+				7A9EE56616E772E8004770AA /* main.m */,
+				7A9EE56816E772E8004770AA /* iOScanX-Prefix.pch */,
+				7A9EE56916E772E9004770AA /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A9EE55516E772E8004770AA /* iOScanX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9EE57416E772E9004770AA /* Build configuration list for PBXNativeTarget "iOScanX" */;
+			buildPhases = (
+				7A9EE55216E772E8004770AA /* Sources */,
+				7A9EE55316E772E8004770AA /* Frameworks */,
+				7A9EE55416E772E8004770AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOScanX;
+			productName = iOScanX;
+			productReference = 7A9EE55616E772E8004770AA /* iOScanX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A9EE54D16E772E8004770AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = iSX;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Alessio Maffeis";
+			};
+			buildConfigurationList = 7A9EE55016E772E8004770AA /* Build configuration list for PBXProject "iOScanX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A9EE54B16E772E8004770AA;
+			productRefGroup = 7A9EE55716E772E8004770AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A9EE55516E772E8004770AA /* iOScanX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A9EE55416E772E8004770AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A6583D5176F3003005C45BD /* ScanX.framework in Resources */,
+				7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */,
+				7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */,
+				7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */,
+				7A11907417551AA100EE8DD1 /* Cancel Red Button.icns in Resources */,
+				7A11907617551AA100EE8DD1 /* Play.icns in Resources */,
+				7A11907717551AA100EE8DD1 /* Plugin Green Button.icns in Resources */,
+				7A11907817551AA100EE8DD1 /* Terminal.icns in Resources */,
+				7A11907917551AA100EE8DD1 /* Universal Binary.icns in Resources */,
+				7A11907B175527EA00EE8DD1 /* Write Document.icns in Resources */,
+				7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A9EE55216E772E8004770AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9EE56716E772E8004770AA /* main.m in Sources */,
+				7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */,
+				7A11907F1755304000EE8DD1 /* iSXAppsViewController.m in Sources */,
+				7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */,
+				7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7A9EE56316E772E8004770AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9EE56416E772E8004770AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7A9EE56916E772E9004770AA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9EE56A16E772E9004770AA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		7A9EE56F16E772E9004770AA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9EE57016E772E9004770AA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A9EE57216E772E9004770AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7A9EE57316E772E9004770AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7A9EE57516E772E9004770AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
+				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7A9EE57616E772E9004770AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
+				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A9EE55016E772E8004770AA /* Build configuration list for PBXProject "iOScanX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9EE57216E772E9004770AA /* Debug */,
+				7A9EE57316E772E9004770AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9EE57416E772E9004770AA /* Build configuration list for PBXNativeTarget "iOScanX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9EE57516E772E9004770AA /* Debug */,
+				7A9EE57616E772E9004770AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A9EE54D16E772E8004770AA /* Project object */;
+}
