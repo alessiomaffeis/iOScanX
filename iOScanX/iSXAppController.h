@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #include "iSXAppsViewController.h"
+#include "iSXModulesViewController.h"
+#include "iSXEvaluationsViewController.h"
+#include "iSXResultsViewController.h"
 
 @interface  iSXAppController : NSObject
 
-@property (strong) NSViewController *mainViewController;
 @property (assign) IBOutlet NSView *mainView;
 
 - (IBAction)showApps:(id)sender;

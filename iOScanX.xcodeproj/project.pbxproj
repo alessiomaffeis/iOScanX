@@ -17,15 +17,34 @@
 		7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */; };
 		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
-		7A6583D4176F2FEF005C45BD /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6583D3176F2FEF005C45BD /* ScanX.framework */; };
-		7A6583D5176F3003005C45BD /* ScanX.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7A6583D3176F2FEF005C45BD /* ScanX.framework */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
+		7AC6F59D1773195B00E3108A /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC6F59C1773195B00E3108A /* ScanX.framework */; };
+		7AC6F5A517731ED000E3108A /* iSXModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */; };
+		7AC6F5A617731ED000E3108A /* iSXModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */; };
+		7AC6F5AB1773201C00E3108A /* iSXEvaluationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */; };
+		7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */; };
+		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
+		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
+		7AC6F5B517732C6100E3108A /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AC6F59C1773195B00E3108A /* ScanX.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7AC6F5B417732C4B00E3108A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7AC6F5B517732C6100E3108A /* ScanX.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Cancel Red Button.icns"; sourceTree = "<group>"; };
@@ -41,7 +60,6 @@
 		7A11908D1755467800EE8DD1 /* iSXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXApp.m; sourceTree = "<group>"; };
 		7A11908F1755563400EE8DD1 /* iSXAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppController.h; sourceTree = "<group>"; };
 		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
-		7A6583D3176F2FEF005C45BD /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,6 +73,16 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7AC6F59C1773195B00E3108A /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
+		7AC6F5A217731ED000E3108A /* iSXModulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXModulesViewController.h; sourceTree = "<group>"; };
+		7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXModulesViewController.m; sourceTree = "<group>"; };
+		7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXModulesViewController.xib; sourceTree = "<group>"; };
+		7AC6F5A81773201C00E3108A /* iSXEvaluationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXEvaluationsViewController.h; sourceTree = "<group>"; };
+		7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXEvaluationsViewController.m; sourceTree = "<group>"; };
+		7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXEvaluationsViewController.xib; sourceTree = "<group>"; };
+		7AC6F5AE177320EF00E3108A /* iSXResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResultsViewController.h; sourceTree = "<group>"; };
+		7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResultsViewController.m; sourceTree = "<group>"; };
+		7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXResultsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
-				7A6583D4176F2FEF005C45BD /* ScanX.framework in Frameworks */,
+				7AC6F59D1773195B00E3108A /* ScanX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +145,7 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7A6583D3176F2FEF005C45BD /* ScanX.framework */,
+				7AC6F59C1773195B00E3108A /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
 			);
@@ -143,6 +171,9 @@
 				7A1190901755563400EE8DD1 /* iSXAppController.m */,
 				7A9EE56F16E772E9004770AA /* MainMenu.xib */,
 				7A1190811755305500EE8DD1 /* Apps */,
+				7AC6F5A117731DF400E3108A /* Modules */,
+				7AC6F5A717731FE400E3108A /* Evaluations */,
+				7AC6F5AD177320B200E3108A /* Results */,
 				7A9EE56116E772E8004770AA /* Supporting Files */,
 				7A1190611754F37200EE8DD1 /* Images */,
 			);
@@ -161,6 +192,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7AC6F5A117731DF400E3108A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7AC6F5A217731ED000E3108A /* iSXModulesViewController.h */,
+				7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */,
+				7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */,
+			);
+			name = Modules;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7AC6F5A717731FE400E3108A /* Evaluations */ = {
+			isa = PBXGroup;
+			children = (
+				7AC6F5A81773201C00E3108A /* iSXEvaluationsViewController.h */,
+				7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */,
+				7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */,
+			);
+			name = Evaluations;
+			sourceTree = "<group>";
+		};
+		7AC6F5AD177320B200E3108A /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				7AC6F5AE177320EF00E3108A /* iSXResultsViewController.h */,
+				7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */,
+				7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +231,7 @@
 			buildConfigurationList = 7A9EE57416E772E9004770AA /* Build configuration list for PBXNativeTarget "iOScanX" */;
 			buildPhases = (
 				7A9EE55216E772E8004770AA /* Sources */,
+				7AC6F5B417732C4B00E3108A /* CopyFiles */,
 				7A9EE55316E772E8004770AA /* Frameworks */,
 				7A9EE55416E772E8004770AA /* Resources */,
 			);
@@ -213,7 +276,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A6583D5176F3003005C45BD /* ScanX.framework in Resources */,
 				7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */,
 				7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */,
 				7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */,
@@ -224,6 +286,9 @@
 				7A11907917551AA100EE8DD1 /* Universal Binary.icns in Resources */,
 				7A11907B175527EA00EE8DD1 /* Write Document.icns in Resources */,
 				7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */,
+				7AC6F5A617731ED000E3108A /* iSXModulesViewController.xib in Resources */,
+				7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */,
+				7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +304,9 @@
 				7A11907F1755304000EE8DD1 /* iSXAppsViewController.m in Sources */,
 				7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */,
 				7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */,
+				7AC6F5A517731ED000E3108A /* iSXModulesViewController.m in Sources */,
+				7AC6F5AB1773201C00E3108A /* iSXEvaluationsViewController.m in Sources */,
+				7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +398,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
@@ -347,6 +416,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
