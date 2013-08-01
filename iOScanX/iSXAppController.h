@@ -11,10 +11,12 @@
 #include "iSXModulesViewController.h"
 #include "iSXEvaluationsViewController.h"
 #include "iSXResultsViewController.h"
+#include "iSXApp.h"
 
 @interface  iSXAppController : NSObject
 
 @property (assign) IBOutlet NSView *mainView;
+@property (retain) NSMutableArray *apps;
 
 - (IBAction)showApps:(id)sender;
 - (IBAction)showModules:(id)sender;

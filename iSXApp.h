@@ -10,8 +10,8 @@
 
 @interface iSXApp : NSObject
 
-@property (strong) NSString *name;
-@property (strong) NSString *iconURL;
-@property BOOL toAnalize;
+@property (retain) NSString *name;
+@property (retain) NSString *iconPath;
+@property (assign) int toAnalyze;
 
 @end

@@ -10,18 +10,22 @@
 
 @implementation iSXApp
 
-@synthesize name = _name;
-@synthesize iconURL = _iconURL;
-@synthesize toAnalize = _toAnalize;
-
 -(id)init {
+    
     self = [super init];
     if (self) {
-        _name = @"App Name";
-        _iconURL =  nil;
-        _toAnalize = YES;
+        _name = @"Test App";
+        _iconPath =  @"test.jpg";
+        _toAnalyze = NSOnState;
     }
     return self;
+}
+
+-(void)dealloc {
+    
+    [_name release];
+    [_iconPath release];
+    [super dealloc];
 }
 
 @end

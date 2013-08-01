@@ -14,11 +14,13 @@
     NSViewController *_modulesViewController;
     NSViewController *_evaluationsViewController;
     NSViewController *_resultsViewController;
+    IBOutlet NSArrayController *_appsArrayController;
 }
 
 - (id) init {
     [super init];
     if (self) {
+        _apps = [[NSMutableArray alloc] init];
         _appsViewController = [[iSXAppsViewController alloc] initWithNibName:@"iSXAppsViewController" bundle:nil];
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
         _evaluationsViewController = [[iSXEvaluationsViewController alloc] initWithNibName:@"iSXEvaluationsViewController" bundle:nil];
@@ -32,9 +34,14 @@
 // UI related methods:
 
 - (void)awakeFromNib {
-    
-    [self.mainView addSubview:[_appsViewController view]];
-    [[_appsViewController view] setFrame:[self.mainView bounds]];
+    iSXApp *test = [[iSXApp alloc] init];
+    [_appsArrayController addObject:test];
+    test = [[iSXApp alloc] init];
+    [_appsArrayController addObject:test];
+    test = [[iSXApp alloc] init];
+    [_appsArrayController addObject:test];
+    test = [[iSXApp alloc] init];
+    [_appsArrayController addObject:test];
 }
 
 - (IBAction)showApps:(id)sender {
@@ -84,6 +91,7 @@
     [_modulesViewController release];
     [_evaluationsViewController release];
     [_resultsViewController release];
+    [_apps release];
     [super dealloc];
 }
 
