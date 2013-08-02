@@ -27,6 +27,7 @@
 		7A6A745E17AAC4130066BFF2 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A745417AAC4130066BFF2 /* ZipReadStream.m */; };
 		7A6A745F17AAC4130066BFF2 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A745617AAC4130066BFF2 /* ZipWriteStream.m */; };
 		7A6A746817AAC72F0066BFF2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6A746717AAC72E0066BFF2 /* libz.dylib */; };
+		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -89,6 +90,8 @@
 		7A6A745517AAC4130066BFF2 /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
 		7A6A745617AAC4130066BFF2 /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
 		7A6A746717AAC72E0066BFF2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
+		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -187,6 +190,16 @@
 			path = "Objective-Zip";
 			sourceTree = "<group>";
 		};
+		7A7602FE17AC30D1001637F4 /* NSFileManager DirectoryLocations */ = {
+			isa = PBXGroup;
+			children = (
+				7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */,
+				7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */,
+			);
+			name = "NSFileManager DirectoryLocations";
+			path = "../NSFileManager DirectoryLocations";
+			sourceTree = "<group>";
+		};
 		7A9EE54B16E772E8004770AA = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +252,7 @@
 				7AC6F5AD177320B200E3108A /* Results */,
 				7A6A744317AAC4130066BFF2 /* MiniZip */,
 				7A6A744C17AAC4130066BFF2 /* Objective-Zip */,
+				7A7602FE17AC30D1001637F4 /* NSFileManager DirectoryLocations */,
 				7A9EE56116E772E8004770AA /* Supporting Files */,
 				7A1190611754F37200EE8DD1 /* Images */,
 			);
@@ -381,6 +395,7 @@
 				7A6A745D17AAC4130066BFF2 /* ZipFile.m in Sources */,
 				7A6A745E17AAC4130066BFF2 /* ZipReadStream.m in Sources */,
 				7A6A745F17AAC4130066BFF2 /* ZipWriteStream.m in Sources */,
+				7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
