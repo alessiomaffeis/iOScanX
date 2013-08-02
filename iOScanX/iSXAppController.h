@@ -13,10 +13,12 @@
 #include "iSXResultsViewController.h"
 #include "iSXApp.h"
 
-@interface  iSXAppController : NSObject
+@interface  iSXAppController : NSObject <NSWindowDelegate>
 
 @property (assign) IBOutlet NSView *mainView;
 @property (retain) NSMutableArray *apps;
+
+- (void)initialize;
 
 - (IBAction)showApps:(id)sender;
 - (IBAction)showModules:(id)sender;

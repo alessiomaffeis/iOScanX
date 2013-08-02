@@ -33,7 +33,9 @@
 
 // UI related methods:
 
+
 - (void)awakeFromNib {
+    
     iSXApp *test = [[iSXApp alloc] init];
     [_appsArrayController addObject:test];
     test = [[iSXApp alloc] init];
@@ -42,6 +44,16 @@
     [_appsArrayController addObject:test];
     test = [[iSXApp alloc] init];
     [_appsArrayController addObject:test];
+    NSLog(@"awake!");
+
+}
+
+- (void)initialize {
+
+    [self.mainView addSubview:[_appsViewController view]];
+    [[_appsViewController view] setFrame:[self.mainView bounds]];
+    NSLog(@"loaded!");
+
 }
 
 - (IBAction)showApps:(id)sender {

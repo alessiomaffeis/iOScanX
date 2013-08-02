@@ -15,9 +15,8 @@
     [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [_window.delegate initialize];
 }
 
 @end
