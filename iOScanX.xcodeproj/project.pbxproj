@@ -34,14 +34,13 @@
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
-		7AC6F59D1773195B00E3108A /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC6F59C1773195B00E3108A /* ScanX.framework */; };
+		7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC178C517AE8A43009E2D4F /* ScanX.framework */; };
 		7AC6F5A517731ED000E3108A /* iSXModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */; };
 		7AC6F5A617731ED000E3108A /* iSXModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */; };
 		7AC6F5AB1773201C00E3108A /* iSXEvaluationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */; };
 		7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */; };
 		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
 		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
-		7AC6F5B517732C6100E3108A /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AC6F59C1773195B00E3108A /* ScanX.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,7 +50,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7AC6F5B517732C6100E3108A /* ScanX.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +103,7 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		7AC6F59C1773195B00E3108A /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
+		7AC178C517AE8A43009E2D4F /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
 		7AC6F5A217731ED000E3108A /* iSXModulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXModulesViewController.h; sourceTree = "<group>"; };
 		7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXModulesViewController.m; sourceTree = "<group>"; };
 		7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXModulesViewController.xib; sourceTree = "<group>"; };
@@ -124,7 +122,7 @@
 			files = (
 				7A6A746817AAC72F0066BFF2 /* libz.dylib in Frameworks */,
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
-				7AC6F59D1773195B00E3108A /* ScanX.framework in Frameworks */,
+				7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +219,7 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AC6F59C1773195B00E3108A /* ScanX.framework */,
+				7AC178C517AE8A43009E2D4F /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
 			);

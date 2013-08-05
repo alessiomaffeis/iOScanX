@@ -16,7 +16,7 @@
     if (self) {
         _name = @"Test App";
         _iconPath =  @"test.jpg";
-        _toAnalyze = NSOnState;
+        _analyze = YES;
     }
     return self;
 }

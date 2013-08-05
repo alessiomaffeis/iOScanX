@@ -2,6 +2,7 @@
 //  NSFileManager+DirectoryLocations.h
 //
 //  Created by Matt Gallagher on 06 May 2010
+//  Edited by Alessio Maffeis on 03 July 2013
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty. In no event will the authors be held liable for any damages
@@ -32,5 +33,7 @@
 	appendPathComponent:(NSString *)appendComponent
 	error:(NSError **)errorOut;
 - (NSString *)applicationSupportDirectory;
+- (NSString *)applicationSupportSubDirectory:(NSString *)sub;
+- (NSString *)iTunesMobileAppsDirectory;
 
 @end

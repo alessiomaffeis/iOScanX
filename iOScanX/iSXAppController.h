@@ -7,18 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "iSXAppsViewController.h"
-#include "iSXModulesViewController.h"
-#include "iSXEvaluationsViewController.h"
-#include "iSXResultsViewController.h"
-#include "iSXApp.h"
+#import <ScanX/SXScanner.h>
+#import "iSXAppsViewController.h"
+#import "iSXModulesViewController.h"
+#import "iSXEvaluationsViewController.h"
+#import "iSXResultsViewController.h"
+#import "iSXApp.h"
 
 @interface  iSXAppController : NSObject <NSWindowDelegate>
 
 @property (assign) IBOutlet NSView *mainView;
 @property (retain) NSMutableArray *apps;
+@property (readonly) SXScanner *scanner;
 
 - (void)initialize;
+- (void)loadApps;
 
 - (IBAction)showApps:(id)sender;
 - (IBAction)showModules:(id)sender;

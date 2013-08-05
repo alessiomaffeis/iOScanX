@@ -12,6 +12,6 @@
 
 @property (retain) NSString *name;
 @property (retain) NSString *iconPath;
-@property (assign) int toAnalyze;
+@property (assign) BOOL analyze;
 
 @end

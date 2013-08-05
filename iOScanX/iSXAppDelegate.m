@@ -7,6 +7,7 @@
 //
 
 #import "iSXAppDelegate.h"
+#import "iSXAppController.h"
 
 @implementation iSXAppDelegate
 
@@ -16,7 +17,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [_window.delegate initialize];
+    
+    [(iSXAppController*)_window.delegate initialize];
 }
 
 @end

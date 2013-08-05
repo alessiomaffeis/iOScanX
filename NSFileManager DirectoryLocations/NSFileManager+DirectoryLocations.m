@@ -2,6 +2,7 @@
 //  NSFileManager+DirectoryLocations.m
 //
 //  Created by Matt Gallagher on 06 May 2010
+//  Edited by Alessio Maffeis on 03 July 2013
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty. In no event will the authors be held liable for any damages
@@ -148,6 +149,37 @@ NSString * const DirectoryLocationDomain = @"DirectoryLocationDomain";
 	if (!result)
 	{
 		NSLog(@"Unable to find or create application support directory:\n%@", error);
+	}
+	return result;
+}
+
+- (NSString *)applicationSupportSubDirectory:(NSString *)sub
+{
+	NSString *executableName =
+    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+	NSError *error;
+	NSString *result =
+    [self
+     findOrCreateDirectory:NSApplicationSupportDirectory
+     inDomain:NSUserDomainMask
+     appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, sub]
+     error:&error];
+	if (!result)
+	{
+		NSLog(@"Unable to find or create application support sub directory:\n%@", error);
+	}
+	return result;
+}
+
+- (NSString *)iTunesMobileAppsDirectory
+{
+	NSError *error = nil;
+    NSString *iTunesPath = [NSString stringWithFormat:@"%@/Music/iTunes", NSHomeDirectory()];
+    NSString *result = [NSString stringWithFormat:@"%@/iTunes Music/Mobile Applications", iTunesPath];
+	
+	if (!result)
+	{
+		NSLog(@"Unable to find iTunes Mobile Applications directory:\n%@", error);
 	}
 	return result;
 }
