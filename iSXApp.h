@@ -10,8 +10,8 @@
 
 @interface iSXApp : NSObject
 
-@property (retain) NSString *name;
-@property (retain) NSString *iconPath;
+@property (copy) NSString *name;
+@property (copy) NSString *iconPath;
 @property (assign) BOOL analyze;
 
 @end

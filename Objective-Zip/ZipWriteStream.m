@@ -1,6 +1,6 @@
 //
-//  ZipWriteStream.h
-//  Objective-Zip v. 0.7.2
+//  ZipWriteStream.m
+//  Objective-Zip v. 0.8.3
 //
 //  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
@@ -31,22 +31,39 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZipWriteStream.h"
+#import "ZipException.h"
 
 #include "zip.h"
 
 
-@interface ZipWriteStream : NSObject {
-	NSString *_fileNameInZip;
+@implementation ZipWriteStream
 
-@private
-	zipFile _zipFile;
+
+- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip {
+	if (self= [super init]) {
+		_zipFile= zipFile;
+		_fileNameInZip= fileNameInZip;
+	}
+	
+	return self;
 }
 
-- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
+- (void) writeData:(NSData *)data {
+	int err= zipWriteInFileInZip(_zipFile, [data bytes], [data length]);
+	if (err < 0) {
+		NSString *reason= [NSString stringWithFormat:@"Error writing '%@' in the zipfile", _fileNameInZip];
+		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+}
 
-- (void) writeBytes:(const void *)bytes length:(unsigned int)length;
-- (void) writeData:(NSData *)data;
-- (void) finishedWriting;
+- (void) finishedWriting {
+	int err= zipCloseFileInZip(_zipFile);
+	if (err != ZIP_OK) {
+		NSString *reason= [NSString stringWithFormat:@"Error closing '%@' in the zipfile", _fileNameInZip];
+		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+}
+
 
 @end

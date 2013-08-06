@@ -1,8 +1,8 @@
 //
-//  FileInZipInfo.h
-//  Objective-Zip v. 0.7.2
+//  ZipWriteStream.h
+//  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 27/12/09.
+//  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -32,29 +32,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZipFile.h"
+#import "ARCHelper.h"
+
+#include "zip.h"
 
 
-@interface FileInZipInfo : NSObject {
-	
+@interface ZipWriteStream : NSObject {
+	NSString *_fileNameInZip;
+
 @private
-	NSUInteger _length;
-	ZipCompressionLevel _level;
-	BOOL _crypted;
-	NSUInteger _size;
-	NSDate *_date;
-	NSUInteger _crc32;
-	NSString *_name;
+	zipFile _zipFile;
 }
 
-- (id) initWithName:(NSString *)name length:(NSUInteger)length level:(ZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32;
+- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
 
-@property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSUInteger length;
-@property (nonatomic, readonly) ZipCompressionLevel level;
-@property (nonatomic, readonly) BOOL crypted;
-@property (nonatomic, readonly) NSUInteger size;
-@property (nonatomic, readonly) NSDate *date;
-@property (nonatomic, readonly) NSUInteger crc32;
+- (void) writeData:(NSData *)data;
+- (void) finishedWriting;
 
 @end

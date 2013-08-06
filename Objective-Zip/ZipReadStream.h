@@ -1,8 +1,8 @@
 //
-//  ZipFile.h
-//  Objective-Zip v. 0.7.2
+//  ZipReadStream.h
+//  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 25/12/09.
+//  Created by Gianluca Bertani on 28/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -32,56 +32,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ARCHelper.h"
 
-#include "zip.h"
 #include "unzip.h"
 
 
-typedef enum {
-	ZipFileModeUnzip,
-	ZipFileModeCreate,
-	ZipFileModeAppend
-} ZipFileMode;
-
-typedef enum {
-	ZipCompressionLevelDefault= -1,
-	ZipCompressionLevelNone= 0,
-	ZipCompressionLevelFastest= 1,
-	ZipCompressionLevelBest= 9
-} ZipCompressionLevel;	
-
-@class ZipReadStream;
-@class ZipWriteStream;
-@class FileInZipInfo;
-
-@interface ZipFile : NSObject {
-	NSString *_fileName;
-	ZipFileMode _mode;
-    NSDictionary *contents;
-
+@interface ZipReadStream : NSObject {
+	NSString *_fileNameInZip;
+	
 @private
-	zipFile _zipFile;
 	unzFile _unzFile;
 }
 
-- (id) initWithFileName:(NSString *)fileName mode:(ZipFileMode)mode;
+- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip;
 
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip compressionLevel:(ZipCompressionLevel)compressionLevel;
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel;
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel password:(NSString *)password crc32:(NSUInteger)crc32;
-
-- (NSUInteger) numFilesInZip;
-- (NSArray *) listFileInZipInfos;
-
-- (BOOL) goToFirstFileInZip;
-- (BOOL) goToNextFileInZip;
-- (BOOL) locateFileInZip:(NSString *)fileNameInZip;
-
-- (FileInZipInfo *) currentFileInZipInfo;
-
-- (ZipReadStream *) readCurrentFileInZip;
-- (ZipReadStream *) readCurrentFileInZipWithPassword:(NSString *)password;
-
-- (void) close;
+- (NSUInteger) readDataWithBuffer:(NSMutableData *)buffer;
+- (void) finishedReading;
 
 @end

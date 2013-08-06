@@ -162,7 +162,7 @@ NSString * const DirectoryLocationDomain = @"DirectoryLocationDomain";
     [self
      findOrCreateDirectory:NSApplicationSupportDirectory
      inDomain:NSUserDomainMask
-     appendPathComponent:[NSString stringWithFormat:@"%@/%@", executableName, sub]
+     appendPathComponent:[executableName stringByAppendingPathComponent:sub]
      error:&error];
 	if (!result)
 	{

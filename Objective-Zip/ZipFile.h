@@ -1,6 +1,6 @@
 //
-//  ZipException.m
-//  Objective-Zip v. 0.7.2
+//  ZipFile.h
+//  Objective-Zip v.0.8.3
 //
 //  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
@@ -31,27 +31,58 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ZipException.h"
+#import <Foundation/Foundation.h>
+#import "ARCHelper.h"
+
+#include "zip.h"
+#include "unzip.h"
 
 
-@implementation ZipException
+typedef enum {
+	ZipFileModeUnzip,
+	ZipFileModeCreate,
+	ZipFileModeAppend
+} ZipFileMode;
 
-- (id) initWithReason:(NSString *)reason {
-	if ((self= [super initWithName:@"ZipException" reason:reason userInfo:nil])) {
-		_error= 0;
-	}
-	
-	return self;
+typedef enum {
+	ZipCompressionLevelDefault= -1,
+	ZipCompressionLevelNone= 0,
+	ZipCompressionLevelFastest= 1,
+	ZipCompressionLevelBest= 9
+} ZipCompressionLevel;	
+
+@class ZipReadStream;
+@class ZipWriteStream;
+@class FileInZipInfo;
+
+@interface ZipFile : NSObject {
+	NSString *_fileName;
+	ZipFileMode _mode;
+
+@private
+	zipFile _zipFile;
+	unzFile _unzFile;
 }
 
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason {
-	if ((self= [super initWithName:@"ZipException" reason:reason userInfo:nil])) {
-		_error= error;
-	}
-	
-	return self;
-}
+- (id) initWithFileName:(NSString *)fileName mode:(ZipFileMode)mode;
 
-@synthesize error= _error;
+- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip compressionLevel:(ZipCompressionLevel)compressionLevel;
+- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel;
+- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel password:(NSString *)password crc32:(NSUInteger)crc32;
+
+- (NSString*) fileName;
+- (NSUInteger) numFilesInZip;
+- (NSArray *) listFileInZipInfos;
+
+- (void) goToFirstFileInZip;
+- (BOOL) goToNextFileInZip;
+- (BOOL) locateFileInZip:(NSString *)fileNameInZip;
+
+- (FileInZipInfo *) getCurrentFileInZipInfo;
+
+- (ZipReadStream *) readCurrentFileInZip;
+- (ZipReadStream *) readCurrentFileInZipWithPassword:(NSString *)password;
+
+- (void) close;
 
 @end

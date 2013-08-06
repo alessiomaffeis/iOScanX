@@ -7,10 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "iSXApp.h"
+
 
 @interface iSXAppsViewController : NSViewController
 
 @property (assign) IBOutlet NSCollectionView *appsCollectionView;
+@property (retain) NSMutableArray *apps;
 
+- (void)addApp:(iSXApp *)app;
+- (NSArray*)selectedApps;
 
 @end

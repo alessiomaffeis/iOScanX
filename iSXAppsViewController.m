@@ -12,16 +12,36 @@
 
 @end
 
-@implementation iSXAppsViewController
+@implementation iSXAppsViewController {
+    
+    IBOutlet NSArrayController *_appsArrayController;
+
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        _apps = [[NSMutableArray alloc] init];
     }
     
     return self;
+}
+
+- (void)addApp:(iSXApp *)app {
+    
+    [_appsArrayController addObject:app];
+}
+
+- (NSArray*)selectedApps {
+    
+    return nil;
+}
+
+- (void)dealloc {
+    
+    [_apps release];
+    [super dealloc];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
-//  ZipReadStream.h
-//  Objective-Zip v. 0.7.2
+//  ZipException.m
+//  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 28/12/09.
+//  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -31,21 +31,27 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
-
-#include "unzip.h"
+#import "ZipException.h"
 
 
-@interface ZipReadStream : NSObject {
-	NSString *_fileNameInZip;
+@implementation ZipException
+
+- (id) initWithReason:(NSString *)reason {
+	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
+		_error= 0;
+	}
 	
-@private
-	unzFile _unzFile;
+	return self;
 }
 
-- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip;
+- (id) initWithError:(NSInteger)error reason:(NSString *)reason {
+	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
+		_error= error;
+	}
+	
+	return self;
+}
 
-- (NSData *)readDataOfLength:(NSUInteger)length;
-- (void) finishedReading;
+@synthesize error= _error;
 
 @end

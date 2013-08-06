@@ -1,8 +1,8 @@
 //
-//  ZipException.h
-//  Objective-Zip v. 0.7.2
+//  FileInZipInfo.m
+//  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 25/12/09.
+//  Created by Gianluca Bertani on 27/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -31,18 +31,38 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
+#import "FileInZipInfo.h"
 
 
-@interface ZipException : NSException {
+@implementation FileInZipInfo
+
+- (id) initWithName:(NSString *)name length:(NSUInteger)length level:(ZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32 {
+	if (self= [super init]) {
+		_name= [name ah_retain];
+		_length= length;
+		_level= level;
+		_crypted= crypted;
+		_size= size;
+		_date= [date ah_retain];
+		_crc32= crc32;
+	}
 	
-@private	
-	NSInteger _error;
+	return self;
 }
 
-- (id) initWithReason:(NSString *)reason;
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason;
+- (void) dealloc {
+	[_date release];
+	[_name release];
+	
+	[super ah_dealloc];
+}
 
-@property (nonatomic, readonly) NSInteger error;
+@synthesize name= _name;
+@synthesize length= _length;
+@synthesize level= _level;
+@synthesize crypted= _crypted;
+@synthesize size= _size;
+@synthesize date= _date;
+@synthesize crc32= _crc32;
 
 @end

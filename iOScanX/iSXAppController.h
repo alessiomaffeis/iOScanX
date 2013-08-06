@@ -17,7 +17,6 @@
 @interface  iSXAppController : NSObject <NSWindowDelegate>
 
 @property (assign) IBOutlet NSView *mainView;
-@property (retain) NSMutableArray *apps;
 @property (readonly) SXScanner *scanner;
 
 - (void)initialize;
