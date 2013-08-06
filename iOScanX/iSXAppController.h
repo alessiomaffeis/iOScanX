@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ScanX/SXScanner.h>
+#import <NMSSH/NMSSH.h>
 #import "iSXAppsViewController.h"
 #import "iSXModulesViewController.h"
 #import "iSXEvaluationsViewController.h"

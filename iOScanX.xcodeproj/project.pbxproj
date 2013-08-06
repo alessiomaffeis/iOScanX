@@ -58,6 +58,7 @@
 		7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */; };
 		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
 		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
+		7ACD384B17B0FF9C00E8C1B4 /* dumpdecrypted.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -160,6 +161,7 @@
 		7AC6F5AE177320EF00E3108A /* iSXResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResultsViewController.h; sourceTree = "<group>"; };
 		7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResultsViewController.m; sourceTree = "<group>"; };
 		7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXResultsViewController.xib; sourceTree = "<group>"; };
+		7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = dumpdecrypted.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
 				7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */,
 				7A97BF0717B0FC5300E13185 /* NMSSH.framework in Frameworks */,
+				7ACD384B17B0FF9C00E8C1B4 /* dumpdecrypted.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +279,7 @@
 		7A9EE56116E772E8004770AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */,
 				7A9EE56216E772E8004770AA /* iOScanX-Info.plist */,
 				7A9EE56316E772E8004770AA /* InfoPlist.strings */,
 				7A9EE56616E772E8004770AA /* main.m */,
@@ -608,6 +612,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
 				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/iOScanX\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)/build";
 				WRAPPER_EXTENSION = app;
@@ -626,6 +634,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
 				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/iOScanX\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)/build";
 				WRAPPER_EXTENSION = app;
