@@ -18,6 +18,9 @@
 		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
 		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
+		7A97BF0717B0FC5300E13185 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97BF0617B0FC5300E13185 /* NMSSH.framework */; };
+		7A97BF0917B0FC9700E13185 /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A97BF0617B0FC5300E13185 /* NMSSH.framework */; };
+		7A97BF0A17B0FCA300E13185 /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AC178C517AE8A43009E2D4F /* ScanX.framework */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -64,6 +67,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A97BF0917B0FC9700E13185 /* NMSSH.framework in CopyFiles */,
+				7A97BF0A17B0FCA300E13185 /* ScanX.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
 		7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		7A97BF0617B0FC5300E13185 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -163,6 +169,7 @@
 			files = (
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
 				7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */,
+				7A97BF0717B0FC5300E13185 /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +235,7 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A97BF0617B0FC5300E13185 /* NMSSH.framework */,
 				7AC178C517AE8A43009E2D4F /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
