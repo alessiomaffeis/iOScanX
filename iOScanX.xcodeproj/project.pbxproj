@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A11654F17B3F5A600B22D65 /* usb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654D17B3F5A600B22D65 /* usb.png */; };
+		7A11655017B3F5A600B22D65 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654E17B3F5A600B22D65 /* wifi.png */; };
+		7A11655D17B40F0600B22D65 /* icon_256x256.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11655C17B40F0600B22D65 /* icon_256x256.icns */; };
 		7A11907417551AA100EE8DD1 /* Cancel Red Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */; };
 		7A11907617551AA100EE8DD1 /* Play.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907017551AA100EE8DD1 /* Play.icns */; };
 		7A11907717551AA100EE8DD1 /* Plugin Green Button.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */; };
@@ -27,6 +30,9 @@
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
+		7AB1EBAF17B3BBB000F9BAEE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */; };
+		7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */; };
+		7AB1EBB417B3BF5300F9BAEE /* iSXImportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */; };
 		7AB5233517B0061100726DAB /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5230917B0061100726DAB /* ioapi.c */; };
 		7AB5233617B0061100726DAB /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5230B17B0061100726DAB /* unzip.c */; };
 		7AB5233717B0061100726DAB /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5230D17B0061100726DAB /* zip.c */; };
@@ -58,7 +64,6 @@
 		7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */; };
 		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
 		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
-		7ACD384B17B0FF9C00E8C1B4 /* dumpdecrypted.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +81,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A11654D17B3F5A600B22D65 /* usb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usb.png; sourceTree = "<group>"; };
+		7A11654E17B3F5A600B22D65 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
+		7A11655C17B40F0600B22D65 /* icon_256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon_256x256.icns; sourceTree = "<group>"; };
 		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Cancel Red Button.icns"; sourceTree = "<group>"; };
 		7A11907017551AA100EE8DD1 /* Play.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Play.icns; sourceTree = "<group>"; };
 		7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Plugin Green Button.icns"; sourceTree = "<group>"; };
@@ -105,6 +113,10 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone.png; sourceTree = "<group>"; };
+		7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXImportViewController.h; sourceTree = "<group>"; };
+		7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXImportViewController.m; sourceTree = "<group>"; };
+		7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXImportViewController.xib; sourceTree = "<group>"; };
 		7AB5230817B0061100726DAB /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		7AB5230917B0061100726DAB /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		7AB5230A17B0061100726DAB /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -172,7 +184,6 @@
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
 				7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */,
 				7A97BF0717B0FC5300E13185 /* NMSSH.framework in Frameworks */,
-				7ACD384B17B0FF9C00E8C1B4 /* dumpdecrypted.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +193,9 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A11654D17B3F5A600B22D65 /* usb.png */,
+				7A11654E17B3F5A600B22D65 /* wifi.png */,
+				7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */,
 				7A11907A175527EA00EE8DD1 /* Write Document.icns */,
 				7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */,
 				7A11907017551AA100EE8DD1 /* Play.icns */,
@@ -221,6 +235,7 @@
 		7A9EE54B16E772E8004770AA = {
 			isa = PBXGroup;
 			children = (
+				7A11655C17B40F0600B22D65 /* icon_256x256.icns */,
 				7A9EE56016E772E8004770AA /* iOScanX */,
 				7A9EE55916E772E8004770AA /* Frameworks */,
 				7A9EE55716E772E8004770AA /* Products */,
@@ -264,6 +279,7 @@
 				7A11908F1755563400EE8DD1 /* iSXAppController.h */,
 				7A1190901755563400EE8DD1 /* iSXAppController.m */,
 				7A9EE56F16E772E9004770AA /* MainMenu.xib */,
+				7AB1EBB517B3BF5800F9BAEE /* Import */,
 				7A1190811755305500EE8DD1 /* Apps */,
 				7AC6F5A117731DF400E3108A /* Modules */,
 				7AC6F5A717731FE400E3108A /* Evaluations */,
@@ -287,6 +303,16 @@
 				7A9EE56916E772E9004770AA /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AB1EBB517B3BF5800F9BAEE /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */,
+				7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */,
+				7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */,
+			);
+			name = Import;
 			sourceTree = "<group>";
 		};
 		7AB5230717B0061100726DAB /* MiniZip */ = {
@@ -473,6 +499,11 @@
 				7AC6F5A617731ED000E3108A /* iSXModulesViewController.xib in Resources */,
 				7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */,
 				7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */,
+				7AB1EBAF17B3BBB000F9BAEE /* iPhone.png in Resources */,
+				7AB1EBB417B3BF5300F9BAEE /* iSXImportViewController.xib in Resources */,
+				7A11654F17B3F5A600B22D65 /* usb.png in Resources */,
+				7A11655017B3F5A600B22D65 /* wifi.png in Resources */,
+				7A11655D17B40F0600B22D65 /* icon_256x256.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +547,7 @@
 				7AB5234A17B0061100726DAB /* uncompr.c in Sources */,
 				7AB5234B17B0061100726DAB /* zutil.c in Sources */,
 				7AB5235117B036A000726DAB /* iSXRoundedImageView.m in Sources */,
+				7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

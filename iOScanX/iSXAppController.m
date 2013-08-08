@@ -13,6 +13,9 @@
 
 @implementation iSXAppController {
     
+    IBOutlet NSToolbar *_toolbar;
+    NSView *_currentView;
+    iSXImportViewController *_importViewController;
     iSXAppsViewController *_appsViewController;
     iSXModulesViewController *_modulesViewController;
     iSXEvaluationsViewController *_evaluationsViewController;
@@ -23,6 +26,7 @@
     [super init];
     if (self) {
         _scanner = [[SXScanner alloc] init];
+        _importViewController = [[iSXImportViewController alloc] initWithNibName:@"iSXImportViewController" bundle:nil];
         _appsViewController = [[iSXAppsViewController alloc] initWithNibName:@"iSXAppsViewController" bundle:nil];
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
         _evaluationsViewController = [[iSXEvaluationsViewController alloc] initWithNibName:@"iSXEvaluationsViewController" bundle:nil];
@@ -33,9 +37,11 @@
 
 - (void)initialize {
     
-    [self.mainView addSubview:[_appsViewController view]];
-    [[_appsViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadApps) withObject:nil];
+    [_toolbar setSelectedItemIdentifier:@"ImportView"];
+    [self.mainView addSubview:[_importViewController view]];
+    _currentView = [_importViewController view];
+    [[_importViewController view] setFrame:[self.mainView bounds]];
+    //[self performSelectorInBackground:@selector(loadApps) withObject:nil];
 }
 
 - (void)loadApps {
@@ -125,27 +131,43 @@
 
 // UI related methods:
 
+- (IBAction)showImport:(id)sender {
+    
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_importViewController view]];
+    _currentView = [_importViewController view];
+    [[_importViewController view] setFrame:[self.mainView bounds]];
+}
+
 - (IBAction)showApps:(id)sender {
     
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_appsViewController view]];
+    _currentView = [_appsViewController view];
     [[_appsViewController view] setFrame:[self.mainView bounds]];
 }
 
 - (IBAction)showModules:(id)sender {
-    
+
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_modulesViewController view]];
+    _currentView = [_modulesViewController view];
     [[_modulesViewController view] setFrame:[self.mainView bounds]];
 }
 
 - (IBAction)showEvaluations:(id)sender {
     
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_evaluationsViewController view]];
+    _currentView = [_evaluationsViewController view];
     [[_evaluationsViewController view] setFrame:[self.mainView bounds]];
 }
 
 - (IBAction)showResults:(id)sender {
     
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_resultsViewController view]];
+    _currentView = [_resultsViewController view];
     [[_resultsViewController view] setFrame:[self.mainView bounds]];
 }
 
@@ -159,9 +181,9 @@
 // NSToolbar delegates methods:
 
 - (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar;
-{
-
-    return [NSArray arrayWithObjects:@"AppsView",
+{    
+    return [NSArray arrayWithObjects:@"ImportView",
+            @"AppsView",
             @"ModulesView",
             @"EvaluationsView",
             @"ResultsView", nil];

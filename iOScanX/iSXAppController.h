@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ScanX/SXScanner.h>
 #import <NMSSH/NMSSH.h>
+#import "iSXImportViewController.h"
 #import "iSXAppsViewController.h"
 #import "iSXModulesViewController.h"
 #import "iSXEvaluationsViewController.h"
@@ -23,6 +24,7 @@
 - (void)initialize;
 - (void)loadApps;
 
+- (IBAction)showImport:(id)sender;
 - (IBAction)showApps:(id)sender;
 - (IBAction)showModules:(id)sender;
 - (IBAction)showEvaluations:(id)sender;

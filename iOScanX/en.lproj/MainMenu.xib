@@ -1356,6 +1356,28 @@
 							<bool key="NSToolbarIsUserRemovable">YES</bool>
 							<int key="NSToolbarItemVisibilityPriority">0</int>
 						</object>
+						<object class="NSToolbarItem" key="70AF3F2C-A84C-44A0-8563-CDDD6ECB3852" id="980735463">
+							<object class="NSMutableString" key="NSToolbarItemIdentifier">
+								<characters key="NS.bytes">70AF3F2C-A84C-44A0-8563-CDDD6ECB3852</characters>
+							</object>
+							<string key="NSToolbarItemLabel">Import</string>
+							<string key="NSToolbarItemPaletteLabel">Import</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">iPhone</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
 						<object class="NSToolbarItem" key="8E8AD29D-E796-4704-AD2D-0BED0A194693" id="202324991">
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">8E8AD29D-E796-4704-AD2D-0BED0A194693</characters>
@@ -1537,7 +1559,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array key="NSToolbarIBAllowedItems">
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
 						<reference ref="158450258"/>
 						<reference ref="792196813"/>
 						<reference ref="890797310"/>
@@ -1548,9 +1570,12 @@
 						<reference ref="202324991"/>
 						<reference ref="51567145"/>
 						<reference ref="471093263"/>
+						<reference ref="980735463"/>
 					</array>
 					<array key="NSToolbarIBDefaultItems">
 						<reference ref="282466596"/>
+						<reference ref="1067718360"/>
+						<reference ref="980735463"/>
 						<reference ref="877833892"/>
 						<reference ref="202324991"/>
 						<reference ref="51567145"/>
@@ -1561,6 +1586,7 @@
 					<array key="NSToolbarIBSelectableItems" id="0"/>
 				</object>
 				<nil key="NSUserInterfaceItemIdentifier"/>
+				<string key="NSWindowContentMinSize">{660, 440}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -1570,6 +1596,7 @@
 					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 800}}</string>
+				<string key="NSMinSize">{660, 518}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<int key="NSWindowCollectionBehavior">128</int>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -2329,6 +2356,22 @@
 						<reference key="destination" ref="439893737"/>
 					</object>
 					<int key="connectionID">578</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showImport:</string>
+						<reference key="source" ref="857456081"/>
+						<reference key="destination" ref="980735463"/>
+					</object>
+					<int key="connectionID">584</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_toolbar</string>
+						<reference key="source" ref="857456081"/>
+						<reference key="destination" ref="850076336"/>
+					</object>
+					<int key="connectionID">587</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3345,6 +3388,7 @@
 							<reference ref="202324991"/>
 							<reference ref="51567145"/>
 							<reference ref="471093263"/>
+							<reference ref="980735463"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -3402,6 +3446,11 @@
 						<int key="objectID">568</int>
 						<reference key="object" ref="857456081"/>
 						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">583</int>
+						<reference key="object" ref="980735463"/>
+						<reference key="parent" ref="850076336"/>
 					</object>
 				</array>
 			</object>
@@ -3567,6 +3616,8 @@
 				<string key="568.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="583.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="583.designableToolbarItemIdentifier">ImportView</string>
 				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3583,7 +3634,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">582</int>
+			<int key="maxID">587</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3593,6 +3644,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="showApps:">id</string>
 						<string key="showEvaluations:">id</string>
+						<string key="showImport:">id</string>
 						<string key="showModules:">id</string>
 						<string key="showResults:">id</string>
 						<string key="toggleStart:">id</string>
@@ -3604,6 +3656,10 @@
 						</object>
 						<object class="IBActionInfo" key="showEvaluations:">
 							<string key="name">showEvaluations:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showImport:">
+							<string key="name">showImport:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showModules:">
@@ -3671,6 +3727,7 @@
 			<string key="Terminal">{32, 32}</string>
 			<string key="Universal Binary">{32, 32}</string>
 			<string key="Write Document">{32, 32}</string>
+			<string key="iPhone">{32, 32}</string>
 		</dictionary>
 	</data>
 </archive>
