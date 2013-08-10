@@ -64,6 +64,7 @@
 		7AC6F5AC1773201C00E3108A /* iSXEvaluationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */; };
 		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
 		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
+		7ACD175817B6DAA400E7BB35 /* NSString+IPValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,6 +174,8 @@
 		7AC6F5AE177320EF00E3108A /* iSXResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResultsViewController.h; sourceTree = "<group>"; };
 		7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResultsViewController.m; sourceTree = "<group>"; };
 		7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXResultsViewController.xib; sourceTree = "<group>"; };
+		7ACD175617B6DAA400E7BB35 /* NSString+IPValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IPValidation.h"; sourceTree = "<group>"; };
+		7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IPValidation.m"; sourceTree = "<group>"; };
 		7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = dumpdecrypted.dylib; path = ../Resources/dumpdecrypted.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,13 +226,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		7A7602FE17AC30D1001637F4 /* NSFileManager DirectoryLocations */ = {
+		7A7602FE17AC30D1001637F4 /* NSFileManager+DirectoryLocations */ = {
 			isa = PBXGroup;
 			children = (
 				7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */,
 				7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */,
 			);
-			name = "NSFileManager DirectoryLocations";
+			name = "NSFileManager+DirectoryLocations";
 			path = "../NSFileManager DirectoryLocations";
 			sourceTree = "<group>";
 		};
@@ -284,9 +287,10 @@
 				7AC6F5A117731DF400E3108A /* Modules */,
 				7AC6F5A717731FE400E3108A /* Evaluations */,
 				7AC6F5AD177320B200E3108A /* Results */,
-				7A7602FE17AC30D1001637F4 /* NSFileManager DirectoryLocations */,
 				7A1190611754F37200EE8DD1 /* Images */,
 				7AB5234E17B0067B00726DAB /* Objective-Zip */,
+				7A7602FE17AC30D1001637F4 /* NSFileManager+DirectoryLocations */,
+				7ACD175917B6DAC000E7BB35 /* NSString+IPValidation */,
 				7A9EE56116E772E8004770AA /* Supporting Files */,
 			);
 			path = iOScanX;
@@ -433,6 +437,15 @@
 			name = Results;
 			sourceTree = "<group>";
 		};
+		7ACD175917B6DAC000E7BB35 /* NSString+IPValidation */ = {
+			isa = PBXGroup;
+			children = (
+				7ACD175617B6DAA400E7BB35 /* NSString+IPValidation.h */,
+				7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */,
+			);
+			name = "NSString+IPValidation";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -548,6 +561,7 @@
 				7AB5234B17B0061100726DAB /* zutil.c in Sources */,
 				7AB5235117B036A000726DAB /* iSXRoundedImageView.m in Sources */,
 				7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */,
+				7ACD175817B6DAA400E7BB35 /* NSString+IPValidation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

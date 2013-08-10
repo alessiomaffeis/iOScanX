@@ -112,6 +112,7 @@
 								<string key="NSFrame">{{1, 144}, {233, 15}}</string>
 								<reference key="NSSuperview" ref="99126928"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:91</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
@@ -144,7 +145,7 @@
 			</object>
 			<object class="NSCollectionViewItem" id="428790124"/>
 			<object class="NSView" id="203239778">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="120331669">
@@ -152,7 +153,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{18, 9}, {84, 34}}</string>
 						<reference key="NSSuperview" ref="203239778"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="478403977">
@@ -195,7 +195,6 @@
 						</set>
 						<string key="NSFrame">{{28, 49}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="203239778"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="120331669"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
@@ -213,8 +212,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{120, 126}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="36311078"/>
 			</object>
 			<object class="NSArrayController" id="179434246">

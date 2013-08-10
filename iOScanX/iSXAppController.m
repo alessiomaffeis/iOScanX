@@ -27,6 +27,7 @@
     if (self) {
         _scanner = [[SXScanner alloc] init];
         _importViewController = [[iSXImportViewController alloc] initWithNibName:@"iSXImportViewController" bundle:nil];
+        _importViewController.delegate = self;
         _appsViewController = [[iSXAppsViewController alloc] initWithNibName:@"iSXAppsViewController" bundle:nil];
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
         _evaluationsViewController = [[iSXEvaluationsViewController alloc] initWithNibName:@"iSXEvaluationsViewController" bundle:nil];
@@ -177,8 +178,15 @@
     [_appsViewController addApp:test];
 }
 
+// iSXImportViewController delegate's methods:
 
-// NSToolbar delegates methods:
+- (void)connectWithUsername:(NSString*)user andPassword:(NSString*)password toAddress:(NSString*)address {
+
+    NSLog(@"%@, %@, %@", user, password, address);
+    
+}
+
+// NSToolbar delegate's methods:
 
 - (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar;
 {    
@@ -193,6 +201,7 @@
 
 - (void) dealloc {
     
+    [_importViewController release];
     [_appsViewController release];
     [_modulesViewController release];
     [_evaluationsViewController release];

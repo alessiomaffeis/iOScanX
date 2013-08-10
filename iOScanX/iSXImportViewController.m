@@ -18,10 +18,42 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        _tabIndex = 0;
+        _user = [[NSMutableString alloc] initWithString:@"root"];
+        _password = [[NSMutableString alloc] initWithString:@"alpine"];
+        _ipAddress = [[NSMutableString alloc] init];
     }
     
     return self;
+}
+
+- (IBAction)connect:(id)sender;
+{
+    NSString *address = nil;
+    
+    if (_tabIndex == 1) {
+        
+        if ([_ipAddress isValidIPAddress]) {
+            address = _ipAddress;
+        }
+        else
+        {
+            // Invalid IP Address
+        }
+    }
+    
+    // TODO: sanitize user + password too.
+    
+    [_delegate connectWithUsername:_user andPassword:_password toAddress:address];
+}
+
+- (void)dealloc {
+    
+    [_user release];
+    [_password release];
+    [_ipAddress release];
+    
+    [super dealloc];
 }
 
 @end
