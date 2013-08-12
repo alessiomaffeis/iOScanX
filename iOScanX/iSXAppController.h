@@ -14,6 +14,7 @@
 #import "iSXModulesViewController.h"
 #import "iSXEvaluationsViewController.h"
 #import "iSXResultsViewController.h"
+#import "iSXProgressSheetController.h"
 #import "iSXApp.h"
 
 @interface  iSXAppController : NSObject <NSWindowDelegate, iSXImportViewDelegate>
@@ -21,8 +22,10 @@
 @property (assign) IBOutlet NSView *mainView;
 @property (readonly) SXScanner *scanner;
 
+
 - (void)initialize;
 - (void)loadApps;
+
 
 - (IBAction)showImport:(id)sender;
 - (IBAction)showApps:(id)sender;

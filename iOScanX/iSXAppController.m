@@ -20,6 +20,7 @@
     iSXModulesViewController *_modulesViewController;
     iSXEvaluationsViewController *_evaluationsViewController;
     iSXResultsViewController *_resultsViewController;
+    iSXProgressSheetController *_progressSheetController;
 }
 
 - (id) init {
@@ -32,6 +33,7 @@
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
         _evaluationsViewController = [[iSXEvaluationsViewController alloc] initWithNibName:@"iSXEvaluationsViewController" bundle:nil];
         _resultsViewController = [[iSXResultsViewController alloc] initWithNibName:@"iSXResultsViewController" bundle:nil];
+        _progressSheetController = [[iSXProgressSheetController alloc] init];
     }
     return self;
 }
@@ -174,8 +176,9 @@
 
 - (IBAction)toggleStart:(id)sender {
     
-    iSXApp *test = [[iSXApp alloc] init];
-    [_appsViewController addApp:test];
+    _progressSheetController.message = @"Wait for me, motherfuckers!";
+    [_progressSheetController showSheet:[_mainView window]];
+    [_progressSheetController performSelector:@selector(closeSheet) withObject:nil afterDelay:5];
 }
 
 // iSXImportViewController delegate's methods:
@@ -201,6 +204,7 @@
 
 - (void) dealloc {
     
+    [_progressSheetController release];
     [_importViewController release];
     [_appsViewController release];
     [_modulesViewController release];
