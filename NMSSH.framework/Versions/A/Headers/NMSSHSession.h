@@ -152,17 +152,15 @@ In it's simplest form it works like this:
 - (BOOL)authenticateByPassword:(NSString *)password;
 
 /**
- * Authenticate by private key pair
+ * Authenticate by public key
  *
  * Use password:nil when the key is unencrypted
  *
- * @param publicKey Filepath to public key
- * @param privateKey Filepath to private key
+ * @param publicKey Path to public key on local computer
  * @param password Password for encrypted private key
  * @returns Authentication success
  */
 - (BOOL)authenticateByPublicKey:(NSString *)publicKey
-                     privateKey:(NSString *)privateKey
                     andPassword:(NSString *)password;
 
 /**

@@ -49,19 +49,19 @@
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
-						<object class="NSProgressIndicator" id="268660349">
+						<object class="NSProgressIndicator" id="257806492">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">266</int>
 							<string key="NSFrame">{{20, 44}, {384, 20}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="702128706"/>
+							<reference key="NSNextKeyView" ref="520087719"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16399</int>
 							<double key="NSMaxValue">100</double>
 						</object>
-						<object class="NSTextField" id="702128706">
+						<object class="NSTextField" id="520087719">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">266</int>
 							<string key="NSFrame">{{17, 20}, {390, 17}}</string>
@@ -70,7 +70,7 @@
 							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="435895922">
+							<object class="NSTextFieldCell" key="NSCell" id="17688421">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">138413056</int>
 								<string key="NSContents"/>
@@ -81,7 +81,7 @@
 								</object>
 								<string key="NSPlaceholderString">Loading</string>
 								<string key="NSCellIdentifier">_NS:1535</string>
-								<reference key="NSControlView" ref="702128706"/>
+								<reference key="NSControlView" ref="520087719"/>
 								<object class="NSColor" key="NSBackgroundColor">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
@@ -107,13 +107,13 @@
 					<string key="NSFrameSize">{424, 83}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="268660349"/>
+					<reference key="NSNextKeyView" ref="257806492"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 800}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
-			<object class="NSUserDefaultsController" id="592634755">
+			<object class="NSUserDefaultsController" id="90521607">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</array>
@@ -131,17 +131,17 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">_progressBar</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="268660349"/>
+						<reference key="destination" ref="257806492"/>
 					</object>
 					<int key="connectionID">36</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">maxValue: maxValue</string>
-						<reference key="source" ref="268660349"/>
+						<reference key="source" ref="257806492"/>
 						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector" id="730112606">
-							<reference key="NSSource" ref="268660349"/>
+						<object class="NSNibBindingConnector" key="connector" id="1004683374">
+							<reference key="NSSource" ref="257806492"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">maxValue: maxValue</string>
 							<string key="NSBinding">maxValue</string>
@@ -158,10 +158,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">minValue: minValue</string>
-						<reference key="source" ref="268660349"/>
+						<reference key="source" ref="257806492"/>
 						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector" id="798567292">
-							<reference key="NSSource" ref="268660349"/>
+						<object class="NSNibBindingConnector" key="connector" id="902320363">
+							<reference key="NSSource" ref="257806492"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">minValue: minValue</string>
 							<string key="NSBinding">minValue</string>
@@ -170,7 +170,7 @@
 								<string key="NS.key.0">NSNullPlaceholder</string>
 								<integer value="0" key="NS.object.0"/>
 							</object>
-							<reference key="NSPreviousConnector" ref="730112606"/>
+							<reference key="NSPreviousConnector" ref="1004683374"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -179,10 +179,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: value</string>
-						<reference key="source" ref="268660349"/>
+						<reference key="source" ref="257806492"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="268660349"/>
+							<reference key="NSSource" ref="257806492"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">value: value</string>
 							<string key="NSBinding">value</string>
@@ -191,7 +191,7 @@
 								<string key="NS.key.0">NSNullPlaceholder</string>
 								<integer value="0" key="NS.object.0"/>
 							</object>
-							<reference key="NSPreviousConnector" ref="798567292"/>
+							<reference key="NSPreviousConnector" ref="902320363"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -200,10 +200,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">isIndeterminate: isIndeterminate</string>
-						<reference key="source" ref="268660349"/>
+						<reference key="source" ref="257806492"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="268660349"/>
+							<reference key="NSSource" ref="257806492"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">isIndeterminate: isIndeterminate</string>
 							<string key="NSBinding">isIndeterminate</string>
@@ -220,10 +220,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: message</string>
-						<reference key="source" ref="702128706"/>
+						<reference key="source" ref="520087719"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="702128706"/>
+							<reference key="NSSource" ref="520087719"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">value: message</string>
 							<string key="NSBinding">value</string>
@@ -235,7 +235,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">33</int>
+					<int key="connectionID">42</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -276,33 +276,33 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="1006"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="702128706"/>
-							<reference ref="268660349"/>
+							<reference ref="520087719"/>
+							<reference ref="257806492"/>
 						</array>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="268660349"/>
+						<reference key="object" ref="257806492"/>
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="702128706"/>
+						<reference key="object" ref="520087719"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="435895922"/>
+							<reference ref="17688421"/>
 						</array>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="435895922"/>
-						<reference key="parent" ref="702128706"/>
+						<reference key="object" ref="17688421"/>
+						<reference key="parent" ref="520087719"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
-						<reference key="object" ref="592634755"/>
+						<reference key="object" ref="90521607"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -324,13 +324,27 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">42</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">iSXProgressSheetController</string>
 					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_progressBar">NSProgressIndicator</string>
+						<string key="_sheet">NSWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_progressBar">
+							<string key="name">_progressBar</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_sheet">
+							<string key="name">_sheet</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/iSXProgressSheetController.h</string>

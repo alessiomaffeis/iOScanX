@@ -8,8 +8,6 @@
 
 #import "iSXAppController.h"
 #import "NSFileManager+DirectoryLocations.h"
-#import "ZipFile.h"
-#import "FileInZipInfo.h"
 
 @implementation iSXAppController {
     
@@ -21,6 +19,7 @@
     iSXEvaluationsViewController *_evaluationsViewController;
     iSXResultsViewController *_resultsViewController;
     iSXProgressSheetController *_progressSheetController;
+    NMSSHSession *_ssh;    
 }
 
 - (id) init {
@@ -49,7 +48,7 @@
 
 - (void)loadApps {
     
-    NSFileManager *fm = [NSFileManager defaultManager];
+   /* NSFileManager *fm = [NSFileManager defaultManager];
     NSString *srcPath = [fm iTunesMobileAppsDirectory];
     NSString *asPath = [fm applicationSupportDirectory];
     NSDirectoryEnumerator *de = [fm enumeratorAtPath:srcPath];
@@ -57,78 +56,16 @@
     int bufSize = 65536;
     while (ipa = [de nextObject]) {
         
-        if ([[ipa pathExtension] isEqualToString:@"ipa"]) {
-            
-            NSString *subPath = [NSString stringWithFormat:@"Apps/%@", ipa];
+            NSString *subPath = [NSString stringWithFormat:@"Apps/%@", de];
             NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
-            
-            if (![fm fileExistsAtPath:dstPath]) {
-            
-                [fm createDirectoryAtPath:dstPath withIntermediateDirectories:NO attributes:nil error:nil];
-                
-                ZipFile *zip= [[ZipFile alloc] initWithFileName:[srcPath stringByAppendingPathComponent:ipa] mode:ZipFileModeUnzip];
-                
-                NSMutableData *buffer= [[NSMutableData alloc] initWithLength:bufSize];
-                
-                // Loop on file list
-                NSArray *zipContentList= [zip listFileInZipInfos];
-                for (FileInZipInfo *fileInZipInfo in zipContentList) {
-                    
-                    // Check if it's a directory
-                    if ([fileInZipInfo.name hasSuffix:@"/"]) {
-                        NSString *dirPath= [dstPath stringByAppendingPathComponent:fileInZipInfo.name];
-                        [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:NULL];
-                        continue;
-                    }
-                    
-                    // Create file
-                    NSString *filePath= [dstPath stringByAppendingPathComponent:fileInZipInfo.name];
-                    [[NSFileManager defaultManager] createFileAtPath:filePath contents:[NSData data] attributes:nil];
-                    NSFileHandle *file= [NSFileHandle fileHandleForWritingAtPath:filePath];
-                    
-                    // Seek file in zip
-                    [zip locateFileInZip:fileInZipInfo.name];
-                    ZipReadStream *readStream= [zip readCurrentFileInZip];
-                    
-                    // Reset buffer
-                    [buffer setLength:bufSize];
-                    
-                    // Loop on read stream
-                    int totalBytesRead= 0;
-                    do {
-                        int bytesRead= [readStream readDataWithBuffer:buffer];
-                        if (bytesRead > 0) {
-                            
-                            // Write data
-                            [buffer setLength:bytesRead];
-                            [file writeData:buffer];
-                            
-                            totalBytesRead += bytesRead;
-                            
-                        } else
-                            break;
-                        
-                    } while (YES);
-                    
-                    // Close file
-                    [file closeFile];
-                    [readStream finishedReading];
-                }
-                
-                // Close zip and release buffer
-                [buffer release];
-                [zip close];
-                [zip release];
-            }
-                       
+    
             iSXApp *app = [[iSXApp alloc] init];
             app.name = ipa;
             app.iconPath = [dstPath stringByAppendingPathComponent:@"iTunesArtwork"];
             [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
-        }
     }
 
-    
+    */
     
 }
 
@@ -176,16 +113,167 @@
 
 - (IBAction)toggleStart:(id)sender {
     
-    _progressSheetController.message = @"Wait for me, motherfuckers!";
-    [_progressSheetController showSheet:[_mainView window]];
-    [_progressSheetController performSelector:@selector(closeSheet) withObject:nil afterDelay:5];
+    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"]);
 }
 
 // iSXImportViewController delegate's methods:
 
 - (void)connectWithUsername:(NSString*)user andPassword:(NSString*)password toAddress:(NSString*)address {
 
-    NSLog(@"%@, %@, %@", user, password, address);
+    _progressSheetController.isIndeterminate = YES;
+    _progressSheetController.message = @"Connecting to the device";
+    [_progressSheetController showSheet:[_mainView window]];
+    
+     NSString *host;
+    
+    if (address == nil)
+    {
+        host = @"127.0.0.1:2222";
+        // TODO: start the USB/SSH relay, yay!
+    }
+    else
+    {
+        host = [NSString stringWithFormat:@"%@:22", address];
+    }
+    
+    _ssh = [NMSSHSession connectToHost:host withUsername:user];
+    
+    if (_ssh.isConnected)
+    {
+        [_ssh authenticateByPassword:password];
+        
+        if (_ssh.isAuthorized)
+        {
+            [_progressSheetController updateMessage:@"Loading applications"];
+
+            BOOL copiedDlyb = [_ssh.channel uploadFile:[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"] to:@"/var/local/"];
+            
+            if (copiedDlyb)
+            {
+                NSError *error = nil;
+                NSString *response = [_ssh.channel execute:@"ls /var/mobile/Applications/" error:&error];
+                
+                if (response != nil)
+                {
+                    NSArray *items = [response componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    
+                    NSFileManager *fm = [NSFileManager defaultManager];
+                    NSString *asPath = [fm applicationSupportDirectory];
+
+                    
+                    _progressSheetController.minValue = 1;
+                    _progressSheetController.maxValue = items.count-1;
+                    [_progressSheetController updateIsIndeterminate:NO];
+                    
+                    int i = 1;
+                    for (NSString *app in items) {
+                        if (app.length==36) {
+                            [_progressSheetController updateValue:i];
+                            
+                            NSString *subPath = [NSString stringWithFormat:@"Apps/%@", app];
+                            NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
+                            
+                            if (![fm fileExistsAtPath:dstPath]) {
+                                
+                                [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
+                            
+                                NSString *bundleName = [_ssh.channel execute:[NSString stringWithFormat:@"ls /var/mobile/Applications/%@ |grep .app$", app] error:&error];
+                                if (bundleName != nil)
+                                {
+                                    bundleName = [bundleName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                                    NSString *binaryName = [bundleName stringByDeletingPathExtension];
+                                    
+                                    [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", bundleName]];
+                                    
+                                    NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", app, bundleName, binaryName] error:&error];
+                                    if (decrypted != nil)
+                                    {
+                                        [_progressSheetController updateMessage:[NSString stringWithFormat:@"Copying: %@", bundleName]];
+                                        
+                                        NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", app];
+                                        NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", app];
+                                        
+                                        NMSSHSession *scp = [NMSSHSession connectToHost:host withUsername:user];
+                                        if (scp.isConnected) {
+                                            [scp authenticateByPassword:password];
+                                            
+                                            if (scp.isAuthorized) {
+                                                [scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
+                                                [scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
+                                                [fm createDirectoryAtPath:[dstPath stringByAppendingPathComponent:bundleName] withIntermediateDirectories:YES attributes:nil error:nil];
+                                                NSString *bundleContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls /var/mobile/Applications/%@/%@", app, bundleName] error:&error];
+                                                if (bundleContent != nil)
+                                                {
+                                                    NSArray *bundleItems = [bundleContent componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                                                    for(NSString *file in bundleItems)
+                                                    {
+                                                        NSString *fileName = [file stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                                                        if (fileName.length>0) {
+                                                            NSString *filePath = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@/%@", app, bundleName, fileName];
+                                                            NSString *dstFilePath = [NSString stringWithFormat:@"%@/%@/%@",dstPath,bundleName,fileName];
+                                                            NSLog(@"Source: %@", filePath);
+                                                            NSLog(@"Dest: %@", dstFilePath);
+                                                            [scp.channel downloadFile:filePath to:dstFilePath];
+
+                                                        }
+                                                    }
+                                                }
+
+                                                [scp disconnect];
+                                            }
+                                            else
+                                            {
+                                                [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the applications from the device."] runModal];
+                                            }
+                                        }
+                                        else
+                                        {
+                                            [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the applications from the device."] runModal];
+                                        }
+                                        
+                                    }
+                                    else
+                                    {
+                                        [[NSAlert alertWithError:error] runModal];
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    [[NSAlert alertWithError:error] runModal];
+                                }
+                            }
+                        }
+                        i++;
+                    }
+                    
+                }
+                else
+                {
+                    [[NSAlert alertWithError:error] runModal];
+                }
+                
+               
+            }
+            else
+            {
+                [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the applications from the device."] runModal];
+            }
+            
+        }
+        else
+        {
+            [[NSAlert alertWithMessageText:@"Authentication failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please check your SSH User and Password and try again."] runModal];
+        }
+    }
+    else
+    {
+         [[NSAlert alertWithMessageText:@"Connection failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to establish a connection with the device."] runModal];
+    }
+    
+    [_ssh disconnect];
+    [_progressSheetController closeSheet];
     
 }
 

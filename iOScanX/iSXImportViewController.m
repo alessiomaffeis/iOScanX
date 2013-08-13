@@ -28,23 +28,22 @@
 }
 
 - (IBAction)connect:(id)sender;
-{
-    NSString *address = nil;
-    
+{    
     if (_tabIndex == 1) {
         
         if ([_ipAddress isValidIPAddress]) {
-            address = _ipAddress;
+            [_delegate connectWithUsername:_user andPassword:_password toAddress:_ipAddress];
         }
-        else
-        {
-            // Invalid IP Address
+        else {
+            // Invalid IP 
         }
     }
+    else
+    {
+        // [_delegate connectWithUsername:_user andPassword:_password toAddress:nil];
+    }
     
-    // TODO: sanitize user + password too.
-    
-    [_delegate connectWithUsername:_user andPassword:_password toAddress:address];
+    // TODO: sanitize user + password
 }
 
 - (void)dealloc {

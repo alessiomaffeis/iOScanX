@@ -20,7 +20,6 @@
         _minValue = 0;
         _maxValue = 100;
         _value = 0;
-        _message = @"Loading";
     }
     
     return self;
@@ -40,11 +39,41 @@
     [_progressBar startAnimation:self];
 }
 
+- (void) updateMessage:(NSString*)message {
+    
+    self.message = message;
+    [_sheet display];
+}
+
+- (void) updateMinValue:(NSInteger)minValue {
+    
+    self.minValue = minValue;
+    [_sheet display];
+}
+
+- (void) updateMaxValue:(NSInteger)maxValue {
+    
+    self.maxValue = maxValue;
+    [_sheet display];
+}
+
+- (void) updateValue:(NSInteger)value {
+    
+    self.value = value;
+    [_sheet display];
+}
+
+- (void) updateIsIndeterminate:(BOOL)isIndeterminate {
+    
+    self.isIndeterminate = isIndeterminate;
+    [_sheet display];
+}
+
+
 - (void) closeSheet {
     
     [NSApp endSheet: _sheet];
     [_sheet orderOut:self];
 }
-
 
 @end

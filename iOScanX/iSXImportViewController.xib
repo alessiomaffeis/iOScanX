@@ -113,6 +113,7 @@
 											<reference key="NSSuperview" ref="903116848"/>
 											<reference key="NSNextKeyView" ref="37862423"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
+											<int key="NSTag">1</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="1032248352">
 												<int key="NSCellFlags">342884416</int>
@@ -219,6 +220,7 @@
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="190088184"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
+											<int key="NSTag">1</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="745166199">
 												<int key="NSCellFlags">-1804599231</int>
@@ -267,6 +269,7 @@
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="352647614"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
+											<int key="NSTag">1</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="913308176">
 												<int key="NSCellFlags">342884416</int>
@@ -1667,7 +1670,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">281</int>
+			<int key="maxID">282</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
