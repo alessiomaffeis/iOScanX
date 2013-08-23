@@ -19,7 +19,9 @@
     iSXEvaluationsViewController *_evaluationsViewController;
     iSXResultsViewController *_resultsViewController;
     iSXProgressSheetController *_progressSheetController;
-    NMSSHSession *_ssh;    
+    NMSSHSession *_ssh;
+    NMSSHSession *_scp;
+    NSTask *_relay;
 }
 
 - (id) init {
@@ -128,8 +130,18 @@
     
     if (address == nil)
     {
-        host = @"127.0.0.1:2222";
-        // TODO: start the USB/SSH relay, yay!
+        if(_relay == nil)
+        {
+            host = @"127.0.0.1:2222";
+            NSString *tcprelayPath = [[NSBundle mainBundle] pathForResource:@"tcprelay" ofType:@"py"];
+            NSString *pythonPath = @"/usr/bin/python";
+            NSArray *args = [NSArray arrayWithObjects:tcprelayPath, @"-t", @"22:2222", nil];
+            _relay = [[NSTask alloc] init];
+            [_relay setLaunchPath:pythonPath];
+            [_relay setArguments:args];
+            [_relay launch];
+            [NSThread sleepForTimeInterval:2];
+        }
     }
     else
     {
@@ -137,44 +149,48 @@
     }
     
     _ssh = [NMSSHSession connectToHost:host withUsername:user];
+    _scp = [NMSSHSession connectToHost:host withUsername:user];
+
     
-    if (_ssh.isConnected)
+    if (_ssh.isConnected && _scp.isConnected)
     {
         [_ssh authenticateByPassword:password];
+        [_scp authenticateByPassword:password];
         
-        if (_ssh.isAuthorized)
+        if (_ssh.isAuthorized && _scp.isAuthorized )
         {
             [_progressSheetController updateMessage:@"Loading applications"];
 
-            BOOL copiedDlyb = [_ssh.channel uploadFile:[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"] to:@"/var/local/"];
+            BOOL copiedDlyb = [_scp.channel uploadFile:[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"] to:@"/var/local/"];
             
             if (copiedDlyb)
             {
                 NSError *error = nil;
-                NSString *response = [_ssh.channel execute:@"ls /var/mobile/Applications/" error:&error];
+                NSString *response = [_ssh.channel execute:@"ls -1 /var/mobile/Applications/" error:&error];
                 
                 if (response != nil)
                 {
-                    NSArray *items = [response componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    NSArray *items = [response componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
                     
                     NSFileManager *fm = [NSFileManager defaultManager];
                     NSString *asPath = [fm applicationSupportDirectory];
-
                     
                     _progressSheetController.minValue = 1;
                     _progressSheetController.maxValue = items.count-1;
                     [_progressSheetController updateIsIndeterminate:NO];
                     
                     int i = 1;
-                    for (NSString *app in items) {
-                        if (app.length==36) {
+                    for (NSString *app in items)
+                    {
+                        if (app.length==36)
+                        {
                             [_progressSheetController updateValue:i];
                             
                             NSString *subPath = [NSString stringWithFormat:@"Apps/%@", app];
                             NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
                             
-                            if (![fm fileExistsAtPath:dstPath]) {
-                                
+                            if (![fm fileExistsAtPath:dstPath])
+                            {
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
                             
                                 NSString *bundleName = [_ssh.channel execute:[NSString stringWithFormat:@"ls /var/mobile/Applications/%@ |grep .app$", app] error:&error];
@@ -186,61 +202,35 @@
                                     [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", bundleName]];
                                     
                                     NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", app, bundleName, binaryName] error:&error];
+                                    
                                     if (decrypted != nil)
                                     {
                                         [_progressSheetController updateMessage:[NSString stringWithFormat:@"Copying: %@", bundleName]];
                                         
                                         NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", app];
                                         NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", app];
+                                        NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", app, bundleName];
                                         
-                                        NMSSHSession *scp = [NMSSHSession connectToHost:host withUsername:user];
-                                        if (scp.isConnected) {
-                                            [scp authenticateByPassword:password];
-                                            
-                                            if (scp.isAuthorized) {
-                                                [scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
-                                                [scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
-                                                [fm createDirectoryAtPath:[dstPath stringByAppendingPathComponent:bundleName] withIntermediateDirectories:YES attributes:nil error:nil];
-                                                NSString *bundleContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls /var/mobile/Applications/%@/%@", app, bundleName] error:&error];
-                                                if (bundleContent != nil)
-                                                {
-                                                    NSArray *bundleItems = [bundleContent componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                                                    for(NSString *file in bundleItems)
-                                                    {
-                                                        NSString *fileName = [file stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                                                        if (fileName.length>0) {
-                                                            NSString *filePath = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@/%@", app, bundleName, fileName];
-                                                            NSString *dstFilePath = [NSString stringWithFormat:@"%@/%@/%@",dstPath,bundleName,fileName];
-                                                            NSLog(@"Source: %@", filePath);
-                                                            NSLog(@"Dest: %@", dstFilePath);
-                                                            [scp.channel downloadFile:filePath to:dstFilePath];
-
-                                                        }
-                                                    }
-                                                }
-
-                                                [scp disconnect];
-                                            }
-                                            else
-                                            {
-                                                [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the applications from the device."] runModal];
-                                            }
-                                        }
-                                        else
+                                        BOOL ok = YES;
+                                        ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
+                                        ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
+                                        ok &= [self downloadFolder:bundle to:dstPath recursively:YES];
+                                        
+                                        if (!ok)
                                         {
-                                            [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the applications from the device."] runModal];
+                                            [fm removeItemAtPath:dstPath error:nil];
+                                            [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
                                         }
-                                        
                                     }
                                     else
                                     {
+                                        [fm removeItemAtPath:dstPath error:nil];
                                         [[NSAlert alertWithError:error] runModal];
                                     }
-
-
                                 }
                                 else
                                 {
+                                    [fm removeItemAtPath:dstPath error:nil];
                                     [[NSAlert alertWithError:error] runModal];
                                 }
                             }
@@ -254,7 +244,6 @@
                     [[NSAlert alertWithError:error] runModal];
                 }
                 
-               
             }
             else
             {
@@ -272,9 +261,85 @@
          [[NSAlert alertWithMessageText:@"Connection failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to establish a connection with the device."] runModal];
     }
     
+    [_scp disconnect];
     [_ssh disconnect];
+    [_relay terminate];
+    [_relay release];
+    _relay = nil;
     [_progressSheetController closeSheet];
     
+}
+
+- (BOOL)downloadFolder:(NSString *)remotePath to:(NSString *)localPath recursively:(BOOL)recursively {
+    
+    if(!_scp.isAuthorized || !_ssh.isAuthorized)
+        return NO;
+    
+    NSString *folderName = [remotePath lastPathComponent];
+    NSString *localFolder = [localPath stringByAppendingPathComponent:folderName];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    [fm createDirectoryAtPath:localFolder withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSError *error = nil;
+    NSString *folderContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 %@", remotePath] error:&error];
+    NSString *subFolders = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 -d %@/*/", remotePath] error:&error];
+    
+    NSMutableArray *subFolderNames = nil;
+    
+    if (subFolders == nil)
+        return NO;
+    
+    subFolderNames = [NSMutableArray arrayWithArray:[subFolders componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
+    
+    
+    int i=0;
+    while (i<subFolderNames.count) {
+        
+        NSString *itemName = [[subFolderNames objectAtIndex:i] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (itemName.length>0) {
+            [subFolderNames replaceObjectAtIndex:i withObject:[itemName lastPathComponent]];
+            i++;
+        }
+        else
+        {
+            [subFolderNames removeObjectAtIndex:i];
+        }
+    }
+    
+    if (folderContent == nil || subFolderNames == nil)
+        return NO;
+    
+    NSArray *folderItems = [folderContent componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    for(NSString *item in folderItems)
+    {
+        NSString *itemName = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if (itemName.length>0 && ![subFolderNames containsObject:itemName])
+        {
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@", remotePath, itemName];
+            NSString *dstFilePath = [NSString stringWithFormat:@"%@/%@",localFolder,itemName];
+            
+            BOOL res = [_scp.channel downloadFile:filePath to:dstFilePath];
+            if (!res) {
+                return NO;
+//                    NSLog(@"Source: %@", filePath);
+//                    NSLog(@"Dest: %@", dstFilePath);
+            }
+        }
+    }
+    
+    if (recursively)
+    {
+        for(NSString *subName in subFolderNames)
+        {
+            [self downloadFolder:[remotePath stringByAppendingPathComponent:subName] to:localFolder  recursively:YES];
+        }
+    }
+
+    
+    return YES;
 }
 
 // NSToolbar delegate's methods:

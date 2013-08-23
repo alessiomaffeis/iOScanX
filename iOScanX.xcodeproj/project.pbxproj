@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0A4F1317C678C800CAC148 /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0A4F1217C678C800CAC148 /* ScanX.framework */; };
+		7A0A4F1417C678CE00CAC148 /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A0A4F1217C678C800CAC148 /* ScanX.framework */; };
 		7A11654F17B3F5A600B22D65 /* usb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654D17B3F5A600B22D65 /* usb.png */; };
 		7A11655017B3F5A600B22D65 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654E17B3F5A600B22D65 /* wifi.png */; };
 		7A11655D17B40F0600B22D65 /* icon_256x256.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11655C17B40F0600B22D65 /* icon_256x256.icns */; };
@@ -23,23 +25,20 @@
 		7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */; };
 		7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */; };
 		7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
-		7A6CE16B17B98A5300B67C48 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6CE16A17B98A5300B67C48 /* NMSSH.framework */; };
-		7A6CE16C17B98A5C00B67C48 /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A6CE16A17B98A5300B67C48 /* NMSSH.framework */; };
 		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
 		7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A77D14A17B82F88008AC9F5 /* tcprelay.py */; };
-		7A77D14D17B82F88008AC9F5 /* usbmux.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A77D14B17B82F88008AC9F5 /* usbmux.py */; };
-		7A97BF0A17B0FCA300E13185 /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AC178C517AE8A43009E2D4F /* ScanX.framework */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
+		7AAE395B17C6B9940008A1BD /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAE395A17C6B9940008A1BD /* NMSSH.framework */; };
+		7AAE395C17C6B9980008A1BD /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAE395A17C6B9940008A1BD /* NMSSH.framework */; };
 		7AB1EBAF17B3BBB000F9BAEE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */; };
 		7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */; };
 		7AB1EBB417B3BF5300F9BAEE /* iSXImportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */; };
 		7AB5235117B036A000726DAB /* iSXRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5235017B036A000726DAB /* iSXRoundedImageView.m */; };
-		7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC178C517AE8A43009E2D4F /* ScanX.framework */; };
 		7AC6F5A517731ED000E3108A /* iSXModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */; };
 		7AC6F5A617731ED000E3108A /* iSXModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */; };
 		7AC6F5AB1773201C00E3108A /* iSXEvaluationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */; };
@@ -56,14 +55,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7A97BF0A17B0FCA300E13185 /* ScanX.framework in CopyFiles */,
-				7A6CE16C17B98A5C00B67C48 /* NMSSH.framework in CopyFiles */,
+				7AAE395C17C6B9980008A1BD /* NMSSH.framework in CopyFiles */,
+				7A0A4F1417C678CE00CAC148 /* ScanX.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A0A4F1217C678C800CAC148 /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
 		7A11654D17B3F5A600B22D65 /* usb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = usb.png; path = Images/usb.png; sourceTree = "<group>"; };
 		7A11654E17B3F5A600B22D65 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = Images/wifi.png; sourceTree = "<group>"; };
 		7A11655C17B40F0600B22D65 /* icon_256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon_256x256.icns; path = Images/icon_256x256.icns; sourceTree = "<group>"; };
@@ -83,11 +83,9 @@
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
 		7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXProgressSheetController.m; sourceTree = "<group>"; };
-		7A6CE16A17B98A5300B67C48 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 		7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tcprelay.py; sourceTree = "<group>"; };
-		7A77D14B17B82F88008AC9F5 /* usbmux.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = usbmux.py; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,13 +99,13 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7AAE395A17C6B9940008A1BD /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../NMSSH/build/Debug/NMSSH.framework; sourceTree = "<group>"; };
 		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = Images/iPhone.png; sourceTree = "<group>"; };
 		7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXImportViewController.h; sourceTree = "<group>"; };
 		7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXImportViewController.m; sourceTree = "<group>"; };
 		7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXImportViewController.xib; sourceTree = "<group>"; };
 		7AB5234F17B036A000726DAB /* iSXRoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXRoundedImageView.h; path = iOScanX/iSXRoundedImageView.h; sourceTree = "<group>"; };
 		7AB5235017B036A000726DAB /* iSXRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXRoundedImageView.m; path = iOScanX/iSXRoundedImageView.m; sourceTree = "<group>"; };
-		7AC178C517AE8A43009E2D4F /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
 		7AC6F5A217731ED000E3108A /* iSXModulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXModulesViewController.h; path = iOScanX/iSXModulesViewController.h; sourceTree = "<group>"; };
 		7AC6F5A317731ED000E3108A /* iSXModulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXModulesViewController.m; path = iOScanX/iSXModulesViewController.m; sourceTree = "<group>"; };
 		7AC6F5A417731ED000E3108A /* iSXModulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iSXModulesViewController.xib; path = iOScanX/iSXModulesViewController.xib; sourceTree = "<group>"; };
@@ -128,14 +126,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
-				7AC178C617AE8A43009E2D4F /* ScanX.framework in Frameworks */,
-				7A6CE16B17B98A5300B67C48 /* NMSSH.framework in Frameworks */,
+				7A0A4F1317C678C800CAC148 /* ScanX.framework in Frameworks */,
+				7AAE395B17C6B9940008A1BD /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0A4F0217C63FD200CAC148 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7A7602FE17AC30D1001637F4 /* NSFileManager+DirectoryLocations */,
+				7ACD175917B6DAC000E7BB35 /* NSString+IPValidation */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				7A77D14A17B82F88008AC9F5 /* tcprelay.py */,
-				7A77D14B17B82F88008AC9F5 /* usbmux.py */,
 				7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */,
 			);
 			name = Resources;
@@ -219,8 +225,8 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7A6CE16A17B98A5300B67C48 /* NMSSH.framework */,
-				7AC178C517AE8A43009E2D4F /* ScanX.framework */,
+				7AAE395A17C6B9940008A1BD /* NMSSH.framework */,
+				7A0A4F1217C678C800CAC148 /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
 			);
@@ -252,9 +258,8 @@
 				7AC6F5AD177320B200E3108A /* Results */,
 				7A6CE16017B8DA3100B67C48 /* Progress */,
 				7A1190611754F37200EE8DD1 /* Images */,
+				7A0A4F0217C63FD200CAC148 /* Categories */,
 				7A77D14817B82F69008AC9F5 /* Resources */,
-				7A7602FE17AC30D1001637F4 /* NSFileManager+DirectoryLocations */,
-				7ACD175917B6DAC000E7BB35 /* NSString+IPValidation */,
 				7A9EE56116E772E8004770AA /* Supporting Files */,
 			);
 			path = iOScanX;
@@ -395,7 +400,6 @@
 				7A11655D17B40F0600B22D65 /* icon_256x256.icns in Resources */,
 				7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */,
 				7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */,
-				7A77D14D17B82F88008AC9F5 /* usbmux.py in Resources */,
 				7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +516,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
@@ -534,6 +540,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";

@@ -40,7 +40,7 @@
     }
     else
     {
-        // [_delegate connectWithUsername:_user andPassword:_password toAddress:nil];
+        [_delegate connectWithUsername:_user andPassword:_password toAddress:nil];
     }
     
     // TODO: sanitize user + password
