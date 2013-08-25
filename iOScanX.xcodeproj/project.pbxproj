@@ -22,6 +22,8 @@
 		7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */; };
 		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
+		7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */; };
+		7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */; };
 		7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */; };
 		7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */; };
 		7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
@@ -80,12 +82,15 @@
 		7A11908D1755467800EE8DD1 /* iSXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXApp.m; path = iOScanX/iSXApp.m; sourceTree = "<group>"; };
 		7A11908F1755563400EE8DD1 /* iSXAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppController.h; sourceTree = "<group>"; };
 		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
+		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
+		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
+		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
 		7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXProgressSheetController.m; sourceTree = "<group>"; };
 		7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
-		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tcprelay.py; sourceTree = "<group>"; };
+		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = tcprelay.py; path = ../Resources/tcprelay.py; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -283,6 +288,9 @@
 				7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */,
 				7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */,
 				7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */,
+				7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */,
+				7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */,
+				7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */,
 			);
 			name = Import;
 			sourceTree = "<group>";
@@ -401,6 +409,7 @@
 				7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */,
 				7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */,
 				7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */,
+				7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +433,7 @@
 				7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */,
 				7ACD175817B6DAA400E7BB35 /* NSString+IPValidation.m in Sources */,
 				7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */,
+				7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

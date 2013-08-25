@@ -166,66 +166,65 @@
             if (copiedDlyb)
             {
                 NSError *error = nil;
-                NSString *response = [_ssh.channel execute:@"ls -1 /var/mobile/Applications/" error:&error];
+                NSString *response = [_ssh.channel execute:@"find /var/mobile/Applications/ $PWD -maxdepth 2 | grep .app$" error:&error];
                 
                 if (response != nil)
                 {
                     NSArray *items = [response componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
                     
-                    NSFileManager *fm = [NSFileManager defaultManager];
-                    NSString *asPath = [fm applicationSupportDirectory];
+                    iSXSelectWindowController *selDialog = [[iSXSelectWindowController alloc]init];
                     
-                    _progressSheetController.minValue = 1;
-                    _progressSheetController.maxValue = items.count-1;
-                    [_progressSheetController updateIsIndeterminate:NO];
+                    [selDialog addApps:items];
+                    [selDialog show:[_mainView window]];
                     
-                    int i = 1;
-                    for (NSString *app in items)
+                    if (selDialog.selectedApps && selDialog.selectedApps.count>0)
                     {
-                        if (app.length==36)
+                        NSFileManager *fm = [NSFileManager defaultManager];
+                        NSString *asPath = [fm applicationSupportDirectory];
+                        
+                        _progressSheetController.minValue = 1;
+                        _progressSheetController.maxValue = items.count-1;
+                        [_progressSheetController updateIsIndeterminate:NO];
+                        
+                        int i = 1;
+                        for (NSDictionary *app in selDialog.selectedApps)
                         {
-                            [_progressSheetController updateValue:i];
+                            NSString *appName = [app objectForKey:@"name"];
+                            NSString *appPath = [app objectForKey:@"path"];
+                            NSString *appID = [appPath lastPathComponent];
                             
-                            NSString *subPath = [NSString stringWithFormat:@"Apps/%@", app];
-                            NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
-                            
-                            if (![fm fileExistsAtPath:dstPath])
+                            if (appID.length==36)
                             {
+                                [_progressSheetController updateValue:i];
+                                
+                                NSString *subPath = [NSString stringWithFormat:@"Apps/%@", appID];
+                                NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
+                                
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
-                            
-                                NSString *bundleName = [_ssh.channel execute:[NSString stringWithFormat:@"ls /var/mobile/Applications/%@ |grep .app$", app] error:&error];
-                                if (bundleName != nil)
+                                
+                                NSString *binaryName = [appName stringByDeletingPathExtension];
+                                
+                                [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", appName]];
+                                
+                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", appID, appName, binaryName] error:&error];
+                                
+                                if (decrypted != nil)
                                 {
-                                    bundleName = [bundleName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                                    NSString *binaryName = [bundleName stringByDeletingPathExtension];
+                                    [_progressSheetController updateMessage:[NSString stringWithFormat:@"Copying: %@", appName]];
                                     
-                                    [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", bundleName]];
+                                    NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", appID];
+                                    NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", appID];
+                                    NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", appID, appName];
                                     
-                                    NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", app, bundleName, binaryName] error:&error];
+                                    BOOL ok = YES;
+                                    ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
+                                    ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
+                                    ok &= [self downloadFolder:bundle to:dstPath recursively:YES];
                                     
-                                    if (decrypted != nil)
-                                    {
-                                        [_progressSheetController updateMessage:[NSString stringWithFormat:@"Copying: %@", bundleName]];
-                                        
-                                        NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", app];
-                                        NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", app];
-                                        NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", app, bundleName];
-                                        
-                                        BOOL ok = YES;
-                                        ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
-                                        ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
-                                        ok &= [self downloadFolder:bundle to:dstPath recursively:YES];
-                                        
-                                        if (!ok)
-                                        {
-                                            [fm removeItemAtPath:dstPath error:nil];
-                                            [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
-                                        }
-                                    }
-                                    else
+                                    if (!ok)
                                     {
                                         [fm removeItemAtPath:dstPath error:nil];
-                                        [[NSAlert alertWithError:error] runModal];
+                                        [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
                                     }
                                 }
                                 else
@@ -234,10 +233,11 @@
                                     [[NSAlert alertWithError:error] runModal];
                                 }
                             }
+                            i++;
                         }
-                        i++;
+                        
+                        [selDialog release];
                     }
-                    
                 }
                 else
                 {
