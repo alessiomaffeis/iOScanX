@@ -22,11 +22,9 @@
 
 @property (assign) IBOutlet NSView *mainView;
 @property (readonly) SXScanner *scanner;
-@property (readonly) BOOL USBsession;
 
 
 - (void)initialize;
-- (void)loadApps;
 
 - (IBAction)showImport:(id)sender;
 - (IBAction)showApps:(id)sender;

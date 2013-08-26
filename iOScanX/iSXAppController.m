@@ -19,8 +19,7 @@
     iSXEvaluationsViewController *_evaluationsViewController;
     iSXResultsViewController *_resultsViewController;
     iSXProgressSheetController *_progressSheetController;
-    NMSSHSession *_ssh;
-    NMSSHSession *_scp;
+    NMSSHSession *_ssh, *_scp;
     NSTask *_relay;
 }
 
@@ -182,8 +181,9 @@
                         NSFileManager *fm = [NSFileManager defaultManager];
                         NSString *asPath = [fm applicationSupportDirectory];
                         
-                        _progressSheetController.minValue = 1;
-                        _progressSheetController.maxValue = items.count-1;
+                        _progressSheetController.minValue = 0;
+                        _progressSheetController.maxValue = selDialog.selectedApps.count*2;
+                        _progressSheetController.value = 0;
                         [_progressSheetController updateIsIndeterminate:NO];
                         
                         int i = 1;
@@ -195,7 +195,7 @@
                             
                             if (appID.length==36)
                             {
-                                [_progressSheetController updateValue:i];
+                                [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", appName]];
                                 
                                 NSString *subPath = [NSString stringWithFormat:@"Apps/%@", appID];
                                 NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
@@ -203,13 +203,16 @@
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
                                 
                                 NSString *binaryName = [appName stringByDeletingPathExtension];
+                                NSString *escAppName = [appName stringByReplacingOccurrencesOfString:@" "
+                                                                                withString:@"\\ "];
+                                NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@" "
+                                                                                withString:@"\\ "];
                                 
-                                [_progressSheetController updateMessage:[NSString stringWithFormat:@"Decrypting: %@", appName]];
-                                
-                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", appID, appName, binaryName] error:&error];
+                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", appID, escAppName, escBinName] error:&error];
                                 
                                 if (decrypted != nil)
                                 {
+                                    [_progressSheetController incrementValue];
                                     [_progressSheetController updateMessage:[NSString stringWithFormat:@"Copying: %@", appName]];
                                     
                                     NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", appID];
@@ -224,7 +227,7 @@
                                     if (!ok)
                                     {
                                         [fm removeItemAtPath:dstPath error:nil];
-                                        [[NSAlert alertWithMessageText:@"Connection closed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
+                                        [[NSAlert alertWithMessageText:@"Import error" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
                                     }
                                 }
                                 else
@@ -233,6 +236,7 @@
                                     [[NSAlert alertWithError:error] runModal];
                                 }
                             }
+                            [_progressSheetController incrementValue];
                             i++;
                         }
                         
@@ -263,6 +267,7 @@
     
     [_scp disconnect];
     [_ssh disconnect];
+    
     [_relay terminate];
     [_relay release];
     _relay = nil;
@@ -274,7 +279,10 @@
     
     if(!_scp.isAuthorized || !_ssh.isAuthorized)
         return NO;
-    
+
+    NSString *escRemotePath = [remotePath stringByReplacingOccurrencesOfString:@" "
+                                                              withString:@"\\ "];
+
     NSString *folderName = [remotePath lastPathComponent];
     NSString *localFolder = [localPath stringByAppendingPathComponent:folderName];
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -282,8 +290,8 @@
     [fm createDirectoryAtPath:localFolder withIntermediateDirectories:YES attributes:nil error:nil];
     
     NSError *error = nil;
-    NSString *folderContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 %@", remotePath] error:&error];
-    NSString *subFolders = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 -d %@/*/", remotePath] error:&error];
+    NSString *folderContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 %@", escRemotePath] error:&error];
+    NSString *subFolders = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 -d %@/*/", escRemotePath] error:&error];
     
     NSMutableArray *subFolderNames = nil;
     
@@ -319,13 +327,10 @@
         if (itemName.length>0 && ![subFolderNames containsObject:itemName])
         {
             NSString *filePath = [NSString stringWithFormat:@"%@/%@", remotePath, itemName];
-            NSString *dstFilePath = [NSString stringWithFormat:@"%@/%@",localFolder,itemName];
-            
+            NSString *dstFilePath = [localFolder stringByAppendingPathComponent:itemName];
             BOOL res = [_scp.channel downloadFile:filePath to:dstFilePath];
             if (!res) {
                 return NO;
-//                    NSLog(@"Source: %@", filePath);
-//                    NSLog(@"Dest: %@", dstFilePath);
             }
         }
     }

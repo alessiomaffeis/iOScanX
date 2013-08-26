@@ -63,6 +63,12 @@
     [_sheet display];
 }
 
+- (void) incrementValue {
+    
+    self.value++;
+    [_sheet display];
+}
+
 - (void) updateIsIndeterminate:(BOOL)isIndeterminate {
     
     self.isIndeterminate = isIndeterminate;

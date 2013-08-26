@@ -18,6 +18,7 @@
 
 - (void) showSheet:(NSWindow*)window;
 - (void) closeSheet;
+- (void) incrementValue;
 - (void) updateMessage:(NSString*)message;
 - (void) updateMinValue:(NSInteger)minValue;
 - (void) updateMaxValue:(NSInteger)maxValue;

@@ -35,8 +35,8 @@
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
-		7AAE395B17C6B9940008A1BD /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAE395A17C6B9940008A1BD /* NMSSH.framework */; };
-		7AAE395C17C6B9980008A1BD /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAE395A17C6B9940008A1BD /* NMSSH.framework */; };
+		7AAB992D17CBD42100D45A50 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAB992C17CBD42100D45A50 /* NMSSH.framework */; };
+		7AAB992E17CBD42E00D45A50 /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAB992C17CBD42100D45A50 /* NMSSH.framework */; };
 		7AB1EBAF17B3BBB000F9BAEE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */; };
 		7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */; };
 		7AB1EBB417B3BF5300F9BAEE /* iSXImportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */; };
@@ -57,8 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7AAE395C17C6B9980008A1BD /* NMSSH.framework in CopyFiles */,
 				7A0A4F1417C678CE00CAC148 /* ScanX.framework in CopyFiles */,
+				7AAB992E17CBD42E00D45A50 /* NMSSH.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		7AAE395A17C6B9940008A1BD /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../NMSSH/build/Debug/NMSSH.framework; sourceTree = "<group>"; };
+		7AAB992C17CBD42100D45A50 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = "../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug/NMSSH.framework"; sourceTree = "<group>"; };
 		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = Images/iPhone.png; sourceTree = "<group>"; };
 		7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXImportViewController.h; sourceTree = "<group>"; };
 		7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXImportViewController.m; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			files = (
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
 				7A0A4F1317C678C800CAC148 /* ScanX.framework in Frameworks */,
-				7AAE395B17C6B9940008A1BD /* NMSSH.framework in Frameworks */,
+				7AAB992D17CBD42100D45A50 /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +230,7 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AAE395A17C6B9940008A1BD /* NMSSH.framework */,
+				7AAB992C17CBD42100D45A50 /* NMSSH.framework */,
 				7A0A4F1217C678C800CAC148 /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
@@ -528,6 +528,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
@@ -552,6 +553,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
 					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
