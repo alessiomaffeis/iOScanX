@@ -28,6 +28,16 @@
     return self;
 }
 
+- (BOOL)appExistsWithID:(NSString*)appID {
+    
+    for (iSXApp *app in _appsArrayController.arrangedObjects) {
+        if ([app.ID isEqualToString:appID]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)addApp:(iSXApp *)app {
     
     [_appsArrayController addObject:app];

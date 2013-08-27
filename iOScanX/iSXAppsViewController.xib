@@ -145,14 +145,16 @@
 			</object>
 			<object class="NSCollectionViewItem" id="428790124"/>
 			<object class="NSView" id="203239778">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="120331669">
 						<reference key="NSNextResponder" ref="203239778"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{18, 9}, {84, 34}}</string>
+						<string key="NSFrame">{{13, 9}, {94, 34}}</string>
 						<reference key="NSSuperview" ref="203239778"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="478403977">
@@ -193,8 +195,9 @@
 							<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 							<string>NeXT TIFF v4.0 pasteboard type</string>
 						</set>
-						<string key="NSFrame">{{28, 49}, {64, 64}}</string>
+						<string key="NSFrame">{{30, 51}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="203239778"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="120331669"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
@@ -212,6 +215,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{120, 126}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="36311078"/>
 			</object>
 			<object class="NSArrayController" id="179434246">
@@ -508,7 +513,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">173</int>
+			<int key="maxID">174</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

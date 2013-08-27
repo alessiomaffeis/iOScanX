@@ -16,6 +16,7 @@
 @property (retain) NSMutableArray *apps;
 
 - (void)addApp:(iSXApp *)app;
+- (BOOL)appExistsWithID:(NSString*)appID;
 - (NSArray*)selectedApps;
 
 @end

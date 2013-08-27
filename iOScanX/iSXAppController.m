@@ -44,29 +44,32 @@
     [self.mainView addSubview:[_importViewController view]];
     _currentView = [_importViewController view];
     [[_importViewController view] setFrame:[self.mainView bounds]];
-    //[self performSelectorInBackground:@selector(loadApps) withObject:nil];
 }
 
 - (void)loadApps {
     
-   /* NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *srcPath = [fm iTunesMobileAppsDirectory];
-    NSString *asPath = [fm applicationSupportDirectory];
-    NSDirectoryEnumerator *de = [fm enumeratorAtPath:srcPath];
-    NSString *ipa;
-    int bufSize = 65536;
-    while (ipa = [de nextObject]) {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *appsPath = [[fm applicationSupportDirectory] stringByAppendingPathComponent:@"Apps"];
+    NSDirectoryEnumerator *de = [fm enumeratorAtPath:appsPath];
+    NSString *appID;
+    while (appID = [de nextObject]) {
         
-            NSString *subPath = [NSString stringWithFormat:@"Apps/%@", de];
-            NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
-    
+        if(appID.length==36 && ![_appsViewController appExistsWithID:appID]) {
+        
             iSXApp *app = [[iSXApp alloc] init];
-            app.name = ipa;
-            app.iconPath = [dstPath stringByAppendingPathComponent:@"iTunesArtwork"];
+            app.ID = appID;
+            NSString *appFolder = [appsPath stringByAppendingPathComponent:appID];
+            NSDirectoryEnumerator *ade = [fm enumeratorAtPath:appFolder];
+            NSString *appFile;
+            while (appFile = [ade nextObject]) {
+                if ([[appFile pathExtension] isEqualToString:@"app"]) {
+                    app.name = appFile;
+                }
+            }
+            app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
             [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
+        }
     }
-
-    */
     
 }
 
@@ -86,6 +89,7 @@
     [self.mainView addSubview:[_appsViewController view]];
     _currentView = [_appsViewController view];
     [[_appsViewController view] setFrame:[self.mainView bounds]];
+    [self performSelectorInBackground:@selector(loadApps) withObject:nil];
 }
 
 - (IBAction)showModules:(id)sender {

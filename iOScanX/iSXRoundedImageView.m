@@ -23,7 +23,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [self setWantsLayer:YES];
-    self.layer.cornerRadius = 12.0;
+    self.layer.cornerRadius = 13.5;
     self.layer.masksToBounds = YES;
     [super drawRect:dirtyRect];
     

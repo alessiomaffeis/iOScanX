@@ -21,4 +21,8 @@
     [(iSXAppController*)_window.delegate initialize];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return YES;
+}
+
 @end
