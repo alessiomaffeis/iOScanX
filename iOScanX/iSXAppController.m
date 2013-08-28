@@ -29,12 +29,13 @@
     if (self) {
         _scanner = [[SXScanner alloc] init];
         _importViewController = [[iSXImportViewController alloc] initWithNibName:@"iSXImportViewController" bundle:nil];
-        _importViewController.delegate = self;
         _appsViewController = [[iSXAppsViewController alloc] initWithNibName:@"iSXAppsViewController" bundle:nil];
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
         _evaluationsViewController = [[iSXEvaluationsViewController alloc] initWithNibName:@"iSXEvaluationsViewController" bundle:nil];
         _resultsViewController = [[iSXResultsViewController alloc] initWithNibName:@"iSXResultsViewController" bundle:nil];
         _progressSheetController = [[iSXProgressSheetController alloc] init];
+        _importViewController.delegate = self;
+        _appsViewController.delegate = self;
     }
     return self;
 }
@@ -50,7 +51,7 @@
 - (void)loadApps {
     
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *appsPath = [[fm applicationSupportDirectory] stringByAppendingPathComponent:@"Apps"];
+    NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
     NSDirectoryEnumerator *de = [fm enumeratorAtPath:appsPath];
     NSString *appID;
     while (appID = [de nextObject]) {
@@ -229,6 +230,18 @@
 
 }
 
+- (void)startScanning {
+    
+    NSString *appsPath = [[NSFileManager defaultManager] applicationSupportSubDirectory:@"Apps"];
+    NSArray *apps = [_appsViewController selectedApps];
+    for (iSXApp *app in apps) {
+        [_scanner addItem:[appsPath stringByAppendingPathComponent:app.ID] withId:app.ID];
+    }
+    
+    NSLog(@"Number of items: %lu",_scanner.items.count);
+    
+}
+
 // UI related methods:
 
 - (IBAction)showImport:(id)sender {
@@ -274,7 +287,8 @@
 
 - (IBAction)toggleStart:(id)sender {
     
-    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"]);
+    [self performSelectorInBackground:@selector(startScanning) withObject:nil];
+
 }
 
 // iSXImportViewController delegate's methods:
@@ -286,6 +300,15 @@
     _address = address;
     
     [self importApps];
+}
+
+// iSXAppsViewController delegate's methods:
+
+- (void)deleteApp:(iSXApp*)app {
+ 
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
+    [fm removeItemAtPath:[appsPath stringByAppendingPathComponent:app.ID] error:nil];
 }
 
 // NSToolbar delegate's methods:

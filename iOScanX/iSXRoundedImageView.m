@@ -24,6 +24,8 @@
 {
     [self setWantsLayer:YES];
     self.layer.cornerRadius = 13.5;
+//    self.layer.borderColor = [NSColor grayColor].CGColor;
+//    self.layer.borderWidth = 1;
     self.layer.masksToBounds = YES;
     [super drawRect:dirtyRect];
     

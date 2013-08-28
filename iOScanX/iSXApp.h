@@ -13,6 +13,6 @@
 @property (copy) NSString *name;
 @property (copy) NSString *ID;
 @property (copy) NSString *iconPath;
-@property (assign) BOOL analyze;
+@property (assign) BOOL selected;
 
 @end

@@ -24,6 +24,7 @@
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
 		7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */; };
 		7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */; };
+		7A599F2317CE5C390036794A /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A599F2217CE5C390036794A /* trash.png */; };
 		7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */; };
 		7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */; };
 		7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
@@ -85,6 +86,7 @@
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
 		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
 		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
+		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
 		7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXProgressSheetController.m; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A599F2217CE5C390036794A /* trash.png */,
 				7A11655C17B40F0600B22D65 /* icon_256x256.icns */,
 				7A11654D17B3F5A600B22D65 /* usb.png */,
 				7A11654E17B3F5A600B22D65 /* wifi.png */,
@@ -410,6 +413,7 @@
 				7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */,
 				7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */,
 				7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */,
+				7A599F2317CE5C390036794A /* trash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

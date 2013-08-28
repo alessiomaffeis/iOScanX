@@ -18,7 +18,7 @@
 #import "iSXSelectWindowController.h"
 #import "iSXApp.h"
 
-@interface  iSXAppController : NSObject <NSWindowDelegate, iSXImportViewDelegate>
+@interface  iSXAppController : NSObject <NSWindowDelegate, iSXImportViewDelegate, iSXAppsViewDelegate>
 
 @property (assign) IBOutlet NSView *mainView;
 @property (readonly) SXScanner *scanner;

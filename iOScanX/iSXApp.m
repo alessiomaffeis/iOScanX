@@ -16,7 +16,7 @@
     if (self) {
         _name = @"Test App";
         _iconPath =  @"test.jpg";
-        _analyze = YES;
+        _selected = YES;
     }
     return self;
 }
