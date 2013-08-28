@@ -64,14 +64,15 @@
     _paths = paths;
 }
 
-- (void)windowDidBecomeKey:(NSNotification *)notification {
+- (void)awakeFromNib {
     
     for(NSString *path in _paths)
     {
         if(path.length>61)
             [_arrayController addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys: [path stringByDeletingLastPathComponent], @"path", [path lastPathComponent], @"name", nil]];
     }
-    [_arrayController setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    NSSortDescriptor *sd = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)] autorelease];
+    [_arrayController setSortDescriptors:[NSArray arrayWithObject:sd]];
 }
 
 - (void)dealloc{

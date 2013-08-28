@@ -21,6 +21,7 @@
     iSXProgressSheetController *_progressSheetController;
     NMSSHSession *_ssh, *_scp;
     NSTask *_relay;
+    NSString *_user, *_address, *_password;
 }
 
 - (id) init {
@@ -70,68 +71,17 @@
             [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
         }
     }
+}
+
+- (void)importApps {
     
-}
-
-// UI related methods:
-
-- (IBAction)showImport:(id)sender {
-    
-    [_currentView removeFromSuperviewWithoutNeedingDisplay];
-    [self.mainView addSubview:[_importViewController view]];
-    _currentView = [_importViewController view];
-    [[_importViewController view] setFrame:[self.mainView bounds]];
-}
-
-- (IBAction)showApps:(id)sender {
-    
-    [_currentView removeFromSuperviewWithoutNeedingDisplay];
-    [self.mainView addSubview:[_appsViewController view]];
-    _currentView = [_appsViewController view];
-    [[_appsViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadApps) withObject:nil];
-}
-
-- (IBAction)showModules:(id)sender {
-
-    [_currentView removeFromSuperviewWithoutNeedingDisplay];
-    [self.mainView addSubview:[_modulesViewController view]];
-    _currentView = [_modulesViewController view];
-    [[_modulesViewController view] setFrame:[self.mainView bounds]];
-}
-
-- (IBAction)showEvaluations:(id)sender {
-    
-    [_currentView removeFromSuperviewWithoutNeedingDisplay];
-    [self.mainView addSubview:[_evaluationsViewController view]];
-    _currentView = [_evaluationsViewController view];
-    [[_evaluationsViewController view] setFrame:[self.mainView bounds]];
-}
-
-- (IBAction)showResults:(id)sender {
-    
-    [_currentView removeFromSuperviewWithoutNeedingDisplay];
-    [self.mainView addSubview:[_resultsViewController view]];
-    _currentView = [_resultsViewController view];
-    [[_resultsViewController view] setFrame:[self.mainView bounds]];
-}
-
-- (IBAction)toggleStart:(id)sender {
-    
-    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"]);
-}
-
-// iSXImportViewController delegate's methods:
-
-- (void)connectWithUsername:(NSString*)user andPassword:(NSString*)password toAddress:(NSString*)address {
-
     _progressSheetController.isIndeterminate = YES;
     _progressSheetController.message = @"Connecting to the device";
     [_progressSheetController showSheet:[_mainView window]];
+
+    NSString *host;
     
-     NSString *host;
-    
-    if (address == nil)
+    if (_address == nil)
     {
         if(_relay == nil)
         {
@@ -148,22 +98,22 @@
     }
     else
     {
-        host = [NSString stringWithFormat:@"%@:22", address];
+        host = [NSString stringWithFormat:@"%@:22", _address];
     }
     
-    _ssh = [NMSSHSession connectToHost:host withUsername:user];
-    _scp = [NMSSHSession connectToHost:host withUsername:user];
-
+    _ssh = [NMSSHSession connectToHost:host withUsername:_user];
+    _scp = [NMSSHSession connectToHost:host withUsername:_user];
+    
     
     if (_ssh.isConnected && _scp.isConnected)
     {
-        [_ssh authenticateByPassword:password];
-        [_scp authenticateByPassword:password];
+        [_ssh authenticateByPassword:_password];
+        [_scp authenticateByPassword:_password];
         
         if (_ssh.isAuthorized && _scp.isAuthorized )
         {
             [_progressSheetController updateMessage:@"Loading applications"];
-
+            
             BOOL copiedDlyb = [_scp.channel uploadFile:[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"] to:@"/var/local/"];
             
             if (copiedDlyb)
@@ -208,9 +158,9 @@
                                 
                                 NSString *binaryName = [appName stringByDeletingPathExtension];
                                 NSString *escAppName = [appName stringByReplacingOccurrencesOfString:@" "
-                                                                                withString:@"\\ "];
+                                                                                          withString:@"\\ "];
                                 NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@" "
-                                                                                withString:@"\\ "];
+                                                                                             withString:@"\\ "];
                                 
                                 NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", appID, escAppName, escBinName] error:&error];
                                 
@@ -266,7 +216,7 @@
     }
     else
     {
-         [[NSAlert alertWithMessageText:@"Connection failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to establish a connection with the device."] runModal];
+        [[NSAlert alertWithMessageText:@"Connection failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to establish a connection with the device."] runModal];
     }
     
     [_scp disconnect];
@@ -276,17 +226,89 @@
     [_relay release];
     _relay = nil;
     [_progressSheetController closeSheet];
-    
+
 }
+
+// UI related methods:
+
+- (IBAction)showImport:(id)sender {
+    
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_importViewController view]];
+    _currentView = [_importViewController view];
+    [[_importViewController view] setFrame:[self.mainView bounds]];
+}
+
+- (IBAction)showApps:(id)sender {
+    
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_appsViewController view]];
+    _currentView = [_appsViewController view];
+    [[_appsViewController view] setFrame:[self.mainView bounds]];
+    [self performSelectorInBackground:@selector(loadApps) withObject:nil];
+}
+
+- (IBAction)showModules:(id)sender {
+
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_modulesViewController view]];
+    _currentView = [_modulesViewController view];
+    [[_modulesViewController view] setFrame:[self.mainView bounds]];
+}
+
+- (IBAction)showEvaluations:(id)sender {
+    
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_evaluationsViewController view]];
+    _currentView = [_evaluationsViewController view];
+    [[_evaluationsViewController view] setFrame:[self.mainView bounds]];
+}
+
+- (IBAction)showResults:(id)sender {
+    
+    [_currentView removeFromSuperviewWithoutNeedingDisplay];
+    [self.mainView addSubview:[_resultsViewController view]];
+    _currentView = [_resultsViewController view];
+    [[_resultsViewController view] setFrame:[self.mainView bounds]];
+}
+
+- (IBAction)toggleStart:(id)sender {
+    
+    NSLog(@"%@",[[NSBundle mainBundle] pathForResource:@"dumpdecrypted" ofType:@"dylib"]);
+}
+
+// iSXImportViewController delegate's methods:
+
+- (void)connectWithUsername:(NSString*)user andPassword:(NSString*)password toAddress:(NSString*)address {
+    
+    _user = user;
+    _password = password;
+    _address = address;
+    
+    [self importApps];
+}
+
+// NSToolbar delegate's methods:
+
+- (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar;
+{    
+    return [NSArray arrayWithObjects:@"ImportView",
+            @"AppsView",
+            @"ModulesView",
+            @"EvaluationsView",
+            @"ResultsView", nil];
+}
+
+// misc:
 
 - (BOOL)downloadFolder:(NSString *)remotePath to:(NSString *)localPath recursively:(BOOL)recursively {
     
     if(!_scp.isAuthorized || !_ssh.isAuthorized)
         return NO;
-
+    
     NSString *escRemotePath = [remotePath stringByReplacingOccurrencesOfString:@" "
-                                                              withString:@"\\ "];
-
+                                                                    withString:@"\\ "];
+    
     NSString *folderName = [remotePath lastPathComponent];
     NSString *localFolder = [localPath stringByAppendingPathComponent:folderName];
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -346,23 +368,11 @@
             [self downloadFolder:[remotePath stringByAppendingPathComponent:subName] to:localFolder  recursively:YES];
         }
     }
-
+    
     
     return YES;
 }
 
-// NSToolbar delegate's methods:
-
-- (NSArray *)toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar;
-{    
-    return [NSArray arrayWithObjects:@"ImportView",
-            @"AppsView",
-            @"ModulesView",
-            @"EvaluationsView",
-            @"ResultsView", nil];
-}
-
-//
 
 - (void) dealloc {
     

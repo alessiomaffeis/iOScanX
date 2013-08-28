@@ -15,7 +15,6 @@
 @implementation iSXAppsViewController {
     
     IBOutlet NSArrayController *_appsArrayController;
-
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,6 +25,11 @@
     }
     
     return self;
+}
+
+-(void)awakeFromNib {
+    
+    [_appsArrayController setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)] autorelease]]];
 }
 
 - (BOOL)appExistsWithID:(NSString*)appID {
@@ -45,7 +49,13 @@
 
 - (NSArray*)selectedApps {
     
-    return nil;
+    NSMutableArray *sel = [NSMutableArray array];
+    for (iSXApp *app in _appsArrayController.arrangedObjects) {
+        if (app.analyze) {
+            [sel addObject:app];
+        }
+    }
+    return [NSArray arrayWithArray:sel];
 }
 
 - (void)dealloc {
