@@ -10,4 +10,7 @@
 
 @interface iSXModulesViewController : NSViewController
 
+- (IBAction)add:(id)sender;
+- (IBAction)delete:(id)sender;
+
 @end

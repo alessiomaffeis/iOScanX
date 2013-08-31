@@ -66,6 +66,7 @@
             while (appFile = [ade nextObject]) {
                 if ([[appFile pathExtension] isEqualToString:@"app"]) {
                     app.name = appFile;
+                    app.path = [appFolder stringByAppendingPathComponent:appFile];
                 }
             }
             app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
@@ -232,10 +233,9 @@
 
 - (void)startScanning {
     
-    NSString *appsPath = [[NSFileManager defaultManager] applicationSupportSubDirectory:@"Apps"];
     NSArray *apps = [_appsViewController selectedApps];
     for (iSXApp *app in apps) {
-        [_scanner addItem:[appsPath stringByAppendingPathComponent:app.ID] withId:app.ID];
+        [_scanner addItem:app withId:app.ID];
     }
     
     NSLog(@"Number of items: %lu",_scanner.items.count);

@@ -16,6 +16,7 @@
     if (self) {
         _name = @"Test App";
         _iconPath =  @"test.jpg";
+        _path =  @"";
         _selected = YES;
     }
     return self;
@@ -24,6 +25,7 @@
 -(void)dealloc {
     
     [_name release];
+    [_path release];
     [_iconPath release];
     [super dealloc];
 }

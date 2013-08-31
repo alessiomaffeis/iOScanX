@@ -49,6 +49,7 @@
 		7AC6F5B1177320EF00E3108A /* iSXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */; };
 		7AC6F5B2177320EF00E3108A /* iSXResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */; };
 		7ACD175817B6DAA400E7BB35 /* NSString+IPValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */; };
+		7AE6CB2A17D2430B00EC9421 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE6CB2917D2430B00EC9421 /* add.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,7 +87,7 @@
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
 		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
 		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
-		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = Images/trash.png; sourceTree = "<group>"; };
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
 		7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXProgressSheetController.m; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		7ACD175617B6DAA400E7BB35 /* NSString+IPValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IPValidation.h"; sourceTree = "<group>"; };
 		7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IPValidation.m"; sourceTree = "<group>"; };
 		7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = dumpdecrypted.dylib; path = ../Resources/dumpdecrypted.dylib; sourceTree = "<group>"; };
+		7AE6CB2917D2430B00EC9421 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = Images/add.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7AE6CB2917D2430B00EC9421 /* add.png */,
 				7A599F2217CE5C390036794A /* trash.png */,
 				7A11655C17B40F0600B22D65 /* icon_256x256.icns */,
 				7A11654D17B3F5A600B22D65 /* usb.png */,
@@ -414,6 +417,7 @@
 				7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */,
 				7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */,
 				7A599F2317CE5C390036794A /* trash.png in Resources */,
+				7AE6CB2A17D2430B00EC9421 /* add.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

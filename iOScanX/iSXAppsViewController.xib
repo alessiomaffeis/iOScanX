@@ -50,7 +50,7 @@
 					<object class="NSBox" id="608316439">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">34</int>
-						<string key="NSFrame">{{0, 60}, {508.5, 5}}</string>
+						<string key="NSFrame">{{0, 60}, {509, 5}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1016647279"/>
@@ -239,7 +239,7 @@
 						<double key="NSMagnification">1</double>
 					</object>
 				</array>
-				<string key="NSFrameSize">{508.5, 325}</string>
+				<string key="NSFrameSize">{509, 325}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="99126928"/>
