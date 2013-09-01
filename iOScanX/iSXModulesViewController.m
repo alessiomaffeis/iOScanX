@@ -30,15 +30,17 @@
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     openDlg.canChooseFiles = YES;
     openDlg.canChooseDirectories = NO;
-    openDlg.allowsMultipleSelection = NO;
+    openDlg.allowsMultipleSelection = YES;
     openDlg.allowedFileTypes = [NSArray arrayWithObject:@"isxm"];
     
     [openDlg beginSheetModalForWindow:[self.view window] completionHandler:^(NSInteger result) {
         
         if (result == NSOKButton) {
             
-            NSArray* files = [openDlg URLs];
-            NSLog(@"Module path: %@",[files objectAtIndex:0 ]);
+            for(NSString *module in [openDlg URLs])
+            {
+                [_delegate addModule:module];
+            }
         }
     }];
 }

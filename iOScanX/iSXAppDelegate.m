@@ -25,4 +25,8 @@
     return YES;
 }
 
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
+    return [(iSXAppController*)_window.delegate addModule:filename];
+}
+
 @end

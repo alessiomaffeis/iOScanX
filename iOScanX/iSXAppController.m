@@ -36,6 +36,7 @@
         _progressSheetController = [[iSXProgressSheetController alloc] init];
         _importViewController.delegate = self;
         _appsViewController.delegate = self;
+        _modulesViewController.delegate = self;
     }
     return self;
 }
@@ -310,6 +311,27 @@
     NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
     [fm removeItemAtPath:[appsPath stringByAppendingPathComponent:app.ID] error:nil];
 }
+
+// iSXModulesViewController delegate's methods:
+
+- (BOOL)addModule:(NSString*)path {
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
+    NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingString:@"/Contents/Info.plist"]];
+    if(info == nil)
+        return NO;
+    if(![[info objectForKey:@"NSPrincipalClass"] isEqualToString:@"iSXMAnalysisModule"])
+        return NO;
+    NSString *moduleID = [info objectForKey:@"CFBundleIdentifier"];
+    NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
+    NSString *modulePath = [moduleFolder stringByAppendingPathComponent:[path lastPathComponent]];
+    [fm createDirectoryAtPath:moduleFolder withIntermediateDirectories:YES attributes:nil error:nil];
+    [fm copyItemAtPath:path toPath:modulePath error:nil];
+    
+    return YES;
+}
+
 
 // NSToolbar delegate's methods:
 

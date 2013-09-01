@@ -8,7 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@protocol iSXModulesViewDelegate
+
+- (BOOL)addModule:(NSString*)path;
+
+@end
+
 @interface iSXModulesViewController : NSViewController
+
+@property (assign) id <iSXModulesViewDelegate> delegate;
 
 - (IBAction)add:(id)sender;
 - (IBAction)delete:(id)sender;
