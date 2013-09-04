@@ -22,6 +22,7 @@
 		7A1190801755304000EE8DD1 /* iSXAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */; };
 		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
+		7A19863E17D77D7400EB0B8E /* iSXEvaluation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A19863D17D77D7400EB0B8E /* iSXEvaluation.m */; };
 		7A2ABB8317D617AE00228940 /* iSXMetricsTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8217D617AE00228940 /* iSXMetricsTransformer.m */; };
 		7A2ABB8A17D64B0700228940 /* iSXAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8917D64B0700228940 /* iSXAppView.m */; };
 		7A2ABB8D17D64E7100228940 /* iSXAppCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8C17D64E7100228940 /* iSXAppCollectionViewItem.m */; };
@@ -90,6 +91,8 @@
 		7A11908D1755467800EE8DD1 /* iSXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXApp.m; path = iOScanX/iSXApp.m; sourceTree = "<group>"; };
 		7A11908F1755563400EE8DD1 /* iSXAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXAppController.h; sourceTree = "<group>"; };
 		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
+		7A19863C17D77D7300EB0B8E /* iSXEvaluation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXEvaluation.h; sourceTree = "<group>"; };
+		7A19863D17D77D7400EB0B8E /* iSXEvaluation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXEvaluation.m; sourceTree = "<group>"; };
 		7A2ABB8117D617AE00228940 /* iSXMetricsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXMetricsTransformer.h; path = iOScanX/iSXMetricsTransformer.h; sourceTree = "<group>"; };
 		7A2ABB8217D617AE00228940 /* iSXMetricsTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXMetricsTransformer.m; path = iOScanX/iSXMetricsTransformer.m; sourceTree = "<group>"; };
 		7A2ABB8817D64B0700228940 /* iSXAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXAppView.h; path = iOScanX/iSXAppView.h; sourceTree = "<group>"; };
@@ -342,6 +345,8 @@
 		7AC6F5A717731FE400E3108A /* Evaluations */ = {
 			isa = PBXGroup;
 			children = (
+				7A19863C17D77D7300EB0B8E /* iSXEvaluation.h */,
+				7A19863D17D77D7400EB0B8E /* iSXEvaluation.m */,
 				7AC6F5A81773201C00E3108A /* iSXEvaluationsViewController.h */,
 				7AC6F5A91773201C00E3108A /* iSXEvaluationsViewController.m */,
 				7AC6F5AA1773201C00E3108A /* iSXEvaluationsViewController.xib */,
@@ -475,6 +480,7 @@
 				7A2ABB8A17D64B0700228940 /* iSXAppView.m in Sources */,
 				7A2ABB8D17D64E7100228940 /* iSXAppCollectionViewItem.m in Sources */,
 				7A2ABB9317D69B5800228940 /* iSXTextFieldCell.m in Sources */,
+				7A19863E17D77D7400EB0B8E /* iSXEvaluation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

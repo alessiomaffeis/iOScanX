@@ -12,7 +12,10 @@
 
 @end
 
-@implementation iSXEvaluationsViewController
+@implementation iSXEvaluationsViewController {
+    
+    IBOutlet NSArrayController *_evaluationsArrayController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
