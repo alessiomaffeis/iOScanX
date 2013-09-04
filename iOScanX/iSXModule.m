@@ -1,22 +1,22 @@
 //
-//  iSXApp.m
+//  iSXModule.m
 //  iOScanX
 //
-//  Created by Alessio Maffeis on 28/05/13.
+//  Created by Alessio Maffeis on 02/09/13.
 //  Copyright (c) 2013 Alessio Maffeis. All rights reserved.
 //
 
-#import "iSXApp.h"
+#import "iSXModule.h"
 
-@implementation iSXApp
+@implementation iSXModule
+
 
 -(id)init {
     
     self = [super init];
     if (self) {
         _name = @"";
-        _iconPath =  @"";
-        _path =  @"";
+        _prefix =  @"";
         _ID =  @"";
         _selected = YES;
     }
@@ -26,10 +26,10 @@
 -(void)dealloc {
     
     [_name release];
+    [_prefix release];
     [_ID release];
-    [_path release];
-    [_iconPath release];
     [super dealloc];
 }
+
 
 @end

@@ -8,12 +8,16 @@
 
 #import "iSXAppDelegate.h"
 #import "iSXAppController.h"
+#import "iSXMetricsTransformer.h"
+
 
 @implementation iSXAppDelegate
 
-- (void)dealloc
-{
-    [super dealloc];
++ (void)initialize {
+    
+    iSXMetricsTransformer *metricsTransformer = [[[iSXMetricsTransformer alloc] init] autorelease];
+    [NSValueTransformer setValueTransformer:metricsTransformer
+                                    forName:@"MetricsTransformer"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -27,6 +31,11 @@
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
     return [(iSXAppController*)_window.delegate addModule:filename];
+}
+
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 @end

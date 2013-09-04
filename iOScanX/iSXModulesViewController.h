@@ -7,18 +7,28 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "iSXModule.h"
+
 
 @protocol iSXModulesViewDelegate
 
 - (BOOL)addModule:(NSString*)path;
+- (void)deleteModule:(iSXModule*)module;
+
 
 @end
 
-@interface iSXModulesViewController : NSViewController
+@interface iSXModulesViewController : NSViewController <NSTableViewDelegate>
 
 @property (assign) id <iSXModulesViewDelegate> delegate;
+@property (retain) NSMutableArray *modules;
+
+- (void)addModule:(iSXModule *)module;
+- (BOOL)moduleExistsWithID:(NSString*)moduleID;
+- (NSArray*)selectedModules;
 
 - (IBAction)add:(id)sender;
 - (IBAction)delete:(id)sender;
+- (IBAction)selectAll:(id)sender;
 
 @end

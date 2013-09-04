@@ -25,7 +25,7 @@
 }
 
 - (id) init {
-    [super init];
+    self = [super init];
     if (self) {
         _scanner = [[SXScanner alloc] init];
         _importViewController = [[iSXImportViewController alloc] initWithNibName:@"iSXImportViewController" bundle:nil];
@@ -55,11 +55,12 @@
     NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
     NSDirectoryEnumerator *de = [fm enumeratorAtPath:appsPath];
     NSString *appID;
+    
     while (appID = [de nextObject]) {
         
         if(appID.length==36 && ![_appsViewController appExistsWithID:appID]) {
         
-            iSXApp *app = [[iSXApp alloc] init];
+            iSXApp *app = [[[iSXApp alloc] init] autorelease];
             app.ID = appID;
             NSString *appFolder = [appsPath stringByAppendingPathComponent:appID];
             NSDirectoryEnumerator *ade = [fm enumeratorAtPath:appFolder];
@@ -68,10 +69,42 @@
                 if ([[appFile pathExtension] isEqualToString:@"app"]) {
                     app.name = appFile;
                     app.path = [appFolder stringByAppendingPathComponent:appFile];
+                    app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
+                    [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
+                    break;
                 }
             }
-            app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
-            [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
+        }
+    }
+}
+
+- (void)loadModules {
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
+    NSDirectoryEnumerator *de = [fm enumeratorAtPath:modulesPath];
+    NSString *moduleID;
+    
+    while (moduleID = [de nextObject]) {
+        
+        if (![_modulesViewController moduleExistsWithID:moduleID]) {
+            
+            iSXModule *module = [[[iSXModule alloc] init] autorelease];
+            module.ID = moduleID;
+            NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
+            NSDirectoryEnumerator *ade = [fm enumeratorAtPath:moduleFolder];
+            NSString *moduleFile;
+            while (moduleFile = [ade nextObject]) {
+                if ([[moduleFile pathExtension] isEqualToString:@"isxm"]) {
+                    NSDictionary *moduleData = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/Contents/Resources/Module.plist", moduleFolder, moduleFile]];
+                    module.name = [moduleData objectForKey:@"name"];
+                    module.prefix = [moduleData objectForKey:@"prefix"];
+                    module.metrics = [moduleData objectForKey:@"metrics"];
+                    module.path = [moduleFolder stringByAppendingPathComponent:moduleFile];
+                    [_modulesViewController performSelectorOnMainThread:@selector(addModule:) withObject:module waitUntilDone: NO];
+                    break;
+                }
+            }
         }
     }
 }
@@ -82,7 +115,7 @@
     _progressSheetController.message = @"Connecting to the device";
     [_progressSheetController showSheet:[_mainView window]];
 
-    NSString *host;
+    NSString *host = nil;
     
     if (_address == nil)
     {
@@ -157,6 +190,9 @@
                                 NSString *subPath = [NSString stringWithFormat:@"Apps/%@", appID];
                                 NSString *dstPath = [asPath stringByAppendingPathComponent:subPath];
                                 
+                                if ([fm fileExistsAtPath:dstPath])
+                                    [fm removeItemAtPath:dstPath error:nil];
+                                
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
                                 
                                 NSString *binaryName = [appName stringByDeletingPathExtension];
@@ -196,9 +232,8 @@
                             [_progressSheetController incrementValue];
                             i++;
                         }
-                        
-                        [selDialog release];
                     }
+                    [selDialog release];
                 }
                 else
                 {
@@ -268,6 +303,7 @@
     [self.mainView addSubview:[_modulesViewController view]];
     _currentView = [_modulesViewController view];
     [[_modulesViewController view] setFrame:[self.mainView bounds]];
+    [self performSelectorInBackground:@selector(loadModules) withObject:nil];
 }
 
 - (IBAction)showEvaluations:(id)sender {
@@ -326,10 +362,20 @@
     NSString *moduleID = [info objectForKey:@"CFBundleIdentifier"];
     NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
     NSString *modulePath = [moduleFolder stringByAppendingPathComponent:[path lastPathComponent]];
+    if ([fm fileExistsAtPath:moduleFolder])
+        [fm removeItemAtPath:moduleFolder error:nil];
     [fm createDirectoryAtPath:moduleFolder withIntermediateDirectories:YES attributes:nil error:nil];
     [fm copyItemAtPath:path toPath:modulePath error:nil];
-    
+    [self performSelectorInBackground:@selector(loadModules) withObject:nil];
+
     return YES;
+}
+
+- (void)deleteModule:(iSXModule*)module {
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
+    [fm removeItemAtPath:[modulesPath stringByAppendingPathComponent:module.ID] error:nil];
 }
 
 

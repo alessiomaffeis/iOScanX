@@ -17,6 +17,7 @@
 #import "iSXProgressSheetController.h"
 #import "iSXSelectWindowController.h"
 #import "iSXApp.h"
+#import "iSXModule.h"
 
 @interface  iSXAppController : NSObject <NSWindowDelegate, iSXImportViewDelegate, iSXAppsViewDelegate, iSXModulesViewDelegate>
 

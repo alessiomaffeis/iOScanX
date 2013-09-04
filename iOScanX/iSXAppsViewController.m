@@ -82,11 +82,9 @@
    
     if (rc == NSAlertFirstButtonReturn) {
         NSMutableArray *toDelete = [NSMutableArray array];
-        for (iSXApp *app in _appsArrayController.arrangedObjects) {
-            if (app.selected) {
-                [_delegate deleteApp:app];
-                [toDelete addObject:app];
-            }
+        for (iSXApp *app in _appsArrayController.selectedObjects) {
+            [_delegate deleteApp:app];
+            [toDelete addObject:app];
         }
         [_appsArrayController removeObjects:toDelete];
     }
