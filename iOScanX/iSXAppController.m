@@ -37,6 +37,7 @@
         _importViewController.delegate = self;
         _appsViewController.delegate = self;
         _modulesViewController.delegate = self;
+        _evaluationsViewController.delegate = self;
     }
     return self;
 }
@@ -105,6 +106,21 @@
                     break;
                 }
             }
+        }
+    }
+}
+
+- (void)loadEvaluations {
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *evalPlist = [[fm applicationSupportSubDirectory:@"Evaluations"] stringByAppendingPathComponent:@"Evaluations.plist"];
+    if ([_evaluationsViewController count] == 0 && [fm fileExistsAtPath:evalPlist]) {
+        NSArray *evals = [NSArray arrayWithContentsOfFile:evalPlist];
+        for (NSDictionary *eval in evals) {
+            iSXEvaluation *evaluation = [[[iSXEvaluation alloc] init] autorelease];
+            evaluation.name = [eval objectForKey:@"name"];
+            evaluation.expression = [eval objectForKey:@"expression"];
+            [_evaluationsViewController performSelectorOnMainThread:@selector(addEvaluation:) withObject:evaluation waitUntilDone: NO];
         }
     }
 }
@@ -324,6 +340,8 @@
     [self.mainView addSubview:[_evaluationsViewController view]];
     _currentView = [_evaluationsViewController view];
     [[_evaluationsViewController view] setFrame:[self.mainView bounds]];
+    [self performSelectorInBackground:@selector(loadEvaluations) withObject:nil];
+
 }
 
 - (IBAction)showResults:(id)sender {
@@ -388,6 +406,15 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
     [fm removeItemAtPath:[modulesPath stringByAppendingPathComponent:module.ID] error:nil];
+}
+
+// iSXEvaluationsViewController delegate's methods:
+
+- (void)saveEvaluations:(NSArray*)evaluations {
+    
+    NSString *evalPath = [[NSFileManager defaultManager] applicationSupportSubDirectory:@"Evaluations"];
+    [evaluations writeToFile:[evalPath stringByAppendingPathComponent:@"Evaluations.plist"] atomically:YES];
+    
 }
 
 
