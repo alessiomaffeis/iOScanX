@@ -66,8 +66,8 @@
             NSDirectoryEnumerator *ade = [fm enumeratorAtPath:appFolder];
             NSString *appFile;
             while (appFile = [ade nextObject]) {
-                if ([[appFile pathExtension] isEqualToString:@"app"]) {
-                    app.name = appFile;
+                if ([[appFile pathExtension] isEqualToString:@"tar"]) {
+                    app.name = [appFile stringByDeletingPathExtension];
                     app.path = [appFolder stringByAppendingPathComponent:appFile];
                     app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
                     [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
@@ -211,11 +211,23 @@
                                     NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", appID];
                                     NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", appID];
                                     NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", appID, appName];
+                                    NSString *tar = [bundle stringByAppendingPathExtension:@"tar"];
+                                    
+                                    NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf %@ --directory=/var/mobile/Applications/%@ %@", tar, appID, appName] error:&error];
                                     
                                     BOOL ok = YES;
-                                    ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
-                                    ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
-                                    ok &= [self downloadFolder:bundle to:dstPath recursively:YES];
+
+                                    if (tarred != nil)
+                                    {
+                                        ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
+                                        ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
+                                        ok &= [_scp.channel downloadFile:tar to:[dstPath stringByAppendingPathComponent:[tar lastPathComponent]]];
+                                        [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf %@", tar] error:&error];
+                                    }
+                                    else
+                                    {
+                                        ok = NO;
+                                    }
                                     
                                     if (!ok)
                                     {
@@ -388,80 +400,6 @@
             @"ModulesView",
             @"EvaluationsView",
             @"ResultsView", nil];
-}
-
-// misc:
-
-- (BOOL)downloadFolder:(NSString *)remotePath to:(NSString *)localPath recursively:(BOOL)recursively {
-    
-    if(!_scp.isAuthorized || !_ssh.isAuthorized)
-        return NO;
-    
-    NSString *escRemotePath = [remotePath stringByReplacingOccurrencesOfString:@" "
-                                                                    withString:@"\\ "];
-    
-    NSString *folderName = [remotePath lastPathComponent];
-    NSString *localFolder = [localPath stringByAppendingPathComponent:folderName];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    [fm createDirectoryAtPath:localFolder withIntermediateDirectories:YES attributes:nil error:nil];
-    
-    NSError *error = nil;
-    NSString *folderContent = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 %@", escRemotePath] error:&error];
-    NSString *subFolders = [_ssh.channel execute:[NSString stringWithFormat:@"ls -1 -d %@/*/", escRemotePath] error:&error];
-    
-    NSMutableArray *subFolderNames = nil;
-    
-    if (subFolders == nil)
-        return NO;
-    
-    subFolderNames = [NSMutableArray arrayWithArray:[subFolders componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
-    
-    
-    int i=0;
-    while (i<subFolderNames.count) {
-        
-        NSString *itemName = [[subFolderNames objectAtIndex:i] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if (itemName.length>0) {
-            [subFolderNames replaceObjectAtIndex:i withObject:[itemName lastPathComponent]];
-            i++;
-        }
-        else
-        {
-            [subFolderNames removeObjectAtIndex:i];
-        }
-    }
-    
-    if (folderContent == nil || subFolderNames == nil)
-        return NO;
-    
-    NSArray *folderItems = [folderContent componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    
-    for(NSString *item in folderItems)
-    {
-        NSString *itemName = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        
-        if (itemName.length>0 && ![subFolderNames containsObject:itemName])
-        {
-            NSString *filePath = [NSString stringWithFormat:@"%@/%@", remotePath, itemName];
-            NSString *dstFilePath = [localFolder stringByAppendingPathComponent:itemName];
-            BOOL res = [_scp.channel downloadFile:filePath to:dstFilePath];
-            if (!res) {
-                return NO;
-            }
-        }
-    }
-    
-    if (recursively)
-    {
-        for(NSString *subName in subFolderNames)
-        {
-            [self downloadFolder:[remotePath stringByAppendingPathComponent:subName] to:localFolder  recursively:YES];
-        }
-    }
-    
-    
-    return YES;
 }
 
 
