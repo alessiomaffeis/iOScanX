@@ -38,6 +38,7 @@
         _appsViewController.delegate = self;
         _modulesViewController.delegate = self;
         _evaluationsViewController.delegate = self;
+        _scanner.delegate = self;
     }
     return self;
 }
@@ -188,7 +189,7 @@
                         NSString *asPath = [fm applicationSupportDirectory];
                         
                         _progressSheetController.minValue = 0;
-                        _progressSheetController.maxValue = selDialog.selectedApps.count*2;
+                        _progressSheetController.maxValue = selDialog.selectedApps.count*3;
                         _progressSheetController.value = 0;
                         [_progressSheetController updateIsIndeterminate:NO];
                         
@@ -231,8 +232,9 @@
                                     
                                     NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf %@ --directory=/var/mobile/Applications/%@ %@", tar, appID, appName] error:&error];
                                     
-                                    BOOL ok = YES;
+                                    [_progressSheetController incrementValue];
 
+                                    BOOL ok = YES;
                                     if (tarred != nil)
                                     {
                                         ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
@@ -299,11 +301,23 @@
     
     NSArray *apps = [_appsViewController selectedApps];
     for (iSXApp *app in apps) {
-        [_scanner addItem:app withId:app.ID];
+        [_scanner addItem:[app copy] withId:app.ID];
     }
     
-    NSLog(@"Number of items: %lu",_scanner.items.count);
+    NSLog(@"Number of apps: %lu",_scanner.items.count);
     
+    NSArray *modules = [_modulesViewController selectedModules];
+    for (iSXModule *module in modules) {
+        
+        NSBundle *bundle = [NSBundle bundleWithPath:module.path];
+        Class moduleClass = [bundle principalClass];
+        id instance = [[[moduleClass alloc] init] autorelease];
+        [_scanner addModule:instance withId:module.ID];
+    }
+    
+    NSLog(@"Number of modules: %lu",_scanner.modules.count);
+
+    [_scanner startScanning];
 }
 
 // UI related methods:
@@ -414,6 +428,19 @@
     
     NSString *evalPath = [[NSFileManager defaultManager] applicationSupportSubDirectory:@"Evaluations"];
     [evaluations writeToFile:[evalPath stringByAppendingPathComponent:@"Evaluations.plist"] atomically:YES];
+    
+}
+
+//
+
+- (void) scanHasFinished {
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+        [[NSAlert alertWithMessageText:@"Scan completed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"All applications have been successfully scanned."] runModal];
+    }];
+}
+
+- (void) evaluationHasFinished {
     
 }
 

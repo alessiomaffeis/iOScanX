@@ -34,6 +34,5 @@
 	error:(NSError **)errorOut;
 - (NSString *)applicationSupportDirectory;
 - (NSString *)applicationSupportSubDirectory:(NSString *)sub;
-- (NSString *)iTunesMobileAppsDirectory;
 
 @end

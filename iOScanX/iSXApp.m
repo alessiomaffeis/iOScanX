@@ -23,6 +23,21 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    iSXApp *copy = [[iSXApp alloc] init];
+    
+    if (copy) {
+        
+        copy.name = _name;
+        copy.iconPath = _iconPath;
+        copy.path = _path;
+        copy.ID = _ID;
+    }
+    
+    return copy;
+}
+
 -(void)dealloc {
     
     [_name release];

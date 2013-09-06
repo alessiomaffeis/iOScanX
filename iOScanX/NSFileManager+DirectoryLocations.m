@@ -171,17 +171,4 @@ NSString * const DirectoryLocationDomain = @"DirectoryLocationDomain";
 	return result;
 }
 
-- (NSString *)iTunesMobileAppsDirectory
-{
-	NSError *error = nil;
-    NSString *iTunesPath = [NSString stringWithFormat:@"%@/Music/iTunes", NSHomeDirectory()];
-    NSString *result = [NSString stringWithFormat:@"%@/iTunes Music/Mobile Applications", iTunesPath];
-	
-	if (!result)
-	{
-		NSLog(@"Unable to find iTunes Mobile Applications directory:\n%@", error);
-	}
-	return result;
-}
-
 @end

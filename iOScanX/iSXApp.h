@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface iSXApp : NSObject
+@interface iSXApp : NSObject <NSCopying>
 
 @property (copy) NSString *name;
 @property (copy) NSString *ID;
