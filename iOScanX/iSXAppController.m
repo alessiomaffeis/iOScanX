@@ -100,7 +100,7 @@
                 if ([[moduleFile pathExtension] isEqualToString:@"isxm"]) {
                     NSDictionary *moduleData = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/Contents/Resources/Module.plist", moduleFolder, moduleFile]];
                     module.name = [moduleData objectForKey:@"name"];
-                    module.prefix = [moduleData objectForKey:@"prefix"];
+                    module.prefix = [[moduleData objectForKey:@"prefix"] stringByAppendingString:@"_"];
                     module.metrics = [moduleData objectForKey:@"metrics"];
                     module.path = [moduleFolder stringByAppendingPathComponent:moduleFile];
                     [_modulesViewController performSelectorOnMainThread:@selector(addModule:) withObject:module waitUntilDone: NO];
@@ -119,6 +119,7 @@
         NSArray *evals = [NSArray arrayWithContentsOfFile:evalPlist];
         for (NSDictionary *eval in evals) {
             iSXEvaluation *evaluation = [[[iSXEvaluation alloc] init] autorelease];
+            evaluation.ID = [(NSNumber*)[eval objectForKey:@"ID"] unsignedLongValue];
             evaluation.name = [eval objectForKey:@"name"];
             evaluation.expression = [eval objectForKey:@"expression"];
             [_evaluationsViewController performSelectorOnMainThread:@selector(addEvaluation:) withObject:evaluation waitUntilDone: NO];
@@ -301,7 +302,7 @@
     
     NSArray *apps = [_appsViewController selectedApps];
     for (iSXApp *app in apps) {
-        [_scanner addItem:[app copy] withId:app.ID];
+        [_scanner addItem:app withId:app.ID];
     }
     
     NSLog(@"Number of apps: %lu",_scanner.items.count);
@@ -318,6 +319,15 @@
     NSLog(@"Number of modules: %lu",_scanner.modules.count);
 
     [_scanner startScanning];
+}
+
+- (void)startEvaluating {
+    
+    NSArray *evals = [_evaluationsViewController evaluations];
+    for (iSXEvaluation *eval in evals) {
+        SXEvaluation *evaluation = [[SXEvaluation alloc] initWithName:eval.name andExpression:eval.expression];
+        [_scanner addEvaluation:[evaluation autorelease] withId:[NSString stringWithFormat:@"%lu_%@", eval.ID, eval.name]];
+    }
 }
 
 // UI related methods:
@@ -394,24 +404,40 @@
 
 // iSXModulesViewController delegate's methods:
 
-- (BOOL)addModule:(NSString*)path {
+- (BOOL)addModules:(NSArray*)URLs {
     
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
-    NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingString:@"/Contents/Info.plist"]];
-    if(info == nil)
-        return NO;
-    if(![[info objectForKey:@"NSPrincipalClass"] isEqualToString:@"iSXMAnalysisModule"])
-        return NO;
-    NSString *moduleID = [info objectForKey:@"CFBundleIdentifier"];
-    NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
-    NSString *modulePath = [moduleFolder stringByAppendingPathComponent:[path lastPathComponent]];
-    if ([fm fileExistsAtPath:moduleFolder])
-        [fm removeItemAtPath:moduleFolder error:nil];
-    [fm createDirectoryAtPath:moduleFolder withIntermediateDirectories:YES attributes:nil error:nil];
-    [fm copyItemAtPath:path toPath:modulePath error:nil];
-    [self performSelectorInBackground:@selector(loadModules) withObject:nil];
-
+    for(NSURL *URL in URLs)
+    {
+        NSString *path = [URL path];
+        NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingString:@"/Contents/Info.plist"]];
+        if(info == nil)
+            return NO;
+        if([[info objectForKey:@"NSPrincipalClass"] isEqualToString:@"iSXMAnalysisModule"])
+            return NO;
+        if(![[[info objectForKey:@"NSPrincipalClass"] substringToIndex:4] isEqualToString:@"iSXM"])
+            return NO;
+        NSString *moduleID = [info objectForKey:@"CFBundleIdentifier"];
+        NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
+        NSString *modulePath = [moduleFolder stringByAppendingPathComponent:[path lastPathComponent]];
+        if ([fm fileExistsAtPath:moduleFolder])
+            [fm removeItemAtPath:moduleFolder error:nil];
+        [fm createDirectoryAtPath:moduleFolder withIntermediateDirectories:YES attributes:nil error:nil];
+        [fm copyItemAtPath:path toPath:modulePath error:nil];
+    }
+    
+    if (_currentView != [_modulesViewController view])
+    {
+        [self showModules:nil];
+    }
+    else
+    {
+        [self performSelectorInBackground:@selector(loadModules) withObject:nil];
+    }
+    
+    _toolbar.selectedItemIdentifier = @"ModulesView";
+    
     return YES;
 }
 
@@ -431,7 +457,7 @@
     
 }
 
-//
+// SXScanner delegate's methods:
 
 - (void) scanHasFinished {
     
@@ -442,8 +468,18 @@
 
 - (void) evaluationHasFinished {
     
+    [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+        [[NSAlert alertWithMessageText:@"Evaluation completed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"All applications have been successfully evaluated."] runModal];
+    }];
 }
 
+- (void) remainingScansDidChange {
+    
+}
+
+- (void) remainingEvaluationsDidChange {
+    
+}
 
 // NSToolbar delegate's methods:
 

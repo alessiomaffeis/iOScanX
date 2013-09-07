@@ -10,8 +10,10 @@
 
 @interface iSXEvaluation : NSObject
 
-
+@property (assign) NSUInteger ID;
 @property (copy) NSString *name;
 @property (copy) NSString *expression;
+
+-(id)initWithName:(NSString*)name expression:(NSString*)expression ID:(NSUInteger)ID;
 
 @end

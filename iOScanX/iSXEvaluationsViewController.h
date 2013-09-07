@@ -21,6 +21,7 @@
 
 - (void)save;
 - (NSInteger)count;
+- (NSArray*)evaluations;
 - (void)addEvaluation:(iSXEvaluation*)evaluation;
 - (IBAction)add:(id)sender;
 - (IBAction)delete:(id)sender;

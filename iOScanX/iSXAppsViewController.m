@@ -50,13 +50,13 @@
 
 - (NSArray*)selectedApps {
     
-    NSMutableArray *sel = [NSMutableArray array];
+    NSMutableArray *sel = [[NSMutableArray alloc] init];
     for (iSXApp *app in _appsArrayController.arrangedObjects) {
         if (app.selected) {
             [sel addObject:app];
         }
     }
-    return [NSArray arrayWithArray:sel];
+    return [sel autorelease];
 }
 
 - (IBAction)selectAll:(id)sender {

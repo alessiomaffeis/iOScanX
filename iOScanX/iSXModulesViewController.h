@@ -12,7 +12,7 @@
 
 @protocol iSXModulesViewDelegate
 
-- (BOOL)addModule:(NSString*)path;
+- (BOOL)addModules:(NSArray*)URLs;
 - (void)deleteModule:(iSXModule*)module;
 
 

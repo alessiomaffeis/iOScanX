@@ -14,8 +14,20 @@
     
     self = [super init];
     if (self) {
+        _ID = 0;
         _name = @"Name";
         _expression =  @"Expression";
+    }
+    return self;
+}
+
+-(id)initWithName:(NSString*)name expression:(NSString*)expression ID:(NSUInteger)ID {
+    
+    self = [super init];
+    if (self) {
+        _ID = ID;
+        _name = name;
+        _expression = expression;
     }
     return self;
 }

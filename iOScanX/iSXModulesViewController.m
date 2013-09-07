@@ -42,13 +42,13 @@
 
 - (NSArray*)selectedModules {
     
-    NSMutableArray *sel = [NSMutableArray array];
+    NSMutableArray *sel = [[NSMutableArray alloc] init];
     for (iSXModule *module in _modulesArrayController.arrangedObjects) {
         if (module.selected) {
             [sel addObject:module];
         }
     }
-    return [NSArray arrayWithArray:sel];
+    return [sel autorelease];
 }
 
 - (void)addModule:(iSXModule *)module {
@@ -69,10 +69,7 @@
         
         if (result == NSOKButton) {
             
-            for(NSURL *module in [openDlg URLs])
-            {
-                [_delegate addModule:[module path]];
-            }
+            [_delegate addModules:[openDlg URLs]];
         }
     }];
 }

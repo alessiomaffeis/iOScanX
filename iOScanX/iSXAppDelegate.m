@@ -11,7 +11,10 @@
 #import "iSXMetricsTransformer.h"
 
 
-@implementation iSXAppDelegate
+@implementation iSXAppDelegate {
+    
+    NSMutableArray *_openedModules;
+}
 
 + (void)initialize {
     
@@ -23,6 +26,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     [(iSXAppController*)_window.delegate initialize];
+    if(_openedModules != nil)
+    {
+        if ([(iSXAppController*)_window.delegate addModules:_openedModules])
+            [_openedModules removeAllObjects];
+    }
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
@@ -30,8 +38,41 @@
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
-    return [(iSXAppController*)_window.delegate addModule:filename];
+    
+    if(_openedModules == nil)
+    {
+        _openedModules = [[NSMutableArray alloc] init];
+        [_openedModules addObject:[NSURL fileURLWithPath:filename]];
+    }
+    else
+    {
+        [_openedModules addObject:[NSURL fileURLWithPath:filename]];
+        if ([(iSXAppController*)_window.delegate addModules:_openedModules])
+            [_openedModules removeAllObjects];
+    }
+    
+    return YES;
 }
+
+- (void)application:(NSApplication *)theApplication openFiles:(NSArray *)filenames {
+    
+    if(_openedModules == nil)
+    {
+        _openedModules = [[NSMutableArray alloc] init];
+        for (NSString *filename in filenames) {
+            [_openedModules addObject:[NSURL fileURLWithPath:filename]];
+        }
+    }
+    else
+    {
+        for (NSString *filename in filenames) {
+            [_openedModules addObject:[NSURL fileURLWithPath:filename]];
+        }
+        if ([(iSXAppController*)_window.delegate addModules:_openedModules])
+            [_openedModules removeAllObjects];
+    }
+}
+
 
 - (void)dealloc
 {

@@ -14,6 +14,7 @@
 
 @implementation iSXEvaluationsViewController {
     
+    NSUInteger _nextID;
     IBOutlet NSArrayController *_evaluationsArrayController;
 }
 
@@ -21,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        _nextID = 1;
     }
     
     return self;
@@ -34,12 +35,16 @@
 
 - (void)addEvaluation:(iSXEvaluation *)evaluation {
     
+    if (_nextID <= evaluation.ID)
+        _nextID = evaluation.ID + 1;
+    
     [_evaluationsArrayController addObject:evaluation];
 }
 
 - (IBAction)add:(id)sender {
     
-    [_evaluationsArrayController addObject:[[[iSXEvaluation alloc] init] autorelease]];
+    [_evaluationsArrayController addObject:[[[iSXEvaluation alloc] initWithName:@"Name" expression:@"Expression" ID:_nextID] autorelease]];
+    _nextID++;
     [self save];
 }
 
@@ -47,7 +52,7 @@
     
     NSMutableArray *toSave = [NSMutableArray array];
     for (iSXEvaluation *evaluation in _evaluationsArrayController.arrangedObjects) {
-        [toSave addObject:[NSDictionary dictionaryWithObjectsAndKeys:evaluation.name, @"name", evaluation.expression, @"expression", nil]];
+        [toSave addObject:[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithUnsignedLong:evaluation.ID], @"ID", evaluation.name, @"name", evaluation.expression, @"expression", nil]];
     }
     [_delegate saveEvaluations:toSave];
 }
@@ -55,6 +60,11 @@
 - (NSInteger)count {
     
     return [_evaluationsArrayController.arrangedObjects count];
+}
+
+- (NSArray*)evaluations {
+    
+    return [[_evaluationsArrayController.arrangedObjects copy] autorelease];
 }
 
 - (IBAction)delete:(id)sender {
