@@ -22,12 +22,13 @@
     NMSSHSession *_ssh, *_scp;
     NSTask *_relay;
     NSString *_user, *_address, *_password;
+    NSMutableDictionary *_moduleInstances;
 }
 
 - (id) init {
     self = [super init];
     if (self) {
-        _scanner = [[SXScanner alloc] init];
+        _moduleInstances = [[NSMutableDictionary alloc] init];
         _importViewController = [[iSXImportViewController alloc] initWithNibName:@"iSXImportViewController" bundle:nil];
         _appsViewController = [[iSXAppsViewController alloc] initWithNibName:@"iSXAppsViewController" bundle:nil];
         _modulesViewController = [[iSXModulesViewController alloc] initWithNibName:@"iSXModulesViewController" bundle:nil];
@@ -38,7 +39,6 @@
         _appsViewController.delegate = self;
         _modulesViewController.delegate = self;
         _evaluationsViewController.delegate = self;
-        _scanner.delegate = self;
     }
     return self;
 }
@@ -103,6 +103,18 @@
                     module.prefix = [[moduleData objectForKey:@"prefix"] stringByAppendingString:@"_"];
                     module.metrics = [moduleData objectForKey:@"metrics"];
                     module.path = [moduleFolder stringByAppendingPathComponent:moduleFile];
+                    
+                    if ([_moduleInstances objectForKey:module.ID] == nil) {
+                        
+                        NSBundle *bundle = [NSBundle bundleWithPath:module.path];
+                        Class moduleClass = [bundle principalClass];
+                        if([moduleClass conformsToProtocol:@protocol(SXModule)])
+                        {
+                            id instance = [[[moduleClass alloc] init] autorelease];
+                            [_moduleInstances setObject:instance forKey:module.ID];
+                        }
+                    }
+                    
                     [_modulesViewController performSelectorOnMainThread:@selector(addModule:) withObject:module waitUntilDone: NO];
                     break;
                 }
@@ -298,36 +310,61 @@
 
 }
 
-- (void)startScanning {
+- (BOOL)startScanning {
     
     NSArray *apps = [_appsViewController selectedApps];
+    if (apps.count == 0)
+        return NO;
+    
+    NSArray *modules = [_modulesViewController selectedModules];
+    if(modules.count == 0)
+        return NO;
+    
+    NSUInteger evalsCount = [_evaluationsViewController count];
+    if (evalsCount == 0)
+        return NO;
+    
+    if (_scanner != nil)
+        [_scanner release];
+    
+    _scanner = [[SXScanner alloc] init];
+    _scanner.delegate = self;
+    
     for (iSXApp *app in apps) {
         [_scanner addItem:app withId:app.ID];
     }
     
     NSLog(@"Number of apps: %lu",_scanner.items.count);
     
-    NSArray *modules = [_modulesViewController selectedModules];
-    for (iSXModule *module in modules) {
+    for (NSString *moduleID in _moduleInstances) {
         
-        NSBundle *bundle = [NSBundle bundleWithPath:module.path];
-        Class moduleClass = [bundle principalClass];
-        id instance = [[[moduleClass alloc] init] autorelease];
-        [_scanner addModule:instance withId:module.ID];
+        [_scanner addModule:[_moduleInstances objectForKey:moduleID] withId:moduleID];
     }
     
     NSLog(@"Number of modules: %lu",_scanner.modules.count);
 
-    [_scanner startScanning];
+    _progressSheetController.minValue = 0;
+    _progressSheetController.maxValue = apps.count*modules.count;
+    _progressSheetController.value = 0;
+    _progressSheetController.message = @"Scanning applications";
+    _progressSheetController.isIndeterminate = NO;
+    [_progressSheetController showSheet:[_mainView window]];
+
+    
+    [_scanner performSelectorInBackground:@selector(startScanning) withObject:nil];
+    
+    return YES;
 }
 
-- (void)startEvaluating {
+- (BOOL)startEvaluating {
     
     NSArray *evals = [_evaluationsViewController evaluations];
     for (iSXEvaluation *eval in evals) {
         SXEvaluation *evaluation = [[SXEvaluation alloc] initWithName:eval.name andExpression:eval.expression];
         [_scanner addEvaluation:[evaluation autorelease] withId:[NSString stringWithFormat:@"%lu_%@", eval.ID, eval.name]];
     }
+    
+    return YES;
 }
 
 // UI related methods:
@@ -378,8 +415,10 @@
 
 - (IBAction)toggleStart:(id)sender {
     
-    [self performSelectorInBackground:@selector(startScanning) withObject:nil];
-
+    if(![self startScanning]) {
+        
+        [[NSAlert alertWithMessageText:@"Scan failed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to start the scan. Please check your Applications, Modules and Evaluations."] runModal];
+    }
 }
 
 // iSXImportViewController delegate's methods:
@@ -408,23 +447,41 @@
     
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
+    
     for(NSURL *URL in URLs)
     {
         NSString *path = [URL path];
         NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingString:@"/Contents/Info.plist"]];
+        
         if(info == nil)
             return NO;
+        
         if([[info objectForKey:@"NSPrincipalClass"] isEqualToString:@"iSXMAnalysisModule"])
             return NO;
-        if(![[[info objectForKey:@"NSPrincipalClass"] substringToIndex:4] isEqualToString:@"iSXM"])
-            return NO;
+        
         NSString *moduleID = [info objectForKey:@"CFBundleIdentifier"];
+        if([_moduleInstances objectForKey:moduleID] != nil)
+            return NO;
+        
         NSString *moduleFolder = [modulesPath stringByAppendingPathComponent:moduleID];
         NSString *modulePath = [moduleFolder stringByAppendingPathComponent:[path lastPathComponent]];
         if ([fm fileExistsAtPath:moduleFolder])
             [fm removeItemAtPath:moduleFolder error:nil];
         [fm createDirectoryAtPath:moduleFolder withIntermediateDirectories:YES attributes:nil error:nil];
         [fm copyItemAtPath:path toPath:modulePath error:nil];
+        
+        NSBundle *bundle = [NSBundle bundleWithPath:modulePath];
+        Class moduleClass = [bundle principalClass];
+        if([moduleClass conformsToProtocol:@protocol(SXModule)])
+        {
+            id instance = [[[moduleClass alloc] init] autorelease];
+            [_moduleInstances setObject:instance forKey:moduleID];
+        }
+        else
+        {
+            [fm removeItemAtPath:moduleFolder error:nil];
+            return NO;
+        }
     }
     
     if (_currentView != [_modulesViewController view])
@@ -443,6 +500,7 @@
 
 - (void)deleteModule:(iSXModule*)module {
     
+    [_moduleInstances removeObjectForKey:module.ID];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
     [fm removeItemAtPath:[modulesPath stringByAppendingPathComponent:module.ID] error:nil];
@@ -461,9 +519,11 @@
 
 - (void) scanHasFinished {
     
-    [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-        [[NSAlert alertWithMessageText:@"Scan completed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"All applications have been successfully scanned."] runModal];
-    }];
+    [_progressSheetController closeSheet];
+    [self showResults:nil];
+    _toolbar.selectedItemIdentifier = @"ResultsView";
+    [_scanner release];
+    _scanner = nil;
 }
 
 - (void) evaluationHasFinished {
@@ -475,6 +535,7 @@
 
 - (void) remainingScansDidChange {
     
+    [_progressSheetController updateValue:_progressSheetController.maxValue-_scanner.remainingScans];
 }
 
 - (void) remainingEvaluationsDidChange {
@@ -501,7 +562,7 @@
     [_modulesViewController release];
     [_evaluationsViewController release];
     [_resultsViewController release];
-    [_scanner release];
+    [_moduleInstances release];
     [super dealloc];
 }
 

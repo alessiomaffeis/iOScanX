@@ -84,6 +84,7 @@
 						<string key="NSFrame">{{448, 5.5}, {50, 45}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="297035299">
@@ -119,7 +120,7 @@
 							<int key="NSCellFlags">67108864</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Box</string>
-							<object class="NSFont" key="NSSupport" id="1015527005">
+							<object class="NSFont" key="NSSupport">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">13</double>
 								<int key="NSfFlags">1044</int>
@@ -249,9 +250,13 @@
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="376318629">
 													<int key="NSCellFlags">337641536</int>
-													<int key="NSCellFlags2">2048</int>
+													<int key="NSCellFlags2">2112</int>
 													<string key="NSContents">Expression</string>
-													<reference key="NSSupport" ref="1015527005"/>
+													<object class="NSFont" key="NSSupport">
+														<string key="NSName">Monaco</string>
+														<double key="NSSize">11</double>
+														<int key="NSfFlags">16</int>
+													</object>
 													<string key="NSPlaceholderString">Expression</string>
 													<reference key="NSControlView" ref="852404296"/>
 													<reference key="NSBackgroundColor" ref="511017519"/>
@@ -272,7 +277,7 @@
 											<string key="NSColorName">controlHighlightColor</string>
 											<reference key="NSColor" ref="993370008"/>
 										</object>
-										<double key="NSRowHeight">17</double>
+										<double key="NSRowHeight">20</double>
 										<int key="NSTvFlags">1916796928</int>
 										<reference key="NSDelegate"/>
 										<reference key="NSDataSource"/>
@@ -348,7 +353,7 @@
 						<reference key="NSHScroller" ref="795501266"/>
 						<reference key="NSContentView" ref="673346567"/>
 						<reference key="NSHeaderClipView" ref="240827923"/>
-						<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+						<bytes key="NSScrollAmts">QSAAAEEgAABBsAAAQbAAAA</bytes>
 						<double key="NSMinMagnification">0.25</double>
 						<double key="NSMaxMagnification">4</double>
 						<double key="NSMagnification">1</double>
