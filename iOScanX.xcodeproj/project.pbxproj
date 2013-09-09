@@ -34,9 +34,9 @@
 		7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */; };
 		7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */; };
 		7A6CE16617B940D600B67C48 /* dumpdecrypted.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */; };
-		7A75D63917D391210014471A /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7A75D63817D391210014471A /* Images */; };
 		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
 		7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A77D14A17B82F88008AC9F5 /* tcprelay.py */; };
+		7A8437C417DE578800ACC24F /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8437C317DE578800ACC24F /* file.png */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -75,15 +75,15 @@
 
 /* Begin PBXFileReference section */
 		7A0A4F1217C678C800CAC148 /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
-		7A11654D17B3F5A600B22D65 /* usb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = usb.png; path = Images/usb.png; sourceTree = "<group>"; };
-		7A11654E17B3F5A600B22D65 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = Images/wifi.png; sourceTree = "<group>"; };
-		7A11655C17B40F0600B22D65 /* icon_256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon_256x256.icns; path = Images/icon_256x256.icns; sourceTree = "<group>"; };
-		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Cancel Red Button.icns"; path = "Images/Cancel Red Button.icns"; sourceTree = "<group>"; };
-		7A11907017551AA100EE8DD1 /* Play.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Play.icns; path = Images/Play.icns; sourceTree = "<group>"; };
-		7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Plugin Green Button.icns"; path = "Images/Plugin Green Button.icns"; sourceTree = "<group>"; };
-		7A11907217551AA100EE8DD1 /* Terminal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Terminal.icns; path = Images/Terminal.icns; sourceTree = "<group>"; };
-		7A11907317551AA100EE8DD1 /* Universal Binary.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Universal Binary.icns"; path = "Images/Universal Binary.icns"; sourceTree = "<group>"; };
-		7A11907A175527EA00EE8DD1 /* Write Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Write Document.icns"; path = "Images/Write Document.icns"; sourceTree = "<group>"; };
+		7A11654D17B3F5A600B22D65 /* usb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usb.png; sourceTree = "<group>"; };
+		7A11654E17B3F5A600B22D65 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
+		7A11655C17B40F0600B22D65 /* icon_256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon_256x256.icns; sourceTree = "<group>"; };
+		7A11906E17551AA100EE8DD1 /* Cancel Red Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Cancel Red Button.icns"; sourceTree = "<group>"; };
+		7A11907017551AA100EE8DD1 /* Play.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Play.icns; sourceTree = "<group>"; };
+		7A11907117551AA100EE8DD1 /* Plugin Green Button.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Plugin Green Button.icns"; sourceTree = "<group>"; };
+		7A11907217551AA100EE8DD1 /* Terminal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Terminal.icns; sourceTree = "<group>"; };
+		7A11907317551AA100EE8DD1 /* Universal Binary.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Universal Binary.icns"; sourceTree = "<group>"; };
+		7A11907A175527EA00EE8DD1 /* Write Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Write Document.icns"; sourceTree = "<group>"; };
 		7A11907C1755304000EE8DD1 /* iSXAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXAppsViewController.h; path = iOScanX/iSXAppsViewController.h; sourceTree = "<group>"; };
 		7A11907D1755304000EE8DD1 /* iSXAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXAppsViewController.m; path = iOScanX/iSXAppsViewController.m; sourceTree = "<group>"; };
 		7A11907E1755304000EE8DD1 /* iSXAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iSXAppsViewController.xib; path = iOScanX/iSXAppsViewController.xib; sourceTree = "<group>"; };
@@ -106,14 +106,14 @@
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
 		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
 		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
-		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = Images/trash.png; sourceTree = "<group>"; };
+		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
 		7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXProgressSheetController.m; sourceTree = "<group>"; };
-		7A75D63817D391210014471A /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		7A7602FF17AC30D1001637F4 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = tcprelay.py; path = ../Resources/tcprelay.py; sourceTree = "<group>"; };
+		7A8437C317DE578800ACC24F /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -128,7 +128,7 @@
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7AAB992C17CBD42100D45A50 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = "../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug/NMSSH.framework"; sourceTree = "<group>"; };
-		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = Images/iPhone.png; sourceTree = "<group>"; };
+		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone.png; sourceTree = "<group>"; };
 		7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXImportViewController.h; sourceTree = "<group>"; };
 		7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXImportViewController.m; sourceTree = "<group>"; };
 		7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXImportViewController.xib; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		7ACD175617B6DAA400E7BB35 /* NSString+IPValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IPValidation.h"; sourceTree = "<group>"; };
 		7ACD175717B6DAA400E7BB35 /* NSString+IPValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IPValidation.m"; sourceTree = "<group>"; };
 		7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = dumpdecrypted.dylib; path = ../Resources/dumpdecrypted.dylib; sourceTree = "<group>"; };
-		7AE6CB2917D2430B00EC9421 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = Images/add.png; sourceTree = "<group>"; };
+		7AE6CB2917D2430B00EC9421 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +175,7 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7A75D63817D391210014471A /* Images */,
+				7A8437C317DE578800ACC24F /* file.png */,
 				7AE6CB2917D2430B00EC9421 /* add.png */,
 				7A599F2217CE5C390036794A /* trash.png */,
 				7A11655C17B40F0600B22D65 /* icon_256x256.icns */,
@@ -190,7 +190,7 @@
 				7A11907317551AA100EE8DD1 /* Universal Binary.icns */,
 			);
 			name = Images;
-			path = ..;
+			path = ../Images;
 			sourceTree = "<group>";
 		};
 		7A1190811755305500EE8DD1 /* Apps */ = {
@@ -450,7 +450,7 @@
 				7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */,
 				7A599F2317CE5C390036794A /* trash.png in Resources */,
 				7AE6CB2A17D2430B00EC9421 /* add.png in Resources */,
-				7A75D63917D391210014471A /* Images in Resources */,
+				7A8437C417DE578800ACC24F /* file.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

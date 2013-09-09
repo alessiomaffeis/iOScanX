@@ -16,6 +16,7 @@
 - (id)init {
     self = [super init];
     if (self) {
+        _isVisible = NO;
         _isIndeterminate = YES;
         _minValue = 0;
         _maxValue = 100;
@@ -27,16 +28,24 @@
 
 - (void) showSheet:(NSWindow*)window {
     
-    if (_sheet == nil)
-        [NSBundle loadNibNamed: @"iSXProgressSheet" owner: self];
-    
-    [NSApp beginSheet: _sheet
-       modalForWindow: window
-        modalDelegate: nil
-       didEndSelector: nil
-          contextInfo: nil];
-    
-    [_progressBar startAnimation:self];
+    if (!_isVisible) {
+        
+        _isVisible = YES;
+        if (_sheet == nil)
+            [NSBundle loadNibNamed: @"iSXProgressSheet" owner: self];
+        
+        [NSApp beginSheet: _sheet
+           modalForWindow: window
+            modalDelegate: nil
+           didEndSelector: nil
+              contextInfo: nil];
+        
+        [_progressBar startAnimation:self];
+    }
+    else
+    {
+        [_sheet display];
+    }
 }
 
 - (void) updateMessage:(NSString*)message {
@@ -78,8 +87,11 @@
 
 - (void) closeSheet {
     
-    [NSApp endSheet: _sheet];
-    [_sheet orderOut:self];
+    if (_isVisible) {
+        [NSApp endSheet: _sheet];
+        [_sheet orderOut:self];
+        _isVisible = NO;
+    }
 }
 
 @end

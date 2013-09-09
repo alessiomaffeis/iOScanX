@@ -359,10 +359,23 @@
 - (BOOL)startEvaluating {
     
     NSArray *evals = [_evaluationsViewController evaluations];
+    
+    if (evals.count == 0)
+        return NO;
+    
     for (iSXEvaluation *eval in evals) {
         SXEvaluation *evaluation = [[SXEvaluation alloc] initWithName:eval.name andExpression:eval.expression];
         [_scanner addEvaluation:[evaluation autorelease] withId:[NSString stringWithFormat:@"%lu_%@", eval.ID, eval.name]];
     }
+    
+    _progressSheetController.minValue = 0;
+    _progressSheetController.maxValue = _scanner.items.count*evals.count;
+    _progressSheetController.value = 0;
+    _progressSheetController.message = @"Computing evaluations";
+    _progressSheetController.isIndeterminate = NO;
+    [_progressSheetController showSheet:[_mainView window]];
+    
+    [_scanner performSelectorInBackground:@selector(startEvaluating) withObject:nil];
     
     return YES;
 }
@@ -519,18 +532,16 @@
 
 - (void) scanHasFinished {
     
+    [self startEvaluating];
+}
+
+- (void) evaluationHasFinished {
+    
     [_progressSheetController closeSheet];
     [self showResults:nil];
     _toolbar.selectedItemIdentifier = @"ResultsView";
     [_scanner release];
     _scanner = nil;
-}
-
-- (void) evaluationHasFinished {
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-        [[NSAlert alertWithMessageText:@"Evaluation completed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"All applications have been successfully evaluated."] runModal];
-    }];
 }
 
 - (void) remainingScansDidChange {
@@ -540,6 +551,7 @@
 
 - (void) remainingEvaluationsDidChange {
     
+    [_progressSheetController updateValue:_progressSheetController.maxValue-_scanner.remainingEvaluations];
 }
 
 // NSToolbar delegate's methods:

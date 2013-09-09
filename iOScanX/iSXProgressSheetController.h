@@ -10,6 +10,7 @@
 
 @interface iSXProgressSheetController : NSObject
 
+@property (readonly) BOOL isVisible;
 @property (assign) BOOL isIndeterminate;
 @property (assign) NSInteger minValue;
 @property (assign) NSInteger maxValue;
