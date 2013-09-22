@@ -536,7 +536,7 @@
 }
 
 - (void) evaluationHasFinished {
-    
+        
     [_progressSheetController closeSheet];
     [self showResults:nil];
     _toolbar.selectedItemIdentifier = @"ResultsView";

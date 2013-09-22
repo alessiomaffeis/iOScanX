@@ -12,7 +12,10 @@
 
 @end
 
-@implementation iSXResultsViewController
+@implementation iSXResultsViewController {
+    
+    IBOutlet NSTreeController *_treeController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
