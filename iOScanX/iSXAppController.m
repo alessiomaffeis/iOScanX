@@ -23,6 +23,7 @@
     NSTask *_relay;
     NSString *_user, *_address, *_password;
     NSMutableDictionary *_moduleInstances;
+    NSMutableDictionary *_results;
 }
 
 - (id) init {
@@ -39,6 +40,7 @@
         _appsViewController.delegate = self;
         _modulesViewController.delegate = self;
         _evaluationsViewController.delegate = self;
+        _resultsViewController.delegate = self;
     }
     return self;
 }
@@ -137,6 +139,11 @@
             [_evaluationsViewController performSelectorOnMainThread:@selector(addEvaluation:) withObject:evaluation waitUntilDone: NO];
         }
     }
+}
+
+- (void) loadResults {
+    
+    [_resultsViewController updateResults:_results];
 }
 
 - (void)importApps {
@@ -528,6 +535,21 @@
     
 }
 
+// iSXResultsViewController delegate's methods:
+
+- (void)exportResults {
+    
+    NSSavePanel*    panel = [NSSavePanel savePanel];
+    [panel setNameFieldStringValue:@"results.xml"];
+    [panel beginSheetModalForWindow:[_mainView window] completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            NSURL* theFile = [panel URL];
+            [_results writeToURL:theFile atomically:YES];
+        }
+    }];
+    }
+
 // SXScanner delegate's methods:
 
 - (void) scanHasFinished {
@@ -536,8 +558,34 @@
 }
 
 - (void) evaluationHasFinished {
+    
+    _progressSheetController.isIndeterminate = YES;
+    [_progressSheetController updateMessage:@"Generating results"];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
+    
+    if (_results != nil)
+        [_results release];
+    _results = [[NSMutableDictionary alloc] init];
+    
+    for (NSString *appId in _scanner.computedEvaluations) {
+        NSDictionary *meta = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/iTunesMetadata.plist", appsPath, appId]];
+        
+        NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [meta objectForKey:@"bundleDisplayName"], @"name",
+//                                 [meta objectForKey:@"bundleShortVersionString"], @"version",
+                                 [meta objectForKey:@"artistName"], @"developer",
+                                 [meta objectForKey:@"genre"], @"category",
+                                 [_scanner.computedEvaluations objectForKey:appId], @"evaluations",
+                                 nil];
+        [_results setObject:details forKey:appId];
+                
+        [meta release];
+    }
         
     [_progressSheetController closeSheet];
+    [self loadResults];
     [self showResults:nil];
     _toolbar.selectedItemIdentifier = @"ResultsView";
     [_scanner release];

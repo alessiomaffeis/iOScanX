@@ -20,7 +20,7 @@
 #import "iSXModule.h"
 #import "iSXEvaluation.h"
 
-@interface  iSXAppController : NSObject <NSWindowDelegate, SXScannerDelegate, iSXImportViewDelegate, iSXAppsViewDelegate, iSXModulesViewDelegate, iSXEvaluationsViewDelegate>
+@interface  iSXAppController : NSObject <NSWindowDelegate, SXScannerDelegate, iSXImportViewDelegate, iSXAppsViewDelegate, iSXModulesViewDelegate, iSXEvaluationsViewDelegate, iSXResultsViewDelegate>
 
 @property (assign) IBOutlet NSView *mainView;
 @property (readonly) SXScanner *scanner;

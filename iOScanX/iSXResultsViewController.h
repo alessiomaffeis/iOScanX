@@ -8,6 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface iSXResultsViewController : NSViewController
+@protocol iSXResultsViewDelegate
+
+- (void)exportResults;
+
+@end
+
+@interface iSXResultsViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (assign) id<iSXResultsViewDelegate> delegate;
+
+- (void) updateResults:(NSMutableDictionary *)results;
+- (IBAction)export:(id)sender;
 
 @end
