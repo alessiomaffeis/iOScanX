@@ -9,6 +9,7 @@
 #import "iSXAppDelegate.h"
 #import "iSXAppController.h"
 #import "iSXMetricsTransformer.h"
+#import "iSXResultsTransformer.h"
 
 
 @implementation iSXAppDelegate {
@@ -19,8 +20,12 @@
 + (void)initialize {
     
     iSXMetricsTransformer *metricsTransformer = [[[iSXMetricsTransformer alloc] init] autorelease];
+    iSXResultsTransformer *resultsTransformer = [[[iSXResultsTransformer alloc] init] autorelease];
+
     [NSValueTransformer setValueTransformer:metricsTransformer
                                     forName:@"MetricsTransformer"];
+    [NSValueTransformer setValueTransformer:resultsTransformer
+                                    forName:@"ResultsTransformer"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

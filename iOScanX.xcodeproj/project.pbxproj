@@ -23,6 +23,7 @@
 		7A11908E1755467900EE8DD1 /* iSXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A11908D1755467800EE8DD1 /* iSXApp.m */; };
 		7A1190911755563500EE8DD1 /* iSXAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1190901755563400EE8DD1 /* iSXAppController.m */; };
 		7A19863E17D77D7400EB0B8E /* iSXEvaluation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A19863D17D77D7400EB0B8E /* iSXEvaluation.m */; };
+		7A2717E217FAEC4E00CD62D7 /* iSXResultsTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2717E117FAEC4E00CD62D7 /* iSXResultsTransformer.m */; };
 		7A2ABB8317D617AE00228940 /* iSXMetricsTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8217D617AE00228940 /* iSXMetricsTransformer.m */; };
 		7A2ABB8A17D64B0700228940 /* iSXAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8917D64B0700228940 /* iSXAppView.m */; };
 		7A2ABB8D17D64E7100228940 /* iSXAppCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8C17D64E7100228940 /* iSXAppCollectionViewItem.m */; };
@@ -37,6 +38,7 @@
 		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
 		7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A77D14A17B82F88008AC9F5 /* tcprelay.py */; };
 		7A8437C417DE578800ACC24F /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8437C317DE578800ACC24F /* file.png */; };
+		7A9CE75917FAFDC500E823F3 /* iSXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CE75817FAFDC500E823F3 /* iSXResult.m */; };
 		7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9EE55A16E772E8004770AA /* Cocoa.framework */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -93,6 +95,8 @@
 		7A1190901755563400EE8DD1 /* iSXAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXAppController.m; sourceTree = "<group>"; };
 		7A19863C17D77D7300EB0B8E /* iSXEvaluation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXEvaluation.h; sourceTree = "<group>"; };
 		7A19863D17D77D7400EB0B8E /* iSXEvaluation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXEvaluation.m; sourceTree = "<group>"; };
+		7A2717E017FAEC4E00CD62D7 /* iSXResultsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResultsTransformer.h; sourceTree = "<group>"; };
+		7A2717E117FAEC4E00CD62D7 /* iSXResultsTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResultsTransformer.m; sourceTree = "<group>"; };
 		7A2ABB8117D617AE00228940 /* iSXMetricsTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXMetricsTransformer.h; path = iOScanX/iSXMetricsTransformer.h; sourceTree = "<group>"; };
 		7A2ABB8217D617AE00228940 /* iSXMetricsTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXMetricsTransformer.m; path = iOScanX/iSXMetricsTransformer.m; sourceTree = "<group>"; };
 		7A2ABB8817D64B0700228940 /* iSXAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXAppView.h; path = iOScanX/iSXAppView.h; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = tcprelay.py; path = ../Resources/tcprelay.py; sourceTree = "<group>"; };
 		7A8437C317DE578800ACC24F /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		7A9CE75717FAFDC500E823F3 /* iSXResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResult.h; sourceTree = "<group>"; };
+		7A9CE75817FAFDC500E823F3 /* iSXResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResult.m; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9EE55A16E772E8004770AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A9EE55D16E772E8004770AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -360,6 +366,10 @@
 				7AC6F5AE177320EF00E3108A /* iSXResultsViewController.h */,
 				7AC6F5AF177320EF00E3108A /* iSXResultsViewController.m */,
 				7AC6F5B0177320EF00E3108A /* iSXResultsViewController.xib */,
+				7A2717E017FAEC4E00CD62D7 /* iSXResultsTransformer.h */,
+				7A2717E117FAEC4E00CD62D7 /* iSXResultsTransformer.m */,
+				7A9CE75717FAFDC500E823F3 /* iSXResult.h */,
+				7A9CE75817FAFDC500E823F3 /* iSXResult.m */,
 			);
 			name = Results;
 			sourceTree = "<group>";
@@ -481,6 +491,8 @@
 				7A2ABB8D17D64E7100228940 /* iSXAppCollectionViewItem.m in Sources */,
 				7A2ABB9317D69B5800228940 /* iSXTextFieldCell.m in Sources */,
 				7A19863E17D77D7400EB0B8E /* iSXEvaluation.m in Sources */,
+				7A2717E217FAEC4E00CD62D7 /* iSXResultsTransformer.m in Sources */,
+				7A9CE75917FAFDC500E823F3 /* iSXResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -143,7 +143,17 @@
 
 - (void) loadResults {
     
-    [_resultsViewController updateResults:_results];
+    [_resultsViewController removeAllResults];
+    
+    for(NSString *appID in _results)
+    {
+        iSXResult *result = [[[iSXResult alloc] init] autorelease];
+        NSDictionary *details = [_results objectForKey:appID];
+        result.name = [details objectForKey:@"name"];
+        result.evaluations = [details objectForKey:@"evaluations"];
+        [_resultsViewController performSelectorOnMainThread:@selector(addResult:) withObject:result waitUntilDone:NO];
+    }
+
 }
 
 - (void)importApps {
@@ -431,6 +441,8 @@
     [self.mainView addSubview:[_resultsViewController view]];
     _currentView = [_resultsViewController view];
     [[_resultsViewController view] setFrame:[self.mainView bounds]];
+    [self performSelectorInBackground:@selector(loadResults) withObject:nil];
+
 }
 
 - (IBAction)toggleStart:(id)sender {
@@ -569,27 +581,27 @@
         [_results release];
     _results = [[NSMutableDictionary alloc] init];
     
-    for (NSString *appId in _scanner.computedEvaluations) {
-        NSDictionary *meta = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/iTunesMetadata.plist", appsPath, appId]];
+    for (NSString *appID in _scanner.computedEvaluations) {
+        NSDictionary *meta = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/iTunesMetadata.plist", appsPath, appID]];
         
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [meta objectForKey:@"bundleDisplayName"], @"name",
 //                                 [meta objectForKey:@"bundleShortVersionString"], @"version",
                                  [meta objectForKey:@"artistName"], @"developer",
                                  [meta objectForKey:@"genre"], @"category",
-                                 [_scanner.computedEvaluations objectForKey:appId], @"evaluations",
+                                 [_scanner.computedEvaluations objectForKey:appID], @"evaluations",
                                  nil];
-        [_results setObject:details forKey:appId];
+        [_results setObject:details forKey:appID];
                 
         [meta release];
     }
         
-    [_progressSheetController closeSheet];
-    [self loadResults];
-    [self showResults:nil];
     _toolbar.selectedItemIdentifier = @"ResultsView";
     [_scanner release];
     _scanner = nil;
+    [_progressSheetController closeSheet];
+    [self performSelectorOnMainThread:@selector(showResults:) withObject:nil waitUntilDone:NO];
+
 }
 
 - (void) remainingScansDidChange {

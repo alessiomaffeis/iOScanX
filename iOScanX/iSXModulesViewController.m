@@ -29,6 +29,11 @@
     return self;
 }
 
+-(void)awakeFromNib {
+    
+    [_modulesArrayController setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)] autorelease]]];
+}
+
 - (BOOL)moduleExistsWithID:(NSString*)moduleID {
     
     for (iSXModule *module in _modulesArrayController.arrangedObjects) {

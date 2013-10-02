@@ -28,7 +28,7 @@
         [formattedMetrics appendAttributedString:[[[NSAttributedString alloc]
                                                   initWithString:[metric objectForKey:@"name"]
                                                   attributes:@{NSFontAttributeName : [NSFont boldSystemFontOfSize:11]}] autorelease]];
-        [formattedMetrics appendAttributedString:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@": %@\n",[metric objectForKey:@"description"]]] autorelease]];
+        [formattedMetrics appendAttributedString:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@": \t%@\n",[metric objectForKey:@"description"]]] autorelease]];
     }
     return formattedMetrics;
 }

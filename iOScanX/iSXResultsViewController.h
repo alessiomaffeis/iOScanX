@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "iSXResult.h"
 
 @protocol iSXResultsViewDelegate
 
@@ -14,11 +15,13 @@
 
 @end
 
-@interface iSXResultsViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface iSXResultsViewController : NSViewController <NSTableViewDelegate>
 
 @property (assign) id<iSXResultsViewDelegate> delegate;
+@property (retain) NSMutableArray *results;
 
-- (void) updateResults:(NSMutableDictionary *)results;
+- (void)addResult:(iSXResult*)result;
+- (void)removeAllResults;
 - (IBAction)export:(id)sender;
 
 @end

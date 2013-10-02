@@ -14,50 +14,35 @@
 
 @implementation iSXResultsViewController {
     
-    IBOutlet NSButton *_exportButton;
-    IBOutlet NSOutlineView *_outlineView;
-    NSMutableArray *_apps;
-    NSMutableDictionary *_evaluations;
+    IBOutlet NSArrayController *_resultsArrayController;
     NSUInteger _evalCount;
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        _results = [[NSMutableArray alloc] init];
     }
     
     return self;
 }
 
+-(void)awakeFromNib {
+    
+    [_resultsArrayController setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)] autorelease]]];
+}
 
-- (void) updateResults:(NSMutableDictionary *)results {
+- (void)addResult:(iSXResult *)result {
     
-    if (_apps != nil)
-        [_apps release];
-    if (_evaluations != nil)
-        [_evaluations release];
+    [_resultsArrayController addObject:result];
+    _evalCount = result.evaluations.count;
+}
+
+- (void)removeAllResults {
     
-    _apps = [[NSMutableArray alloc] init];
-    _evaluations = [[NSMutableDictionary alloc] init];
-    
-    NSDictionary *evaluations;
-    
-    for (NSString *appID in results) {
-        
-        NSString *name = [[results objectForKey:appID] objectForKey:@"name"];
-        evaluations = [[results objectForKey:appID] objectForKey:@"evaluations"];
-        [_apps addObject:name];
-        [_evaluations setObject:evaluations forKey:name];
-    }
-    
-    if (evaluations != nil) {
-        _evalCount = evaluations.count;
-    }
-    [_exportButton setEnabled:YES];
-    [_outlineView reloadData];
+    NSRange range = NSMakeRange(0, [[_resultsArrayController arrangedObjects] count]);
+    [_resultsArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
 }
 
 - (IBAction)export:(id)sender {
@@ -65,66 +50,19 @@
     [_delegate exportResults];
 }
 
-
-//  NSOutlineViewDelegate methods:
-
-- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
+- (void)dealloc {
     
-    if (![_apps containsObject:item])
-    {
-        return 18 * _evalCount;
-    }
-    
-    return 17;
+    [_results release];
+    [super dealloc];
 }
 
+// NSTableView's delegate methods:
 
-// NSOutlineViewDataSource methods:
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     
-    if (item == nil) { //item is nil when the outline view wants to inquire for root level items
-        return [_apps objectAtIndex:index];
-    }
-    else
-    {
-        return [[[[_evaluations objectForKey:item] description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"{} \n"]] retain];
-    }
-    
-    return nil;
+    return 4 + _evalCount*14;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-    if ([_apps containsObject:item])
-    {
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
-}
-
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
-{
-    
-    if (item == nil)
-    {
-        return [_apps count];
-    }
-    
-    if ([_apps containsObject:item])
-    {
-        return 1;
-    }
-    
-    return 0;
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{
-    return item;
-}
+//
 
 @end

@@ -19,6 +19,7 @@
 #import "iSXApp.h"
 #import "iSXModule.h"
 #import "iSXEvaluation.h"
+#import "iSXResult.h"
 
 @interface  iSXAppController : NSObject <NSWindowDelegate, SXScannerDelegate, iSXImportViewDelegate, iSXAppsViewDelegate, iSXModulesViewDelegate, iSXEvaluationsViewDelegate, iSXResultsViewDelegate>
 
