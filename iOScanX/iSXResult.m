@@ -22,6 +22,7 @@
 -(void)dealloc {
     
     [_name release];
+    [_evaluations release];
     [super dealloc];
 }
 

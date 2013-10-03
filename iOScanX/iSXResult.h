@@ -11,6 +11,6 @@
 @interface iSXResult : NSObject
 
 @property (copy) NSString *name;
-@property (assign) NSDictionary *evaluations;
+@property (retain) NSDictionary *evaluations;
 
 @end

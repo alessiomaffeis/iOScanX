@@ -257,20 +257,22 @@
                                     
                                     NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", appID];
                                     NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", appID];
-                                    NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", appID, appName];
-                                    NSString *tar = [bundle stringByAppendingPathExtension:@"tar"];
+                                    NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", appID, escAppName];
+                                    NSString *escTar = [bundle stringByAppendingPathExtension:@"tar"];
+                                    NSString *tar = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@.tar", appID, appName];
                                     
-                                    NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf %@ --directory=/var/mobile/Applications/%@ %@", tar, appID, appName] error:&error];
+                                    NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf %@ --directory=/var/mobile/Applications/%@ %@", escTar, appID, escAppName] error:&error];
                                     
                                     [_progressSheetController incrementValue];
 
                                     BOOL ok = YES;
                                     if (tarred != nil)
                                     {
+                                        
                                         ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
                                         ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
                                         ok &= [_scp.channel downloadFile:tar to:[dstPath stringByAppendingPathComponent:[tar lastPathComponent]]];
-                                        [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf %@", tar] error:&error];
+                                        [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf %@", escTar] error:&error];
                                     }
                                     else
                                     {
@@ -584,11 +586,18 @@
     for (NSString *appID in _scanner.computedEvaluations) {
         NSDictionary *meta = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/iTunesMetadata.plist", appsPath, appID]];
         
+        NSString *name = [meta objectForKey:@"bundleDisplayName"] != nil ? [meta objectForKey:@"bundleDisplayName"] : @"Undefined";
+        NSString *developer = [meta objectForKey:@"artistName"] != nil ? [meta objectForKey:@"artistName"] : @"Undefined";
+        NSString *category = [meta objectForKey:@"genre"] != nil ? [meta objectForKey:@"genre"] : @"Undefined";
+        NSString *version = [meta objectForKey:@"bundleShortVersionString"];
+        if (version == nil)
+            version = [meta objectForKey:@"bundleVersion"] != nil ? [meta objectForKey:@"bundleVersion"] : @"Undefined";
+        
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [meta objectForKey:@"bundleDisplayName"], @"name",
-//                                 [meta objectForKey:@"bundleShortVersionString"], @"version",
-                                 [meta objectForKey:@"artistName"], @"developer",
-                                 [meta objectForKey:@"genre"], @"category",
+                                 name, @"name",
+                                 version, @"version",
+                                 developer, @"developer",
+                                 category, @"category",
                                  [_scanner.computedEvaluations objectForKey:appID], @"evaluations",
                                  nil];
         [_results setObject:details forKey:appID];
