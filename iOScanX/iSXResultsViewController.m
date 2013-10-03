@@ -35,8 +35,8 @@
 
 - (void)addResult:(iSXResult *)result {
     
-    [_resultsArrayController addObject:result];
     _evalCount = result.evaluations.count;
+    [_resultsArrayController addObject:result];
 }
 
 - (void)removeAllResults {

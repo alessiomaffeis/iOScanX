@@ -31,6 +31,7 @@
 		7A38B2D917D4AB8C00DC2CC3 /* iSXModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A38B2D817D4AB8C00DC2CC3 /* iSXModule.m */; };
 		7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */; };
 		7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */; };
+		7A5941E017FDEC4C00FD7532 /* usbmux.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A5941DF17FDEC4C00FD7532 /* usbmux.py */; };
 		7A599F2317CE5C390036794A /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A599F2217CE5C390036794A /* trash.png */; };
 		7A6CE16217B8E21900B67C48 /* iSXProgressSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */; };
 		7A6CE16517B8E53F00B67C48 /* iSXProgressSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6CE16417B8E53F00B67C48 /* iSXProgressSheetController.m */; };
@@ -110,6 +111,7 @@
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
 		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
 		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
+		7A5941DF17FDEC4C00FD7532 /* usbmux.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = usbmux.py; sourceTree = "<group>"; };
 		7A599F2217CE5C390036794A /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		7A6CE16117B8E21900B67C48 /* iSXProgressSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXProgressSheet.xib; sourceTree = "<group>"; };
 		7A6CE16317B8E53F00B67C48 /* iSXProgressSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXProgressSheetController.h; sourceTree = "<group>"; };
@@ -240,10 +242,12 @@
 		7A77D14817B82F69008AC9F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7A5941DF17FDEC4C00FD7532 /* usbmux.py */,
 				7A77D14A17B82F88008AC9F5 /* tcprelay.py */,
 				7ACD384A17B0FF9C00E8C1B4 /* dumpdecrypted.dylib */,
 			);
 			name = Resources;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 		7A9EE54B16E772E8004770AA = {
@@ -461,6 +465,7 @@
 				7A599F2317CE5C390036794A /* trash.png in Resources */,
 				7AE6CB2A17D2430B00EC9421 /* add.png in Resources */,
 				7A8437C417DE578800ACC24F /* file.png in Resources */,
+				7A5941E017FDEC4C00FD7532 /* usbmux.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

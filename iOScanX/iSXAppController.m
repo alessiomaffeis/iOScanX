@@ -243,12 +243,14 @@
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
                                 
                                 NSString *binaryName = [appName stringByDeletingPathExtension];
-                                NSString *escAppName = [appName stringByReplacingOccurrencesOfString:@" "
-                                                                                          withString:@"\\ "];
-                                NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@" "
-                                                                                             withString:@"\\ "];
+                                NSString *escAppName = [appName stringByReplacingOccurrencesOfString:@"'"
+                                                                                          withString:@"'\\''"];
+                                NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@"'"
+                                                                                             withString:@"'\\''"];
                                 
-                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib /var/mobile/Applications/%@/%@/%@", appID, escAppName, escBinName] error:&error];
+                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib '/var/mobile/Applications/%@/%@/%@'", appID, escAppName, escBinName] error:&error];
+                               
+                                decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"mv '%@.decrypted' '/var/mobile/Applications/%@/%@/%@.decrypted'", escBinName, appID, escAppName, escBinName] error:&error];
                                 
                                 if (decrypted != nil)
                                 {
@@ -261,7 +263,7 @@
                                     NSString *escTar = [bundle stringByAppendingPathExtension:@"tar"];
                                     NSString *tar = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@.tar", appID, appName];
                                     
-                                    NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf %@ --directory=/var/mobile/Applications/%@ %@", escTar, appID, escAppName] error:&error];
+                                    NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf '%@' '--directory=/var/mobile/Applications/%@' '%@'", escTar, appID, escAppName] error:&error];
                                     
                                     [_progressSheetController incrementValue];
 
@@ -272,7 +274,7 @@
                                         ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
                                         ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
                                         ok &= [_scp.channel downloadFile:tar to:[dstPath stringByAppendingPathComponent:[tar lastPathComponent]]];
-                                        [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf %@", escTar] error:&error];
+                                        [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf '%@'", escTar] error:&error];
                                     }
                                     else
                                     {

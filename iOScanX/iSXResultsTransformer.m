@@ -22,7 +22,6 @@
 
 - (id)transformedValue:(id)value
 {
-    NSLog(@"Ciao");
     NSMutableAttributedString *formattedResults = [[[NSMutableAttributedString alloc] init] autorelease];
     
     for (NSString *evalID in value) {
