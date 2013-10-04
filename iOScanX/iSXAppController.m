@@ -73,7 +73,8 @@
                 if ([[appFile pathExtension] isEqualToString:@"tar"]) {
                     app.name = [appFile stringByDeletingPathExtension];
                     app.path = [appFolder stringByAppendingPathComponent:appFile];
-                    app.iconPath = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
+                    NSString *appIcon = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
+                    app.iconPath = [fm fileExistsAtPath:appIcon] ? appIcon : [[NSBundle mainBundle] pathForResource:@"noIcon" ofType:@"png"];
                     [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
                     break;
                 }
@@ -247,10 +248,8 @@
                                                                                           withString:@"'\\''"];
                                 NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@"'"
                                                                                              withString:@"'\\''"];
-                                
-                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib '/var/mobile/Applications/%@/%@/%@'", appID, escAppName, escBinName] error:&error];
-                               
-                                decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"mv '%@.decrypted' '/var/mobile/Applications/%@/%@/%@.decrypted'", escBinName, appID, escAppName, escBinName] error:&error];
+                                                                
+                                NSString *decrypted = [_ssh.channel execute:[NSString stringWithFormat:@"cd '/var/mobile/Applications/%@/%@' && DYLD_INSERT_LIBRARIES=/var/local/dumpdecrypted.dylib '/var/mobile/Applications/%@/%@/%@'",appID, escAppName, appID, escAppName, escBinName] error:&error];
                                 
                                 if (decrypted != nil)
                                 {
@@ -270,10 +269,9 @@
                                     BOOL ok = YES;
                                     if (tarred != nil)
                                     {
-                                        
-                                        ok &= [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
-                                        ok &= [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
-                                        ok &= [_scp.channel downloadFile:tar to:[dstPath stringByAppendingPathComponent:[tar lastPathComponent]]];
+                                        [_scp.channel downloadFile:artwork to:[dstPath stringByAppendingPathComponent:@"iTunesArtWork" ]];
+                                        [_scp.channel downloadFile:meta to:[dstPath stringByAppendingPathComponent:@"iTunesMetadata.plist"]];
+                                        ok = [_scp.channel downloadFile:tar to:[dstPath stringByAppendingPathComponent:[tar lastPathComponent]]];
                                         [_ssh.channel execute:[NSString stringWithFormat:@"rm -rf '%@'", escTar] error:&error];
                                     }
                                     else
@@ -284,7 +282,7 @@
                                     if (!ok)
                                     {
                                         [fm removeItemAtPath:dstPath error:nil];
-                                        [[NSAlert alertWithMessageText:@"Import error" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import the application from the device."] runModal];
+                                        [[NSAlert alertWithMessageText:@"Import error" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"It was not possible to import %@ from the device.", appName] runModal];
                                     }
                                 }
                                 else
@@ -588,7 +586,7 @@
     for (NSString *appID in _scanner.computedEvaluations) {
         NSDictionary *meta = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@/iTunesMetadata.plist", appsPath, appID]];
         
-        NSString *name = [meta objectForKey:@"bundleDisplayName"] != nil ? [meta objectForKey:@"bundleDisplayName"] : @"Undefined";
+        NSString *name = [meta objectForKey:@"bundleDisplayName"] != nil ? [meta objectForKey:@"bundleDisplayName"] : [(iSXApp*)[_scanner.items objectForKey:appID] name];
         NSString *developer = [meta objectForKey:@"artistName"] != nil ? [meta objectForKey:@"artistName"] : @"Undefined";
         NSString *category = [meta objectForKey:@"genre"] != nil ? [meta objectForKey:@"genre"] : @"Undefined";
         NSString *version = [meta objectForKey:@"bundleShortVersionString"];

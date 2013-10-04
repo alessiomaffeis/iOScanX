@@ -28,6 +28,7 @@
 		7A2ABB8A17D64B0700228940 /* iSXAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8917D64B0700228940 /* iSXAppView.m */; };
 		7A2ABB8D17D64E7100228940 /* iSXAppCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB8C17D64E7100228940 /* iSXAppCollectionViewItem.m */; };
 		7A2ABB9317D69B5800228940 /* iSXTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB9217D69B5800228940 /* iSXTextFieldCell.m */; };
+		7A317C4C17FEEF1900E5E66E /* noIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A317C4B17FEEF1900E5E66E /* noIcon.png */; };
 		7A38B2D917D4AB8C00DC2CC3 /* iSXModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A38B2D817D4AB8C00DC2CC3 /* iSXModule.m */; };
 		7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */; };
 		7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */; };
@@ -106,6 +107,7 @@
 		7A2ABB8C17D64E7100228940 /* iSXAppCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXAppCollectionViewItem.m; path = iOScanX/iSXAppCollectionViewItem.m; sourceTree = "<group>"; };
 		7A2ABB9117D69B5700228940 /* iSXTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXTextFieldCell.h; path = iOScanX/iSXTextFieldCell.h; sourceTree = "<group>"; };
 		7A2ABB9217D69B5800228940 /* iSXTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXTextFieldCell.m; path = iOScanX/iSXTextFieldCell.m; sourceTree = "<group>"; };
+		7A317C4B17FEEF1900E5E66E /* noIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noIcon.png; sourceTree = "<group>"; };
 		7A38B2D717D4AB8C00DC2CC3 /* iSXModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXModule.h; path = iOScanX/iSXModule.h; sourceTree = "<group>"; };
 		7A38B2D817D4AB8C00DC2CC3 /* iSXModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXModule.m; path = iOScanX/iSXModule.m; sourceTree = "<group>"; };
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A317C4B17FEEF1900E5E66E /* noIcon.png */,
 				7A8437C317DE578800ACC24F /* file.png */,
 				7AE6CB2917D2430B00EC9421 /* add.png */,
 				7A599F2217CE5C390036794A /* trash.png */,
@@ -466,6 +469,7 @@
 				7AE6CB2A17D2430B00EC9421 /* add.png in Resources */,
 				7A8437C417DE578800ACC24F /* file.png in Resources */,
 				7A5941E017FDEC4C00FD7532 /* usbmux.py in Resources */,
+				7A317C4C17FEEF1900E5E66E /* noIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

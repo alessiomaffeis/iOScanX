@@ -14,7 +14,7 @@
     
     self = [super init];
     if (self) {
-        _name = @"";
+        _name = @"Undefined";
         _iconPath =  @"";
         _path =  @"";
         _ID =  @"";
