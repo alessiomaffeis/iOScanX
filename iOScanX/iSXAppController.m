@@ -262,7 +262,11 @@
                                     NSString *escTar = [bundle stringByAppendingPathExtension:@"tar"];
                                     NSString *tar = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@.tar", appID, appName];
                                     
+                                    [_ssh.channel execute:[NSString stringWithFormat:@"mv '/var/mobile/Applications/%@/%@/%@' '/var/mobile/Applications/%@/%@'",appID, escAppName, escBinName, appID, escBinName] error:&error];
+                                    
                                     NSString *tarred = [_ssh.channel execute:[NSString stringWithFormat:@"tar -cf '%@' '--directory=/var/mobile/Applications/%@' '%@'", escTar, appID, escAppName] error:&error];
+                                    
+                                    [_ssh.channel execute:[NSString stringWithFormat:@"mv '/var/mobile/Applications/%@/%@' '/var/mobile/Applications/%@/%@/%@'",appID, escBinName, appID, escAppName, escBinName] error:&error];
                                     
                                     [_progressSheetController incrementValue];
 
@@ -469,10 +473,13 @@
 // iSXAppsViewController delegate's methods:
 
 - (void)deleteApp:(iSXApp*)app {
- 
+    
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *appsPath = [fm applicationSupportSubDirectory:@"Apps"];
-    [fm removeItemAtPath:[appsPath stringByAppendingPathComponent:app.ID] error:nil];
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [fm removeItemAtPath:[appsPath stringByAppendingPathComponent:app.ID] error:nil];
+    });
 }
 
 // iSXModulesViewController delegate's methods:
@@ -537,7 +544,10 @@
     [_moduleInstances removeObjectForKey:module.ID];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *modulesPath = [fm applicationSupportSubDirectory:@"Modules"];
-    [fm removeItemAtPath:[modulesPath stringByAppendingPathComponent:module.ID] error:nil];
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [fm removeItemAtPath:[modulesPath stringByAppendingPathComponent:module.ID] error:nil];
+    });
 }
 
 // iSXEvaluationsViewController delegate's methods:

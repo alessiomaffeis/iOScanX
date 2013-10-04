@@ -28,7 +28,6 @@
 //    self.layer.borderWidth = 1;
     self.layer.masksToBounds = YES;
     [super drawRect:dirtyRect];
-    
 }
 
 @end
