@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>81BA28C7-AE59-4B0A-AF2C-6732144C06D5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iOScanX</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>83EF28F3-5F32-4D25-9C36-77869CB9D9C2</key>
+		<string>https://github.com/alessiomaffeis/iOScanX.git</string>
+		<key>9FC2AD10-30EE-4B59-8B0A-71E5595B07A2</key>
+		<string>https://github.com/alessiomaffeis/ScanX.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOScanX.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>83EF28F3-5F32-4D25-9C36-77869CB9D9C2</key>
+		<string>../..</string>
+		<key>9FC2AD10-30EE-4B59-8B0A-71E5595B07A2</key>
+		<string>../../../ScanX</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alessiomaffeis/iOScanX.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>83EF28F3-5F32-4D25-9C36-77869CB9D9C2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>83EF28F3-5F32-4D25-9C36-77869CB9D9C2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOScanX</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9FC2AD10-30EE-4B59-8B0A-71E5595B07A2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ScanX</string>
+		</dict>
+	</array>
+</dict>
+</plist>

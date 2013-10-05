@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A0A4F1317C678C800CAC148 /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0A4F1217C678C800CAC148 /* ScanX.framework */; };
-		7A0A4F1417C678CE00CAC148 /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A0A4F1217C678C800CAC148 /* ScanX.framework */; };
 		7A11654F17B3F5A600B22D65 /* usb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654D17B3F5A600B22D65 /* usb.png */; };
 		7A11655017B3F5A600B22D65 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A11654E17B3F5A600B22D65 /* wifi.png */; };
 		7A11655D17B40F0600B22D65 /* icon_256x256.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A11655C17B40F0600B22D65 /* icon_256x256.icns */; };
@@ -30,6 +28,10 @@
 		7A2ABB9317D69B5800228940 /* iSXTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ABB9217D69B5800228940 /* iSXTextFieldCell.m */; };
 		7A317C4C17FEEF1900E5E66E /* noIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A317C4B17FEEF1900E5E66E /* noIcon.png */; };
 		7A38B2D917D4AB8C00DC2CC3 /* iSXModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A38B2D817D4AB8C00DC2CC3 /* iSXModule.m */; };
+		7A4B4F651800AB4100D93C47 /* ScanX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4B4F641800AB4100D93C47 /* ScanX.framework */; };
+		7A4B4F661800AB4D00D93C47 /* ScanX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A4B4F641800AB4100D93C47 /* ScanX.framework */; };
+		7A4B4F681800ABD900D93C47 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4B4F671800ABD900D93C47 /* NMSSH.framework */; };
+		7A4B4F691800ABDD00D93C47 /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7A4B4F671800ABD900D93C47 /* NMSSH.framework */; };
 		7A589D0017C92B0D0046ECB3 /* iSXSelectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */; };
 		7A589D0417C92BC00046ECB3 /* iSXSelectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */; };
 		7A5941E017FDEC4C00FD7532 /* usbmux.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A5941DF17FDEC4C00FD7532 /* usbmux.py */; };
@@ -47,8 +49,6 @@
 		7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56916E772E9004770AA /* Credits.rtf */; };
 		7A9EE56E16E772E9004770AA /* iSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */; };
 		7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56F16E772E9004770AA /* MainMenu.xib */; };
-		7AAB992D17CBD42100D45A50 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAB992C17CBD42100D45A50 /* NMSSH.framework */; };
-		7AAB992E17CBD42E00D45A50 /* NMSSH.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AAB992C17CBD42100D45A50 /* NMSSH.framework */; };
 		7AB1EBAF17B3BBB000F9BAEE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */; };
 		7AB1EBB317B3BF5300F9BAEE /* iSXImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */; };
 		7AB1EBB417B3BF5300F9BAEE /* iSXImportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AB1EBB217B3BF5300F9BAEE /* iSXImportViewController.xib */; };
@@ -70,15 +70,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7A0A4F1417C678CE00CAC148 /* ScanX.framework in CopyFiles */,
-				7AAB992E17CBD42E00D45A50 /* NMSSH.framework in CopyFiles */,
+				7A4B4F661800AB4D00D93C47 /* ScanX.framework in CopyFiles */,
+				7A4B4F691800ABDD00D93C47 /* NMSSH.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7A0A4F1217C678C800CAC148 /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
 		7A11654D17B3F5A600B22D65 /* usb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usb.png; sourceTree = "<group>"; };
 		7A11654E17B3F5A600B22D65 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 		7A11655C17B40F0600B22D65 /* icon_256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon_256x256.icns; sourceTree = "<group>"; };
@@ -110,6 +109,8 @@
 		7A317C4B17FEEF1900E5E66E /* noIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noIcon.png; sourceTree = "<group>"; };
 		7A38B2D717D4AB8C00DC2CC3 /* iSXModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSXModule.h; path = iOScanX/iSXModule.h; sourceTree = "<group>"; };
 		7A38B2D817D4AB8C00DC2CC3 /* iSXModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSXModule.m; path = iOScanX/iSXModule.m; sourceTree = "<group>"; };
+		7A4B4F641800AB4100D93C47 /* ScanX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanX.framework; path = ../ScanX/DerivedData/ScanX/Build/Products/Release/ScanX.framework; sourceTree = "<group>"; };
+		7A4B4F671800ABD900D93C47 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 		7A589CFF17C92B0D0046ECB3 /* iSXSelectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iSXSelectWindow.xib; sourceTree = "<group>"; };
 		7A589D0217C92BC00046ECB3 /* iSXSelectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXSelectWindowController.h; sourceTree = "<group>"; };
 		7A589D0317C92BC00046ECB3 /* iSXSelectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXSelectWindowController.m; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		7A9EE56C16E772E9004770AA /* iSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSXAppDelegate.h; sourceTree = "<group>"; };
 		7A9EE56D16E772E9004770AA /* iSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSXAppDelegate.m; sourceTree = "<group>"; };
 		7A9EE57016E772E9004770AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		7AAB992C17CBD42100D45A50 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = "../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug/NMSSH.framework"; sourceTree = "<group>"; };
 		7AB1EBAE17B3BBB000F9BAEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone.png; sourceTree = "<group>"; };
 		7AB1EBB017B3BF5300F9BAEE /* iSXImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXImportViewController.h; sourceTree = "<group>"; };
 		7AB1EBB117B3BF5300F9BAEE /* iSXImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXImportViewController.m; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A4B4F681800ABD900D93C47 /* NMSSH.framework in Frameworks */,
+				7A4B4F651800AB4100D93C47 /* ScanX.framework in Frameworks */,
 				7A9EE55B16E772E8004770AA /* Cocoa.framework in Frameworks */,
-				7A0A4F1317C678C800CAC148 /* ScanX.framework in Frameworks */,
-				7AAB992D17CBD42100D45A50 /* NMSSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +273,8 @@
 		7A9EE55916E772E8004770AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AAB992C17CBD42100D45A50 /* NMSSH.framework */,
-				7A0A4F1217C678C800CAC148 /* ScanX.framework */,
+				7A4B4F671800ABD900D93C47 /* NMSSH.framework */,
+				7A4B4F641800AB4100D93C47 /* ScanX.framework */,
 				7A9EE55A16E772E8004770AA /* Cocoa.framework */,
 				7A9EE55C16E772E8004770AA /* Other Frameworks */,
 			);
@@ -418,7 +418,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = iSX;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alessio Maffeis";
 			};
 			buildConfigurationList = 7A9EE55016E772E8004770AA /* Build configuration list for PBXProject "iOScanX" */;
@@ -539,7 +539,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -568,7 +567,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -591,20 +589,13 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
-					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug\"",
+					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Release,
+					/Users/maffo/Documents/Thesis/Project/iOScanX,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
 				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/iOScanX\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)/build";
 				WRAPPER_EXTENSION = app;
@@ -616,20 +607,13 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Release\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../ScanX/DerivedData/ScanX/Build/Products/Debug\"",
-					"\"$(SRCROOT)/../NMSSH/build/Debug\"",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/NMSSH-czquitsuadoikagvdnarsknmumln/Build/Products/Debug\"",
+					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Release,
+					/Users/maffo/Documents/Thesis/Project/iOScanX,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOScanX/iOScanX-Prefix.pch";
 				INFOPLIST_FILE = "iOScanX/iOScanX-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/iOScanX\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)/build";
 				WRAPPER_EXTENSION = app;
