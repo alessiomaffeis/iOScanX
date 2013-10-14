@@ -28,7 +28,7 @@
         [formattedResults appendAttributedString:[[[NSAttributedString alloc]
                                                    initWithString:evalID
                                                    attributes:@{NSFontAttributeName : [NSFont boldSystemFontOfSize:11]}] autorelease]];
-        [formattedResults appendAttributedString:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@": \t%@\n",[value objectForKey:evalID]]] autorelease]];
+        [formattedResults appendAttributedString:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@": \t%.3f\n",[(NSNumber*)[value objectForKey:evalID] doubleValue]]] autorelease]];
     }
     return formattedResults;
 }
