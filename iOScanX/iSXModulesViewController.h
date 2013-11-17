@@ -15,7 +15,6 @@
 - (BOOL)addModules:(NSArray*)URLs;
 - (void)deleteModule:(iSXModule*)module;
 
-
 @end
 
 @interface iSXModulesViewController : NSViewController <NSTableViewDelegate>

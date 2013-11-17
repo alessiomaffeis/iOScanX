@@ -24,6 +24,7 @@
     NSString *_user, *_address, *_password;
     NSMutableDictionary *_moduleInstances;
     NSMutableDictionary *_results;
+    BOOL _loadingApps, _loadingModules, _loadingEvaluations, _loadingResults;
 }
 
 - (id) init {
@@ -67,20 +68,27 @@
             iSXApp *app = [[[iSXApp alloc] init] autorelease];
             app.ID = appID;
             NSString *appFolder = [appsPath stringByAppendingPathComponent:appID];
+            NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[appFolder stringByAppendingPathComponent:@"Info.plist"]];
             NSDirectoryEnumerator *ade = [fm enumeratorAtPath:appFolder];
             NSString *appFile;
             while (appFile = [ade nextObject]) {
                 if ([[appFile pathExtension] isEqualToString:@"tar"]) {
-                    app.name = [appFile stringByDeletingPathExtension];
+                    app.name = [info objectForKey:@"CFBundleDisplayName"];
+                    if (app.name == nil) {
+                        app.name = [info objectForKey:@"CFBundleName"];
+                    }
+                    app.bundleName = [appFile stringByDeletingPathExtension];
+                    app.executableName = [info objectForKey:@"CFBundleExecutable"];
                     app.path = [appFolder stringByAppendingPathComponent:appFile];
                     NSString *appIcon = [appFolder stringByAppendingPathComponent:@"iTunesArtwork"];
                     app.iconPath = [fm fileExistsAtPath:appIcon] ? appIcon : [[NSBundle mainBundle] pathForResource:@"noIcon" ofType:@"png"];
-                    [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: NO];
+                    [_appsViewController performSelectorOnMainThread:@selector(addApp:) withObject:app waitUntilDone: YES];
                     break;
                 }
             }
         }
     }
+    _loadingApps = NO;
 }
 
 - (void)loadModules {
@@ -124,6 +132,7 @@
             }
         }
     }
+    _loadingModules = NO;
 }
 
 - (void)loadEvaluations {
@@ -140,6 +149,7 @@
             [_evaluationsViewController performSelectorOnMainThread:@selector(addEvaluation:) withObject:evaluation waitUntilDone: NO];
         }
     }
+    _loadingEvaluations = NO;
 }
 
 - (void) loadResults {
@@ -154,7 +164,7 @@
         result.evaluations = [details objectForKey:@"evaluations"];
         [_resultsViewController performSelectorOnMainThread:@selector(addResult:) withObject:result waitUntilDone:NO];
     }
-
+    _loadingResults = NO;
 }
 
 - (void)importApps {
@@ -243,9 +253,16 @@
                                 
                                 [fm createDirectoryAtPath:dstPath withIntermediateDirectories:YES attributes:nil error:nil];
                                 
-                                NSString *binaryName = [appName stringByDeletingPathExtension];
                                 NSString *escAppName = [appName stringByReplacingOccurrencesOfString:@"'"
                                                                                           withString:@"'\\''"];
+                                
+                                NSString *info = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@/Info.plist", appID, escAppName];
+                                NSString *infoDst = [dstPath stringByAppendingPathComponent:@"Info.plist"];
+                                [_scp.channel downloadFile:info to:infoDst];
+                                NSDictionary *infoPlist = [NSDictionary dictionaryWithContentsOfFile:infoDst];
+                                
+                                NSString *binaryName = [infoPlist objectForKey:@"CFBundleExecutable"];
+                                
                                 NSString *escBinName = [binaryName stringByReplacingOccurrencesOfString:@"'"
                                                                                              withString:@"'\\''"];
                                                                 
@@ -259,6 +276,7 @@
                                     NSString *artwork = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesArtwork", appID];
                                     NSString *meta = [NSString stringWithFormat:@"/var/mobile/Applications/%@/iTunesMetadata.plist", appID];
                                     NSString *bundle = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@", appID, escAppName];
+                                    
                                     NSString *escTar = [bundle stringByAppendingPathExtension:@"tar"];
                                     NSString *tar = [NSString stringWithFormat:@"/var/mobile/Applications/%@/%@.tar", appID, appName];
                                     
@@ -354,18 +372,20 @@
     _scanner.delegate = self;
     
     for (iSXApp *app in apps) {
+        
         [_scanner addItem:app withId:app.ID];
     }
     
     NSLog(@"Number of apps: %lu",_scanner.items.count);
     
-    for (NSString *moduleID in _moduleInstances) {
+    for (iSXModule *module in modules) {
         
-        [_scanner addModule:[_moduleInstances objectForKey:moduleID] withId:moduleID];
+        [_scanner addModule:[_moduleInstances objectForKey:module.ID] withId:module.ID];
     }
     
     NSLog(@"Number of modules: %lu",_scanner.modules.count);
-
+    
+    
     _progressSheetController.minValue = 0;
     _progressSheetController.maxValue = apps.count*modules.count;
     _progressSheetController.value = 0;
@@ -407,6 +427,9 @@
 
 - (IBAction)showImport:(id)sender {
     
+    if(_currentView == [_importViewController view])
+        return;
+    
     [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_importViewController view]];
     _currentView = [_importViewController view];
@@ -415,39 +438,63 @@
 
 - (IBAction)showApps:(id)sender {
     
+    if(_currentView == [_appsViewController view])
+        return;
+    
     [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_appsViewController view]];
     _currentView = [_appsViewController view];
     [[_appsViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadApps) withObject:nil];
+    if (!_loadingApps) {
+        _loadingApps = YES;
+        [self performSelectorInBackground:@selector(loadApps) withObject:nil];
+    }
 }
 
 - (IBAction)showModules:(id)sender {
+    
+    if(_currentView == [_modulesViewController view])
+        return;
 
     [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_modulesViewController view]];
     _currentView = [_modulesViewController view];
     [[_modulesViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadModules) withObject:nil];
+    if (!_loadingModules) {
+        _loadingModules = YES;
+        [self performSelectorInBackground:@selector(loadModules) withObject:nil];
+    }
 }
 
 - (IBAction)showEvaluations:(id)sender {
+    
+    if(_currentView == [_evaluationsViewController view])
+        return;
     
     [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_evaluationsViewController view]];
     _currentView = [_evaluationsViewController view];
     [[_evaluationsViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadEvaluations) withObject:nil];
+    if (!_loadingEvaluations) {
+        _loadingEvaluations = YES;
+        [self performSelectorInBackground:@selector(loadEvaluations) withObject:nil];
+    }
 
 }
 
 - (IBAction)showResults:(id)sender {
     
+    if(_currentView == [_resultsViewController view])
+        return;
+    
     [_currentView removeFromSuperviewWithoutNeedingDisplay];
     [self.mainView addSubview:[_resultsViewController view]];
     _currentView = [_resultsViewController view];
     [[_resultsViewController view] setFrame:[self.mainView bounds]];
-    [self performSelectorInBackground:@selector(loadResults) withObject:nil];
+    if (!_loadingResults) {
+        _loadingResults = YES;
+        [self performSelectorInBackground:@selector(loadResults) withObject:nil];
+    }
 
 }
 
@@ -614,7 +661,7 @@
                 
         [meta release];
     }
-        
+    
     _toolbar.selectedItemIdentifier = @"ResultsView";
     [_scanner release];
     _scanner = nil;

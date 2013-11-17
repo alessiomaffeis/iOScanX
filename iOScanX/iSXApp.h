@@ -14,6 +14,9 @@
 @property (copy) NSString *ID;
 @property (copy) NSString *iconPath;
 @property (copy) NSString *path;
+@property (copy) NSString *executableName;
+@property (copy) NSString *bundleName;
+
 @property (assign) BOOL selected;
 
 @end

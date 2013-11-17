@@ -15,6 +15,8 @@
     self = [super init];
     if (self) {
         _name = @"Undefined";
+        _executableName = @"Undefined";
+        _bundleName = @"Undefined";
         _iconPath =  @"";
         _path =  @"";
         _ID =  @"";
@@ -30,6 +32,8 @@
     if (copy) {
         
         copy.name = _name;
+        copy.executableName = _executableName;
+        copy.bundleName = _bundleName;
         copy.iconPath = _iconPath;
         copy.path = _path;
         copy.ID = _ID;
@@ -41,6 +45,8 @@
 -(void)dealloc {
     
     [_name release];
+    [_executableName release];
+    [_bundleName release];
     [_ID release];
     [_path release];
     [_iconPath release];

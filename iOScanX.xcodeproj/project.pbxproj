@@ -43,6 +43,7 @@
 		7A76030117AC30D1001637F4 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */; };
 		7A77D14C17B82F88008AC9F5 /* tcprelay.py in Resources */ = {isa = PBXBuildFile; fileRef = 7A77D14A17B82F88008AC9F5 /* tcprelay.py */; };
 		7A8437C417DE578800ACC24F /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8437C317DE578800ACC24F /* file.png */; };
+		7A95E2FC181827EB00142C60 /* module.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7A95E2FB181827EB00142C60 /* module.icns */; };
 		7A9CE75917FAFDC500E823F3 /* iSXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CE75817FAFDC500E823F3 /* iSXResult.m */; };
 		7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A9EE56316E772E8004770AA /* InfoPlist.strings */; };
 		7A9EE56716E772E8004770AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EE56616E772E8004770AA /* main.m */; };
@@ -123,6 +124,7 @@
 		7A76030017AC30D1001637F4 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		7A77D14A17B82F88008AC9F5 /* tcprelay.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = tcprelay.py; path = ../Resources/tcprelay.py; sourceTree = "<group>"; };
 		7A8437C317DE578800ACC24F /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		7A95E2FB181827EB00142C60 /* module.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = module.icns; sourceTree = "<group>"; };
 		7A9CE75717FAFDC500E823F3 /* iSXResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSXResult.h; sourceTree = "<group>"; };
 		7A9CE75817FAFDC500E823F3 /* iSXResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSXResult.m; sourceTree = "<group>"; };
 		7A9EE55616E772E8004770AA /* iOScanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +187,7 @@
 		7A1190611754F37200EE8DD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A95E2FB181827EB00142C60 /* module.icns */,
 				7A317C4B17FEEF1900E5E66E /* noIcon.png */,
 				7A8437C317DE578800ACC24F /* file.png */,
 				7AE6CB2917D2430B00EC9421 /* add.png */,
@@ -443,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A95E2FC181827EB00142C60 /* module.icns in Resources */,
 				7A9EE56516E772E8004770AA /* InfoPlist.strings in Resources */,
 				7A9EE56B16E772E9004770AA /* Credits.rtf in Resources */,
 				7A9EE57116E772E9004770AA /* MainMenu.xib in Resources */,
@@ -589,7 +593,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Release,
 					/Users/maffo/Documents/Thesis/Project/iOScanX,
 					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Debug,
 				);
@@ -608,7 +611,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Release,
 					/Users/maffo/Documents/Thesis/Project/iOScanX,
 					/Users/maffo/Documents/Thesis/Project/ScanX/DerivedData/ScanX/Build/Products/Debug,
 				);

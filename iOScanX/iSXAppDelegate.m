@@ -15,6 +15,7 @@
 @implementation iSXAppDelegate {
     
     NSMutableArray *_openedModules;
+    BOOL _didFinishLaunching;
 }
 
 + (void)initialize {
@@ -31,10 +32,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     [(iSXAppController*)_window.delegate initialize];
-    if(_openedModules != nil)
+    _didFinishLaunching = YES;
+    if(_openedModules != nil && _openedModules.count>0)
     {
-        if ([(iSXAppController*)_window.delegate addModules:_openedModules])
-            [_openedModules removeAllObjects];
+        [(iSXAppController*)_window.delegate addModules:_openedModules];
+        [_openedModules removeAllObjects];
     }
 }
 
@@ -56,6 +58,12 @@
             [_openedModules removeAllObjects];
     }
     
+    if(_didFinishLaunching)
+    {
+        [(iSXAppController*)_window.delegate addModules:_openedModules];
+        [_openedModules removeAllObjects];
+    }
+    
     return YES;
 }
 
@@ -75,6 +83,12 @@
         }
         if ([(iSXAppController*)_window.delegate addModules:_openedModules])
             [_openedModules removeAllObjects];
+    }
+    
+    if(_didFinishLaunching)
+    {
+        [(iSXAppController*)_window.delegate addModules:_openedModules];
+        [_openedModules removeAllObjects];
     }
 }
 

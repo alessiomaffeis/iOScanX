@@ -19,7 +19,7 @@
         _isVisible = NO;
         _isIndeterminate = YES;
         _minValue = 0;
-        _maxValue = 100;
+        _maxValue = 0;
         _value = 0;
     }
     
@@ -29,17 +29,17 @@
 - (void) showSheet:(NSWindow*)window {
     
     if (!_isVisible) {
-        
+    
         _isVisible = YES;
         if (_sheet == nil)
-            [NSBundle loadNibNamed: @"iSXProgressSheet" owner: self];
+            [NSBundle loadNibNamed: @"iSXProgressSheet" owner:self];
         
         [NSApp beginSheet: _sheet
            modalForWindow: window
             modalDelegate: nil
            didEndSelector: nil
               contextInfo: nil];
-        
+        _progressBar.usesThreadedAnimation = YES;
         [_progressBar startAnimation:self];
     }
     else
