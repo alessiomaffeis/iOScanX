@@ -1,6 +1,8 @@
 iOScanX
 =======
 
+![alt tag](http://i.imgur.com/4zx0UvT.png)
+
 iOScanX is the highest level part of the (eponymous) project. Essentially, that takes advantage ￼of the ScanX framework in order to actualize a practical workflow for scanning iOS applications.
 
 iOScanX provides a clear and intuitive graphical user interface that guides the user through all the steps in the workflow:
