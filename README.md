@@ -2,7 +2,7 @@ iOScanX
 =======
 
 
-iOScanX is the highest level part of the eponymous project. Essentially, that takes advantage of the [ScanX framework](https://github.com/alessiomaffeis/ScanX) in order to actualize a practical workflow for scanning iOS applications.
+iOScanX is the highest level part of the eponymous project. It takes advantage of the [ScanX framework](https://github.com/alessiomaffeis/ScanX) in order to actualize a practical workflow for iOS application scanning.
 
 ![alt tag](http://i.imgur.com/4zx0UvT.png)
 
